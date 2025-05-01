@@ -80,5 +80,29 @@
       }
     }
   ],
+  "release": {
+    "version": {
+      "generatorOptions": {
+        "currentVersionResolver": "git-tag",
+        "packageRoot": "dist/primitives",
+        "preset": "conventional",
+        "commitMessageFormat": "chore(release): publish v{version}"
+      }
+    },
+    "changelog": {
+      "workspaceChangelog": {
+        "createRelease": "github"
+      },
+      "projectChangelogs": {
+        "enabled": true,
+        "renderOptions": {
+          "versionTitleDate": true,
+          "authors": true,
+          "commitReferences": true
+        }
+      }
+    },
+    "projects": ["primitives"]
+  },
   "defaultProject": "primitives"
 }
