@@ -1,0 +1,82 @@
+---
+title: Separator
+description: Angular directives to build a separator using Vacui UI primitives.
+group: Directives
+slug: separator
+---
+
+<script lang="ts">
+import { CodeHighlightComponent } from '../../../app/components/code/code.component' with { analog: 'imports' };
+import { AnatomyComponent } from '../../../app/components/anatomy/anatomy.component' with { analog: 'imports' };
+import { BadgeComponent } from '../../../app/components/badge/badge.component' with { analog: 'imports' };
+import { TableComponent } from '../../../app/components/table/table.component' with { analog: 'imports' };
+import { ExampleComponent } from '../../../app/components/example/example.component' with { analog: 'imports' };
+
+// ------ ANATOMY ------
+const componentStructure = {
+  name: 'vacSeparatorRoot',
+};
+
+// ------ COLUMNS ------
+const columnsInput = [
+  { header: 'Input', field: 'prop' },
+  { header: 'Default', field: 'default' },
+  { header: 'Type', field: 'type' },
+  { header: 'Description', field: 'description', widthFactor: 2  }
+];
+
+const attributesColumns = [
+  { header: 'Attribute', field: 'attribute' },
+  { header: 'Value', field: 'value', widthFactor: 4 },
+];
+
+// ------ ROWS ------
+const rootInputRows = [
+  { id: 1, prop: 'orientation', default: 'horizontal', type: '"horizontal" | "vertical"', description: 'Separator orientation' },
+  { id: 2, prop: 'decorative', default: 'false', type: 'boolean', description: 'Remove an element\'s implicit ARIA semantics from being exposed to the accessibility tree.' },
+];
+
+const rootAttrRows = [
+  { id: 1, attribute: 'data-orientation', value: '"horizontal" | "vertical"' },
+];
+
+const features = [
+  'Support decorative separators',
+  'Supports horizontal and vertical orientation',
+];
+
+const codeDemo = ``;
+
+const demoHighlights = ["SeparatorPrimitivesModule", "vacSeparatorRoot"];
+</script>
+
+<template lang="md">
+
+  Separator directive that offers a seamless and accessible solution for building separators.
+
+  <docs-example name="separator" />
+
+  ## Installation
+  Add and import the module into your imports section.
+
+  <docs-code code="import { SeparatorPrimitivesModule } from '@vacui-ui/primitives/separator';" language="ts" />
+
+  # Anatomy
+  Directive's set structure.
+
+  <docs-anatomy [node]="componentStructure" />
+
+  # Input props
+
+  ## SeparatorRoot <docs-badge text="Attribute Directive" color="purple" />
+  Creates the separator.
+
+  <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+
+  <div class="mt-4">
+    <docs-table [columns]="attributesColumns" [rows]="rootAttrRows" />  
+  </div>
+
+  # Accessibility
+  The separator directive is designed in accordance with the WAI-ARIA Authoring Practices Guide. For more details on accessibility features and guidelines, please refer to the [WAI-ARIA Separator Practices](https://www.w3.org/TR/wai-aria-1.2/#separator). This ensures our component meets modern accessibility standards, providing an inclusive user experience.
+</template>

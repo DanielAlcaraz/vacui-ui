@@ -1,0 +1,114 @@
+---
+title: Toggle
+description: An Angular directive to build a Toggle button using Vacui UI primitives.
+group: Directives
+slug: toggle
+---
+
+<script lang="ts">
+import { CodeHighlightComponent } from '../../../app/components/code/code.component' with { analog: 'imports' };
+import { AnatomyComponent } from '../../../app/components/anatomy/anatomy.component' with { analog: 'imports' };
+import { BadgeComponent } from '../../../app/components/badge/badge.component' with { analog: 'imports' };
+import { TableComponent } from '../../../app/components/table/table.component' with { analog: 'imports' };
+import { ExampleComponent } from '../../../app/components/example/example.component' with { analog: 'imports' };
+
+// ------ ANATOMY ------
+const componentStructure = {
+  name: 'vacToggleRoot',
+  children: []
+};
+
+// ------ COLUMNS ------
+const columnsInput = [
+  { header: 'Input', field: 'prop' },
+  { header: 'Default', field: 'default' },
+  { header: 'Type', field: 'type' },
+  { header: 'Description', field: 'description', widthFactor: 3  }
+];
+
+const attributesColumns = [
+  { header: 'Attribute', field: 'attribute' },
+  { header: 'Value', field: 'value', widthFactor: 4 },
+];
+
+const keyboardColumns = [
+  { header: 'Key', field: 'key' },
+  { header: 'Description', field: 'description', widthFactor: 3 },
+];
+
+// ------ ROWS ------
+const rootInputRows = [
+  { id: 1, prop: 'pressed', default: 'null', type: 'model<boolean | null>', description: 'The pressed state of the toggle. Use two-way binding with [(pressed)].' },
+  { id: 2, prop: 'disabled', default: 'false', type: 'boolean', description: 'Whether or not the toggle is disabled.' },
+];
+
+const rootAttrRows = [
+  { id: 1, attribute: 'data-state', value: '"on" | "off"' },
+  { id: 2, attribute: 'data-disabled', value: 'Present when disabled' },
+  { id: 3, attribute: 'aria-pressed', value: '"true" | "false"' },
+];
+
+const keyboardRows = [
+  { key: 'Space', description: 'Toggles the button state.' },
+  { key: 'Enter', description: 'Toggles the button state.' },
+];
+
+const codeDemo = ``;
+
+const demoHighlights = ["TogglePrimitivesModule", "vacToggleRoot"];
+
+const features = [
+  'Keyboard accessible',
+  'Full ARIA support',
+  'Can be controlled or uncontrolled',
+  'Simple single-directive implementation',
+];
+
+const templateVariableExample = `
+<button vacToggleRoot #toggle="vacToggleRoot" [(pressed)]="isPressed">
+  {{toggle.pressed() ? 'Active' : 'Inactive'}}
+</button>`;
+</script>
+
+<template lang="md">
+
+  Toggle directive that offers a simple and accessible solution for creating toggle buttons.
+
+  <docs-example name="toggle" />
+
+  ## Installation
+  Add and import the module into your imports section.
+
+  <docs-code code="import { TogglePrimitivesModule } from '@vacui-ui/primitives/toggle';" language="ts" />
+
+  # Anatomy
+  Directive's structure.
+
+  <docs-anatomy [node]="componentStructure" />
+
+  # Input props
+
+  ## ToggleRoot <docs-badge text="Attribute Directive" color="purple" />
+  The main directive that manages the toggle state and behavior.
+
+  <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+
+  <div class="mt-4">
+    <docs-table [columns]="attributesColumns" [rows]="rootAttrRows" />  
+  </div>
+
+  # Access directive API with exportAS
+
+  We can access the state of the toggle using a template variable.
+
+  ### Example
+  Using the template variable to display the current state of the toggle.
+
+  <docs-code [code]="templateVariableExample" language="html" />
+
+  # Accessibility
+  This Toggle directive is designed in accordance with the WAI-ARIA Authoring Practices Guide for toggle buttons. This ensures our component meets modern accessibility standards, providing an inclusive user experience.
+
+  ## Keyboard Navigation
+  <docs-table [columns]="keyboardColumns" [rows]="keyboardRows" />  
+</template>

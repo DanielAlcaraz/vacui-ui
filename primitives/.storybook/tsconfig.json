@@ -1,0 +1,19 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "types": ["node"],
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true
+  },
+  "exclude": ["../**/*.spec.ts"],
+  "include": [
+    "../**/*.stories.ts",
+    "../**/*.stories.js",
+    "../**/*.stories.jsx",
+    "../**/*.stories.tsx",
+    "../**/*.stories.mdx",
+    "*.js",
+    "*.ts"
+  ]
+}

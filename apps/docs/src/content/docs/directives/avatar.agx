@@ -1,0 +1,134 @@
+---
+title: Avatar
+description: Set of Angular directives to build an Avatar using Vacui UI primitives.
+group: Directives
+slug: avatar
+---
+
+<script lang="ts">
+import { CodeHighlightComponent } from '../../../app/components/code/code.component' with { analog: 'imports' };
+import { AnatomyComponent } from '../../../app/components/anatomy/anatomy.component' with { analog: 'imports' };
+import { BadgeComponent } from '../../../app/components/badge/badge.component' with { analog: 'imports' };
+import { TableComponent } from '../../../app/components/table/table.component' with { analog: 'imports' };
+import { ExampleComponent } from '../../../app/components/example/example.component' with { analog: 'imports' };
+
+const componentStructure = {
+  name: 'vacAvatarRoot',
+  children: [
+    { name: 'vacAvatarItem' },
+    { name: '*vacAvatarFallback' }
+  ]
+};
+
+const columnsInput = [
+  { header: 'Input', field: 'prop' },
+  { header: 'Default', field: 'default' },
+  { header: 'Type', field: 'type' },
+  { header: 'Required', field: 'required' }
+];
+
+const outputColumns = [
+  { header: 'Output', field: 'prop' },
+  { header: 'Description', field: 'description', widthFactor: 2 },
+  { header: 'Returns', field: 'returns' },
+];
+
+const itemInputRows = [
+  { id: 1, prop: 'src*', default: '—', type: 'string', required: 'true' },
+];
+
+const itemOutputRows = [
+  { id: 1, prop: 'loadingStatusChange', description: 'A callback invoked when the loading status store of the image changes.', returns: 'LoadingStatus' },
+];
+
+const headerInputRows = [
+  { id: 1, prop: 'delayMs', default: '0', type: 'number', required: 'false' },
+];
+
+const stateVarsColumns = [
+  { header: 'Name', field: 'name' },
+  { header: 'Type', field: 'type' },
+  { header: 'Default', field: 'default' },
+];
+
+const stateMethodsColumns = [
+  { header: 'Method', field: 'method' },
+  { header: 'Arguments', field: 'arguments' },
+  { header: 'Return', field: 'return' },
+];
+
+const stateRows = [
+  { id: 1, name: 'loadingStatus', default: 'idle', type: 'WritableSignal<LoadingStatus>' },
+];
+
+const stateMethodRows = [
+  { id: 1, method: 'loadImage', arguments: 'string', return: 'void' },
+];
+
+const stateExample = `
+<div vacAvatarRoot #image="vacAvatarRoot">
+  <img vacAvatarImage />
+  <div>{{ image.state.loadingStatus() }}<div>
+</div>
+`
+</script>
+
+<template lang="md">
+
+  A toolkit of Angular directives designed to build a fully customizable avatar image component, will a fallback to
+  represent the image.
+
+  <docs-example name="avatar" />
+
+  ## Installation
+  Add and import the module into your imports section.
+
+  <docs-code code="import { AspectRatioPrimitivesModule } from '@vacui-ui/primitives/avatar';" language="shell" />
+
+  # Anatomy
+  Directive's set structure.
+
+  <docs-anatomy [node]="componentStructure" />
+
+  # Input props
+
+  ## AvatarRoot <docs-badge color="purple" text="Attribute" />
+  The root directive for the avatar. Handles the avatar state. It doesn't have any inputs, outputs or attributes.
+
+  ## AvatarImage <docs-badge color="purple" text="Attribute" />&nbsp;<docs-badge color="yellow" text="Optional" />
+  A directive to listen the image render.
+
+  <docs-table [columns]="columnsInput" [rows]="itemInputRows" />
+  &nbsp;
+  <docs-table [columns]="outputColumns" [rows]="itemOutputRows" />
+
+  ## AvatarFallback <docs-badge color="blue" text="Structural" />&nbsp;<docs-badge color="yellow" text="Optional" />
+  Use this directive to show a fallback when the image is not available.
+
+  <docs-table [columns]="columnsInput" [rows]="headerInputRows" />
+
+  # State
+  AvatarStateService allows to load and listen the status of an image.
+
+  ## Access directive API with exportAS
+  We can access the state of the avatar using a template variable. All the directives expose themself with the same name. We have access to the directive's attributes and also the `state` service.
+
+  ### Example
+  We could use it with any other directive. For example with `#image="vacAvatarRoot"` and access the state.
+
+  <docs-code [code]="stateExample" language="html" />
+
+  ## State API - AvatarStateService
+  Documentation for the avatar state service API.
+
+  ### Variables
+  <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />
+
+  ### Methods
+  <docs-table [columns]="stateMethodsColumns" [rows]="stateMethodRows" />
+
+  ## Types/Interfaces
+  Avatar interfaces that you can import.
+
+  <docs-code code="type LoadingStatus = 'idle' | 'loading' | 'loaded' | 'error';" language="ts" />
+</template>

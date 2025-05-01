@@ -1,0 +1,265 @@
+---
+title: Tabs
+description: Set of Angular directives to build a Tab system using Vacui UI primitives.
+group: Directives
+slug: tabs
+---
+
+<script lang="ts">
+import { CodeHighlightComponent } from '../../../app/components/code/code.component' with { analog: 'imports' };
+import { AnatomyComponent } from '../../../app/components/anatomy/anatomy.component' with { analog: 'imports' };
+import { BadgeComponent } from '../../../app/components/badge/badge.component' with { analog: 'imports' };
+import { TableComponent } from '../../../app/components/table/table.component' with { analog: 'imports' };
+import { ExampleComponent } from '../../../app/components/example/example.component' with { analog: 'imports' };
+
+// ------ ANATOMY ------
+const componentStructure = {
+  name: 'vacTabsRoot',
+  children: [
+    { name: 'vacTabsList', children: [{ name: 'vacTabsTrigger' }] },
+    { name: 'vacTabsContent' }
+  ]
+};
+
+// ------ COLUMNS ------
+const columnsInput = [
+  { header: 'Input', field: 'prop' },
+  { header: 'Default', field: 'default' },
+  { header: 'Type', field: 'type' },
+  { header: 'Description', field: 'description', widthFactor: 3  }
+];
+
+const outputColumns = [
+  { header: 'Output', field: 'output' },
+  { header: 'Returns', field: 'returns' },
+  { header: 'Description', field: 'description', widthFactor: 4 },
+];
+
+const attributesColumns = [
+  { header: 'Attribute', field: 'attribute' },
+  { header: 'Value', field: 'value', widthFactor: 4 },
+];
+
+const keyboardColumns = [
+  { header: 'Key', field: 'key' },
+  { header: 'Description', field: 'description', widthFactor: 3 },
+];
+
+const stateVarsColumns = [
+  { header: 'Name', field: 'name' },
+  { header: 'Default', field: 'default' },
+  { header: 'Type', field: 'type', widthFactor: 2 },
+];
+
+const stateMethodsColumns = [
+  { header: 'Method', field: 'method' },
+  { header: 'Return', field: 'return' },
+  { header: 'Arguments', field: 'arguments', widthFactor: 2 },
+];
+
+// ------ ROWS ------
+const rootInputRows = [
+  { id: 1, prop: 'value', default: 'null', type: 'string | null', description: 'The selected value of the tabs.' },
+  { id: 2, prop: 'orientation', default: 'horizontal', type: '"vertical" | "horizontal"', description: 'The orientation of the tabs component.' },
+  { id: 3, prop: 'automatic', default: 'true', type: 'boolean', description: 'When true, tab selection happens automatically on focus.' },
+];
+
+const rootOutputRows = [
+  { id: 1, output: 'valueChange', description: 'Event handler emitted when the selected tab changes', returns: 'string | null' },
+];
+
+const rootAttrRows = [
+  { id: 1, attribute: 'data-orientation', value: '"vertical" | "horizontal"' },
+];
+
+const listInputRows = [
+  { id: 1, prop: 'loop', default: 'true', type: 'boolean', description: 'When true, keyboard navigation will loop through the tabs.' },
+];
+
+const listAttrRows = [
+  { id: 1, attribute: 'data-orientation', value: '"vertical" | "horizontal"' },
+  { id: 2, attribute: 'aria-orientation', value: '"vertical" | "horizontal"' },
+];
+
+const triggerInputRows = [
+  { id: 1, prop: 'value*', default: '—', type: 'string', description: 'The value of the tab trigger.' },
+  { id: 2, prop: 'disabled', default: 'false', type: 'boolean', description: 'Whether or not the tab trigger is disabled.' },
+];
+
+const triggerAttrRows = [
+  { id: 1, attribute: 'data-state', value: '"active" | "inactive"' },
+  { id: 2, attribute: 'data-disabled', value: 'Shows when disabled' },
+  { id: 3, attribute: 'data-orientation', value: '"vertical" | "horizontal"' },
+  { id: 4, attribute: 'aria-selected', value: 'true when tab is selected' },
+  { id: 5, attribute: 'aria-controls', value: 'ID of the controlled tab panel' },
+];
+
+const contentInputRows = [
+  { id: 1, prop: 'value*', default: '—', type: 'string', description: 'The value of the tab content, must match a tab trigger value.' },
+];
+
+const contentAttrRows = [
+  { id: 1, attribute: 'data-state', value: '"active" | "inactive"' },
+  { id: 2, attribute: 'data-orientation', value: '"vertical" | "horizontal"' },
+  { id: 3, attribute: 'role', value: 'tabpanel' },
+  { id: 4, attribute: 'aria-labelledby', value: 'ID of the associated tab trigger' },
+];
+
+const stateRows = [
+  { id: 1, name: 'value', default: 'null', type: 'Signal<string | null>' },
+  { id: 2, name: 'automatic', default: 'true', type: 'Signal<boolean>' },
+  { id: 3, name: 'orientation', default: 'horizontal', type: 'Signal<Orientation>' },
+  { id: 4, name: 'selectedTab', default: 'null', type: 'Computed<Tab | null>' },
+];
+
+const stateMethodRows = [
+  { id: 1, method: 'registerTab', arguments: '(id: string, elementRef: ElementRef, disabled: boolean)', return: 'void' },
+  { id: 2, method: 'unregisterTab', arguments: '(tabId: string)', return: 'void' },
+  { id: 3, method: 'getTab', arguments: '(id: string)', return: 'Tab | undefined' },
+  { id: 4, method: 'getAllTabs', arguments: '()', return: 'Tab[]' },
+  { id: 5, method: 'setTabDisabled', arguments: '(tabId: string, disabled: boolean)', return: 'void' },
+  { id: 6, method: 'getNextTab', arguments: '(currentTabId: string)', return: 'Tab | null' },
+  { id: 7, method: 'getPreviousTab', arguments: '(currentTabId: string)', return: 'Tab | null' },
+];
+
+const keyboardRows = [
+  { key: 'Home', description: 'Navigates to the first non-disabled tab.' },
+  { key: 'End', description: 'Navigates to the last non-disabled tab.' },
+  { key: 'ArrowUp', description: 'Navigates to the previous non-disabled tab when orientation is "vertical"' },
+  { key: 'ArrowDown', description: 'Navigates to the next non-disabled tab when orientation is "vertical"' },
+  { key: 'ArrowLeft', description: 'Navigates to the previous non-disabled tab when orientation is "horizontal"' },
+  { key: 'ArrowRight', description: 'Navigates to the next non-disabled tab when orientation is "horizontal"' },
+];
+
+const codeDemo = ``;
+
+const demoHighlights = ["TabsPrimitivesModule", "vacTabsRoot", "vacTabsList", "vacTabsTrigger", "vacTabsContent"];
+
+const features = [
+  'Full keyboard navigation.',
+  'Vertical and horizontal orientation.',
+  'Can be controlled or uncontrolled.',
+  'Automatic or manual activation.',
+];
+
+const templateVariableExample = `
+<div vacTabsRoot #tabs="vacTabsRoot">
+  <div vacTabsList>
+    <button vacTabsTrigger="tab1">
+      @if (tabs.state.orientation() === 'vertical') {
+        Vertical Tab 1
+      } @else {
+        Horizontal Tab 1
+      }
+    </button>
+  </div>
+  <div *vacTabsContent="'tab1'">
+    Tab 1 Content
+  </div>
+</div>`;
+
+const typesAndInterfaces = `
+export type Orientation = 'vertical' | 'horizontal';
+export type Direction = 'ltr' | 'rtl';
+export type ActivationMode = 'automatic' | 'manual';
+export type ActivationState = 'active' | 'inactive';
+
+export interface Tab {
+  id: string;
+  elementRef: ElementRef;
+  disabled: boolean;
+}`;
+</script>
+
+<template lang="md">
+
+  Tabs directive toolkit that offers a seamless and accessible solution for creating tab interfaces.
+
+  <docs-example name="tabs" />
+
+  ## Installation
+  Add and import the module into your imports section.
+
+  <docs-code code="import { TabsPrimitivesModule } from '@vacui-ui/primitives/tabs';" language="ts" />
+
+  # Anatomy
+  Directive's set structure.
+
+  <docs-anatomy [node]="componentStructure" />
+
+  # Input props
+
+  ## TabsRoot <docs-badge text="Attribute Directive" color="purple" />
+  The root directive that contains the tabs list and content. Handles the state and bindings.
+
+  <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+
+  <div class="mt-4">
+    <docs-table [columns]="outputColumns" [rows]="rootOutputRows" />  
+  </div>
+
+  <div class="mt-4">
+    <docs-table [columns]="attributesColumns" [rows]="rootAttrRows" />  
+  </div>
+
+  ## TabsList <docs-badge text="Attribute Directive" color="purple" />
+  A container for the tab triggers that handles keyboard navigation and accessibility.
+
+  <div class="mt-4">
+    <docs-table [columns]="columnsInput" [rows]="listInputRows" />
+  </div>
+
+  <div class="mt-4">
+    <docs-table [columns]="attributesColumns" [rows]="listAttrRows" />
+  </div>
+
+  ## TabsTrigger <docs-badge text="Attribute Directive" color="purple" />
+  The clickable element that activates its associated content.
+
+  <docs-table [columns]="columnsInput" [rows]="triggerInputRows" />
+
+  <div class="mt-4">
+    <docs-table [columns]="attributesColumns" [rows]="triggerAttrRows" />
+  </div>
+
+  ## TabsContent <docs-badge text="Attribute Directive" color="purple" />
+  The content panel that displays when its associated trigger is selected.
+
+  <docs-table [columns]="columnsInput" [rows]="contentInputRows" />
+
+  <div class="mt-4">
+    <docs-table [columns]="attributesColumns" [rows]="contentAttrRows" />
+  </div>
+
+  # State
+
+  `TabsStateService` allows to access the tabs properties.
+
+  ## Access directive API with exportAS
+
+  We can access the state of the tabs using a template variable. All the directives expose themself with the same name. We have access to the directive's attributes and also the `state` service.
+
+  ### Example
+  We could use it with any other directive. For example with `#tabs="vacTabsRoot"` and access the state.
+
+  <docs-code [code]="templateVariableExample" language="html" />
+
+  ## State API - TabsStateService
+
+  Documentation for the tabs state service API.
+
+  ### Variables
+  <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />  
+
+  ### Methods
+  <docs-table [columns]="stateMethodsColumns" [rows]="stateMethodRows" />  
+
+  # Types and interfaces
+  <docs-code [code]="typesAndInterfaces" language="ts" />
+
+  # Accessibility
+  This Tabs set of directives is designed in accordance with the WAI-ARIA Authoring Practices Guide. For more details on accessibility features and guidelines, please refer to the [WAI-ARIA Tabs Practices](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/). This ensures our component meets modern accessibility standards, providing an inclusive user experience.
+
+  ## Keyboard Navigation
+  <docs-table [columns]="keyboardColumns" [rows]="keyboardRows" />  
+</template>

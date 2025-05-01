@@ -1,0 +1,188 @@
+---
+title: Keyboard Navigation
+description: Set of Angular directives to build easy keyboard navigation using Vacui UI primitives.
+group: Directives
+slug: keyboard-navigation
+---
+
+<script lang="ts">
+import { CodeHighlightComponent } from '../../../app/components/code/code.component' with { analog: 'imports' };
+import { AnatomyComponent } from '../../../app/components/anatomy/anatomy.component' with { analog: 'imports' };
+import { BadgeComponent } from '../../../app/components/badge/badge.component' with { analog: 'imports' };
+import { TableComponent } from '../../../app/components/table/table.component' with { analog: 'imports' };
+import { ExampleComponent } from '../../../app/components/example/example.component' with { analog: 'imports' };
+
+// ------ ANATOMY ------
+const componentStructure = {
+  name: 'vacKeyNavigationRoot',
+  children: [
+    { name: 'vacKeyNavigationItem' },
+    { name: 'vacKeyNavigationItem' }
+  ]
+};
+
+// ------ COLUMNS ------
+const columnsInput = [
+  { header: 'Input', field: 'prop' },
+  { header: 'Default', field: 'default' },
+  { header: 'Type', field: 'type' },
+  { header: 'Description', field: 'description', widthFactor: 3 }
+];
+
+const attributesColumns = [
+  { header: 'Attribute', field: 'attribute' },
+  { header: 'Value', field: 'value', widthFactor: 4 },
+];
+
+const keyboardColumns = [
+  { header: 'Key', field: 'key' },
+  { header: 'Description', field: 'description', widthFactor: 3 },
+];
+
+// ------ ROWS INPUTS ------
+const rootInputRows = [
+  { id: 1, prop: 'loop', default: 'true', type: 'boolean', description: 'Navigate from the first item to the last and vice versa.' },
+  { id: 2, prop: 'disabled', default: 'false', type: 'boolean', description: 'Disable the keyboard navigation' },
+  { id: 3, prop: 'direction', default: 'vertical', type: '"vertical" | "horizontal"', description: 'Navigation direction, use Down/Up or Left/Right keys.' },
+  { id: 4, prop: 'tabNavigation', default: 'true', type: 'boolean', description: 'When active, allows items to get focus with tab.' },
+  { id: 5, prop: 'navigationRules', default: '[]', type: 'NavigationRule[]', description: 'Add or override custom key rules.' },
+  { id: 6, prop: 'focusCallback', default: '—', type: 'FocusCallback', description: 'Gets called every time an item gets focused.' },
+  { id: 7, prop: 'rememberLastFocus', default: 'true', type: 'boolean', description: 'Only works with tabNavigation = false. Remember last focused when it leaves the root' },
+];
+
+const itemInputRows = [
+  { id: 1, prop: 'disabled', default: 'false', type: 'boolean', description: 'Disable item from getting focus.' },
+  { id: 2, prop: 'startFocus', default: 'false', type: 'boolean', description: 'When true, focus will start in the selected item when we enter root for the first time.' },
+];
+
+const itemAttrRows = [
+  { id: 1, attribute: 'data-disabled', value: 'Shows when disabled' },
+];
+
+const keyboardRows = [
+  { key: 'Home', description: 'Navigates to the first element.' },
+  { key: 'End', description: 'Navigates to the last elemenet.' },
+  { key: 'ArrowUp', description: 'Navigates to the previous element when orientation is "vertical"' },
+  { key: 'ArrowDown', description: 'Navigates to the previous element when orientation is "vertical"' },
+  { key: 'ArrowRight', description: 'Navigates to the next element when orientation is "horizontal"' },
+  { key: 'ArrowLeft', description: 'Navigates to the previous element when orientation is "horizontal"' },
+];
+
+const demoHighlights = [
+  "KeyNavigationRootDirective",
+  "KeyNavigationItemDirective",
+  "vacKeyNavigationRoot",
+  "vacKeyNavigationItem",
+];
+
+const features = [
+  'Allows overriding of navigation rules',
+  'Allow to disable an element navigation',
+  'Provides an option to disable tab navigation',
+  'Enables definition of navigation orientation',
+  'Supports creation of loop navigation',
+  'Set callbacks to existing navigation rules',
+];
+
+const overrideRule = `
+const customCallback = (element: ElementRef, event: Keyboard) => {
+  console.log('ArrowDown won\\'t navigate when we override it.');
+}
+
+const navigationRules: NavigationRule[] = [
+  { key: 'ArrowDown', override: true, callback: customCallback },
+];`;
+
+const callbackRule = `
+const customCallback = (element: ElementRef, event: Keyboard) => {
+  console.log('ArrowDown shows a this log every time the user navigates.');
+}
+
+const navigationRules: NavigationRule[] = [
+  { key: 'ArrowDown', override: false, callback: customCallback },
+];`;
+
+const newRule = `
+const customCallback = (element: ElementRef, event: Keyboard) => {
+  console.log(\`\${event.key} pressed.\`);
+}
+
+const navigationRules: NavigationRule[] = [
+  { key: 'Enter', callback: customCallback },
+];`;
+
+const exportedTypes = `
+export type RuleCallback = (currentElement: ElementRef, event: KeyboardEvent) => void;
+export type FocusCallback = ((event: KeyboardEvent, element: HTMLElement, index: number) => void) | null;
+
+export interface NavigationRule {
+  key: string;
+  override?: boolean;
+  callback: RuleCallback;
+}
+
+export type NavigationDirection = 'vertical' | 'horizontal';`;
+</script>
+
+<template lang="md">
+
+  Set of directives that offers an easy and accessible solution for creating keyboard navigation between custom elements.
+
+  <docs-example name="keyboardNavigation" />
+
+  ## Installation
+  Add and import the module into your imports section.
+
+  <docs-code code="import { KeyNavigationModule } from '@vacui-ui/primitives/key-navigation';" language="ts" />
+
+  Or
+
+  <docs-code code="import { KeyNavigationRootDirective, KeyNavigationItemDirective } from '@vacui-ui/primitives/key-navigation';" language="ts" />
+
+  # Anatomy
+  Directive's set structure.
+
+  <docs-anatomy [node]="componentStructure" />
+
+  # Input props
+
+  ## KeyNavigationeRoot <docs-badge text="Attribute Directive" color="purple" />
+  The root directive that syncs the navigable items. It listens to the `keydown` and `focusout` events in the container.
+
+  <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+
+  ## KeyNavigationItem <docs-badge text="Attribute Directive" color="purple" />
+  A directive to register/remove the element in the navigation root.
+
+  <docs-table [columns]="columnsInput" [rows]="itemInputRows" />
+
+  <div class="mt-4">
+    <docs-table [columns]="attributesColumns" [rows]="itemAttrRows" />
+  </div>
+
+  # Navigation Rules
+  THe directive allow us to set custom keyboard rules and override the existing ones.
+
+  ## Default Navigation Rules
+  Default set of rules that are binded into the root.
+
+  <docs-table [columns]="keyboardColumns" [rows]="keyboardRows" />
+
+  ## Override a rule
+  We can override default navigation rules by providing a new `NavigationRule` object with override.
+
+  <docs-code [code]="overrideRule" language="ts" />
+
+  ## Add a callback in an existing rule
+  We can add a callback to an existing rule by providing a new `NavigationRule` object and `override: false`. It will call our callback before the navigation.
+
+  <docs-code [code]="callbackRule" language="ts" />
+
+  ## Create a new rules
+  We can also create existing rules by providing a new `NavigationRule` object. It will add a listener to the root and call your callback.
+
+  <docs-code [code]="newRule" language="ts" />
+
+  # Exported types and interfaces
+  <docs-code [code]="exportedTypes" language="ts" />
+</template>

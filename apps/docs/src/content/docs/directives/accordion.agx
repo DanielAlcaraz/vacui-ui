@@ -1,0 +1,322 @@
+---
+title: Accordion
+description: Set of Angular directives to build an Accordion component using Vacui UI primitives.
+group: Directives
+slug: accordion
+---
+
+<script lang="ts">
+import { CodeHighlightComponent } from '../../../app/components/code/code.component' with { analog: 'imports' };
+import { AnatomyComponent } from '../../../app/components/anatomy/anatomy.component' with { analog: 'imports' };
+import { BadgeComponent } from '../../../app/components/badge/badge.component' with { analog: 'imports' };
+import { TableComponent } from '../../../app/components/table/table.component' with { analog: 'imports' };
+import { ExampleComponent } from '../../../app/components/example/example.component' with { analog: 'imports' };
+
+// ------ ANATOMY ------
+const componentStructure = {
+  name: 'vacAccordionRoot',
+  children: [
+    {
+      name: 'vacAccordionItem',
+      children: [
+        {
+          name: 'vacAccordionHeader',
+          children: [{ name: 'vacAccordionTrigger' }]
+        }
+      ]
+    },
+    { name: 'vacAccordionContent' }
+  ]
+};
+
+// ------ COLUMNS ------
+const columnsInput = [
+  { header: 'Input', field: 'prop' },
+  { header: 'Default', field: 'default' },
+  { header: 'Type', field: 'type' },
+  { header: 'Required', field: 'required' }
+];
+
+const outputColumns = [
+  { header: 'Output', field: 'prop' },
+  { header: 'Description', field: 'description' },
+  { header: 'Returns', field: 'returns', widthFactor: 2  },
+];
+
+const attributesColumns = [
+  { header: 'Attribute', field: 'attribute' },
+  { header: 'Value', field: 'value', widthFactor: 3 },
+];
+
+const totalColumns = 4;
+
+// ------ ROWS INPUTS ------
+const rootInputRows = [
+  { id: 1, prop: 'value', default: '"[ ]"', type: 'string | string[]', required: 'false' },
+  { id: 2, prop: 'multiple', default: 'false', type: 'boolean', required: 'false' },
+  { id: 3, prop: 'orientation', default: '"vertical"', type: '"vertical" | "horizontal"', required: 'false' },
+  { id: 4, prop: 'collapsible', default: 'false', type: 'boolean', required: 'false' },
+  { id: 5, prop: 'disabled', default: 'false', type: 'boolean', required: 'false' },
+];
+
+const rootOutputRows = [
+  { id: 1, prop: 'itemChange', description: 'Returns the opened items', returns: 'string | string[]' },
+];
+
+const rootAttrRows = [
+  { id: 1, attribute: 'data-orientation', value: '"vertical" | "horizontal"' },
+];
+
+// ------ ROWS ITEM ------
+const itemInputRows = [
+  { id: 1, prop: 'value*', default: '—', type: 'string', required: 'true' },
+  { id: 2, prop: 'disabled', default: 'false', type: 'boolean', required: 'false' },
+];
+
+const itemAttrRows = [
+  { id: 1, attribute: 'data-state', value: '"open" | "closed"' },
+  { id: 2, attribute: 'data-disabled', value: 'Shows when disabled' },
+  { id: 3, attribute: 'data-orientation', value: '"vertical" | "horizontal"' },
+];
+
+// ------ ROWS HEADER ------
+const headerInputRows = [
+  { id: 1, prop: 'accordionHeader*', default: '—', type: 'number', required: 'true' },
+];
+
+// ------ ROWS TRIGGER ------
+// Same as the item
+
+// ------ ROWS CONTENT ------
+// Same as the item
+
+// ------ STATE ------
+const stateVarsColumns = [
+  { header: 'Name', field: 'name' },
+  { header: 'Type', field: 'type' },
+  { header: 'Default', field: 'default' },
+];
+
+const stateMethodsColumns = [
+  { header: 'Method', field: 'method' },
+  { header: 'Arguments', field: 'arguments' },
+  { header: 'Return', field: 'return' },
+];
+
+const stateRows = [
+  { id: 1, name: 'items', default: '[ ]', type: 'WritableSignal<AccordionItem[]>'},
+  { id: 2, name: 'itemsCount', default: '0', type: ' Signal<number>' },
+  { id: 3, name: 'multiple', default: 'false', type: 'WritableSignal<boolean>' },
+  { id: 4, name: 'collapsible', default: 'false', type: 'WritableSignal<boolean>' },
+  { id: 5, name: 'disabled', default: 'false', type: 'WritableSignal<boolean>' },
+  { id: 6, name: 'value', default: '[]', type: 'WritableSignal<string | []>' },
+  { id: 7, name: 'orientation', default: '"vertical"', type: 'WritableSignal<"vertical" | "horizontal">' },
+];
+
+const stateMethodRows = [
+  { id: 1, method: 'getConfig', arguments: '—', return: 'AccordionConfig'},
+  { id: 2, method: 'isActive', arguments: '(id: string)', return: 'boolean' },
+  { id: 3, method: 'isInitiallyOpen', arguments: '(id: string)', return: 'boolean' },
+  { id: 4, method: 'addItem', arguments: '(item: AccordionItem)', return: 'Map<string, ElementRef<HTMLE>>' },
+  { id: 5, method: 'getTriggers', arguments: '—', return: 'boolean' },
+  { id: 6, method: 'bindTrigger', arguments: '(id: string, trigger: ElementRef<HTMLElement>)', return: 'void' },
+  { id: 7, method: 'removeTrigger', arguments: '(id: string)', return: 'void' },
+  { id: 8, method: 'removeItem', arguments: '(id: string)', return: 'void' },
+  { id: 9, method: 'openItem', arguments: '(id: string, foce = false)', return: 'void' },
+  { id: 10, method: 'closeItem', arguments: '(id: string, foce = false)', return: 'void' },
+  { id: 11, method: 'toggleItem', arguments: '(id: string, foce = false)', return: 'void' },
+  { id: 12, method: 'closeAllItems', arguments: '—', return: 'void' },
+  { id: 13, method: 'getItem', arguments: '(id: string)', return: 'AccordionItem | null' },
+  { id: 14, method: 'generateAriaControlId', arguments: '(uniqueId: string, value: string, type: "trigger" | "panel")', return: 'string' },
+];
+
+const stateExample = `
+<div accordionTrigger #trigger="accordionTrigger">
+  <div>{{ trigger.state.isActive(item.id) }}<div>
+</div>
+`
+
+// ------ MODELS ------
+const models = `
+export type AccordionOrientation = 'horizontal' | 'vertical';
+export type AccordionState = 'open' | 'closed';
+
+export interface AccordionItem {
+  id: string;
+  value: string;
+  disabled: boolean;
+  state: AccordionState;
+}
+
+export interface AccordionConfig {
+  multiple: boolean;
+  collapsible: boolean;
+  disabled: boolean;
+  value: string | string[];
+  orientation: AccordionOrientation;
+}
+`;
+
+// ------ KEYBOARD ------
+const keyboardColumns = [
+  { header: 'Key', field: 'key' },
+  { header: 'Description', field: 'description', widthFactor: 3 },
+];
+
+const keyboardRows = [
+  { key: 'ArrowUp', description: 'When orientation is vertical, it moves the focus to the previous trigger.' },
+  { key: 'ArrowDown', description: 'When orientation is vertical, it moves the focus to the next trigger.' },
+  { key: 'ArrowRight', description: 'When orientation is horizontal, it moves the focus to the next trigger' },
+  { key: 'ArrowLeft', description: 'When orientation is horizontal, it moves the focus to the previous trigger' },
+  { key: 'Tab', description: 'Move focus to the next trigger.' },
+  { key: 'Shift + Tab', description: 'Move focus to the previous trigger.' },
+  { key: 'Space', description: 'Toggle the focused accordion item.' },
+  { key: 'Enter', description: 'Toggle the focused accordion item.' },
+  { key: 'Home', description: 'Navigates to the first accordion toggle.' },
+  { key: 'End', description: 'Navigates to the last accordion toggle.' },
+];
+
+const example1 = `
+@Component({
+  selector: 'acc-trigger',
+  standalone: true,
+  template: \`
+    <h2>
+      <button (click)="onTrigger(value())">
+        <ng-content></ng-content>
+      </button>
+    <h2>
+  \`,
+})
+export class TriggerComponent implements OnInit, OnDestroy {
+  value = input.required<string>();
+  private state = inject(AccordionStateService);
+  private elementRef = inject(ElementRef);
+
+  ngOnInit(): void {
+    this.state.bindTrigger(this.value(), this.elementRef);
+  }
+
+  protected onTrigger(id: string): void {
+    this.state.toggleItem(id);
+  }
+
+  ngOnDestroy(): void {
+    this.state.removeTrigger(this.value());
+  }
+}`;
+
+const example2 = `
+@Component({
+  selector: 'accordion',
+  standalone: true,
+   template: \`
+    <div accordionRoot>
+      <div accordionItem value="item1">
+        <acc-trigger value="item1">Item 1</acc-trigger>
+        <div accordionContent>Content</div>
+      </div>
+    <div>
+  \`,
+  imports: [AccordionRootDirective, AccordionItemDirective, TriggerComponent, AccordionContentDirective]
+})
+export class AccordionComponent {}
+`;
+</script>
+
+<template lang="md">
+
+A toolkit of Angular directives designed to construct a fully customizable accordion, enabling developers to define interactive, collapsible content areas tailored to specific application needs.
+
+  <docs-example name="accordion" />
+
+  ## Installation
+  Add and import the module into your imports section.
+
+  <docs-code code="import { AccordionPrimitivesModule } from '@vacui-ui/primitives/accordion';" language="shell" />
+
+  # Anatomy
+  Directive's set structure.
+
+  <docs-anatomy [node]="componentStructure" />
+
+  > Do not recommend to use directives directly in custom components tags. It will work, but the aria attributes will be set in the component tag instead than your HTML element withing your component.
+
+  # Input props
+
+  ## AccordionRoot <docs-badge color="purple" text="Attribute" />
+  The root directive for the accordion. Handles the accordion state, configuration and keyboard navigation.
+
+  <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+  &nbsp;
+  <docs-table [columns]="outputColumns" [rows]="rootOutputRows" />
+    &nbsp;
+  <docs-table [columns]="attributesColumns" [rows]="rootAttrRows" />
+
+  ## AccordionItem <docs-badge color="purple" text="Attribute" />
+
+  <docs-table [columns]="columnsInput" [rows]="itemInputRows" />
+  &nbsp;
+  <docs-table [columns]="attributesColumns" [rows]="itemAttrRows" />
+
+  ## AccordionHeader <docs-badge color="purple" text="Attribute" />&nbsp;<docs-badge color="yellow" text="Optional" />
+  Use this directive when your trigger is inside an non heading element (h1, h2...) to apply the correct accessibility rules.
+
+  <docs-table [columns]="columnsInput" [rows]="headerInputRows" />
+  &nbsp;
+  <docs-table [columns]="attributesColumns" [rows]="itemAttrRows" />
+
+  ## AccordionTrigger <docs-badge color="purple" text="Attribute" />
+  Toggle the accordion item and changes its state.
+
+  <docs-table [columns]="attributesColumns" [rows]="itemAttrRows" />
+
+  ## AccordionContent <docs-badge color="purple" text="Attribute" />
+  Contains the collapsible content for an accordion item.
+
+  <docs-table [columns]="attributesColumns" [rows]="itemAttrRows" />
+
+  # State
+  AccordionRootDirective injects an accordion state and exposes an API to interact with the items. Most of the time you wouldn't need it, but it is accessible within the template and it can be useful when we create a new directive or component to replace one of the current directives blocks. Each directive injects the root instance to handle the accordion accessibility and logic.
+
+  ## Access directive API with exportAS
+  We can access the state of the accordion using a template variable. All the directives expose themself with the same name, for example, in the previous demo we are using `#accItem="accordionItem"`. With `accItem` we have access to the directive's attributes and also the `state` service.
+
+  ### Example
+  We could use it with any other directive. For example with `#image="vacAvatarRoot"` and access the state.
+
+  <docs-code [code]="stateExample" language="html" />
+
+  ## State API - AccordionStateService
+  Documentation for the accordion state service API.
+
+  ### Variables
+  <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />
+
+  ### Methods
+  <docs-table [columns]="stateMethodsColumns" [rows]="stateMethodRows" />
+
+  ## Types
+  Avatar types that you can import.
+
+  <docs-code [code]="models" language="ts" />
+
+  # Accessibility
+  This accordion component is designed in accordance with the WAI-ARIA Authoring Practices Guide. For more details on accessibility features and guidelines, please refer to the [WAI-ARIA Accordion Practices](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/). This ensures our component meets modern accessibility standards, providing an inclusive user experience.
+
+  ## Keyboard Navigation
+  Keyboard navigation uses an internal directive system to control the keyboard flow. You can read more about it in [KeyboardNavigationDirective](). `KeyboardNavigationDirective` props are extended directly in the `AccordionRoot` directive.
+
+  <docs-table [columns]="keyboardColumns" [rows]="keyboardRows" />
+
+  # Examples
+  ## Build a custom trigger using the accordion state
+  We can create custom components/directives that will interact with the accordion state. It can be useful when we need to implement custom logic into one or more of our pieces. Remember we could use the `AccordionTriggerDirective` inside our component instead of implementing our custom logic.
+  To continue, create a component wrap for the desired functionality and implement your custom logic. Remember to implement the necessary accessibility attributes.
+
+  <docs-code [code]="example1" language="ts" />
+
+  Once we created our trigger component. We can implement it inside the root directive.
+
+  <docs-code [code]="example2" language="ts" />
+</template>

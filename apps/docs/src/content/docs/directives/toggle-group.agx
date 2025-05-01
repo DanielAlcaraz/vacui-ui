@@ -1,0 +1,222 @@
+---
+title: Toggle Group
+description: Set of Angular directives to build a Toggle group using Vacui UI primitives.
+group: Directives
+slug: toggle-group
+---
+
+<script lang="ts">
+import { CodeHighlightComponent } from '../../../app/components/code/code.component' with { analog: 'imports' };
+import { AnatomyComponent } from '../../../app/components/anatomy/anatomy.component' with { analog: 'imports' };
+import { BadgeComponent } from '../../../app/components/badge/badge.component' with { analog: 'imports' };
+import { TableComponent } from '../../../app/components/table/table.component' with { analog: 'imports' };
+import { ExampleComponent } from '../../../app/components/example/example.component' with { analog: 'imports' };
+
+// ------ ANATOMY ------
+const componentStructure = {
+  name: 'vacToggleGroupRoot',
+  children: [
+    { name: 'vacToggleGroupItem' }
+  ]
+};
+
+// ------ COLUMNS ------
+const columnsInput = [
+  { header: 'Input', field: 'prop' },
+  { header: 'Default', field: 'default' },
+  { header: 'Type', field: 'type' },
+  { header: 'Description', field: 'description', widthFactor: 3  }
+];
+
+const outputColumns = [
+  { header: 'Output', field: 'output' },
+  { header: 'Returns', field: 'returns' },
+  { header: 'Description', field: 'description', widthFactor: 4 },
+];
+
+const attributesColumns = [
+  { header: 'Attribute', field: 'attribute' },
+  { header: 'Value', field: 'value', widthFactor: 4 },
+];
+
+const keyboardColumns = [
+  { header: 'Key', field: 'key' },
+  { header: 'Description', field: 'description', widthFactor: 3 },
+];
+
+const stateVarsColumns = [
+  { header: 'Name', field: 'name' },
+  { header: 'Default', field: 'default' },
+  { header: 'Type', field: 'type', widthFactor: 2 },
+];
+
+const stateMethodsColumns = [
+  { header: 'Method', field: 'method' },
+  { header: 'Return', field: 'return' },
+  { header: 'Arguments', field: 'arguments', widthFactor: 2 },
+];
+
+// ------ ROWS ------
+const rootInputRows = [
+  { id: 1, prop: 'type', default: 'single', type: '"single" | "multiple"', description: 'The type of selection for the toggle group.' },
+  { id: 2, prop: 'disabled', default: 'false', type: 'boolean', description: 'Whether or not the toggle group is disabled.' },
+  { id: 3, prop: 'orientation', default: 'horizontal', type: '"horizontal" | "vertical"', description: 'The orientation of the toggle group.' },
+  { id: 4, prop: 'rovingFocus', default: 'true', type: 'boolean', description: 'When true, enables roving focus behavior.' },
+  { id: 5, prop: 'loop', default: 'false', type: 'boolean', description: 'When true, keyboard navigation will loop back to the start/end.' },
+  { id: 6, prop: 'value', default: 'null', type: 'string[] | string | null', description: 'The value(s) of the toggle group.' }
+];
+
+const rootOutputRows = [
+  { id: 1, output: 'valueChange', description: 'Event handler emitted when the value of the toggle group changes', returns: 'string[] | string | null' },
+];
+
+const rootAttrRows = [
+  { id: 1, attribute: 'data-orientation', value: '"horizontal" | "vertical"' },
+];
+
+const itemInputRows = [
+  { id: 1, prop: 'value*', default: '—', type: 'string', description: 'The value of the toggle item.' },
+  { id: 2, prop: 'disabled', default: 'false', type: 'boolean', description: 'Whether or not the toggle item is disabled.' },
+];
+
+const itemOutputRows = [
+  { id: 1, output: 'toggle', description: 'Event handler emitted when the toggle item is toggled', returns: 'void' },
+];
+
+const itemAttrRows = [
+  { id: 1, attribute: 'data-state', value: '"on" | "off"' },
+  { id: 2, attribute: 'data-disabled', value: 'Shows when disabled' },
+  { id: 3, attribute: 'data-orientation', value: '"horizontal" | "vertical"' },
+  { id: 4, attribute: 'role', value: 'radio (when type is "single") or null' },
+  { id: 5, attribute: 'aria-pressed', value: 'true | false (when type is "multiple")' },
+  { id: 6, attribute: 'aria-checked', value: 'true | false (when type is "single")' },
+];
+
+const stateRows = [
+  { id: 1, name: 'items', default: '[]', type: 'mutable<ToggleGroupItemDirective[]>' },
+];
+
+const keyboardRows = [
+  { key: 'Enter / Space', description: 'Toggles the currently focused item.' },
+  { key: 'Home', description: 'Navigates to the first element.' },
+  { key: 'End', description: 'Navigates to the last element.' },
+  { key: 'ArrowUp', description: 'Moves focus to previous item when orientation is "vertical".' },
+  { key: 'ArrowDown', description: 'Moves focus to next item when orientation is "vertical".' },
+  { key: 'ArrowLeft', description: 'Moves focus to previous item when orientation is "horizontal".' },
+  { key: 'ArrowRight', description: 'Moves focus to next item when orientation is "horizontal".' },
+];
+
+const codeDemo = ``;
+
+const demoHighlights = ["ToggleGroupPrimitivesModule", "vacToggleGroupRoot", "vacToggleGroupItem"];
+
+const features = [
+  'Full keyboard navigation.',
+  'Supports both single and multiple selection modes.',
+  'Provides roving focus capabilities.',
+  'Can be controlled or uncontrolled',
+];
+
+const templateVariableExample = `
+<div vacToggleGroupRoot #root="vacToggleGroupRoot" type="multiple">
+  <button vacToggleGroupItem value="bold" #item="vacToggleGroupItem">
+    <span>Bold</span>
+    @if (item.pressed()) {
+      <span> (Selected)</span>
+    }
+  </button>
+  <button vacToggleGroupItem value="italic">Italic</button>
+  <button vacToggleGroupItem value="underline">Underline</button>
+</div>`;
+
+const itemMethodsExample = `
+// Focus the toggle item
+item.focus();
+
+// Check if the toggle item is focused
+const isFocused = item.isFocused();
+`;
+</script>
+
+<template lang="md">
+
+  Toggle group directive toolkit that offers a seamless and accessible solution for creating toggle groups with single or multiple selection.
+
+  <docs-example name="toggleGroup" />
+
+  ## Installation
+  Add and import the module into your imports section.
+
+  <docs-code code="import { ToggleGroupPrimitivesModule } from '@vacui-ui/primitives/toggle-group';" language="ts" />
+
+  # Anatomy
+  Directive's set structure.
+
+  <docs-anatomy [node]="componentStructure" />
+
+  # Input props
+
+  ## ToggleGroupRoot <docs-badge text="Attribute Directive" color="purple" />
+  The root directive that contains the toggle items. Handles the state and bindings.
+
+  <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+
+  <div class="mt-4">
+    <docs-table [columns]="outputColumns" [rows]="rootOutputRows" />  
+  </div>
+
+  <div class="mt-4">
+    <docs-table [columns]="attributesColumns" [rows]="rootAttrRows" />  
+  </div>
+
+  ## ToggleGroupItem <docs-badge text="Attribute Directive" color="purple" />
+  A directive to bind the state and the accessibility rules to the toggle element.
+
+  <div class="mt-4">
+    <docs-table [columns]="columnsInput" [rows]="itemInputRows" />
+  </div>
+
+  <div class="mt-4">
+    <docs-table [columns]="outputColumns" [rows]="itemOutputRows" />  
+  </div>
+
+  <div class="mt-4">
+    <docs-table [columns]="attributesColumns" [rows]="itemAttrRows" />
+  </div>
+
+  # State
+
+  `ToggleGroupStateService` allows to access the toggle group properties.
+
+  ## Access directive API with exportAS
+
+  We can access the state of the toggle group using a template variable. All the directives expose themselves with the same name. We have access to the directive's attributes and also the `state` service.
+
+  ### Example
+  We could use it with any other directive. For example with `#root="vacToggleGroupRoot"` and access the state.
+
+  <docs-code [code]="templateVariableExample" language="html" />
+
+  ## State API - ToggleGroupStateService
+
+  Documentation for the toggle group state service API.
+
+  ### Variables
+  <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />  
+
+  ### Item Methods
+  <docs-code [code]="itemMethodsExample" language="ts" />
+
+  # Features
+  <ul>
+    @for (feature of features; track feature) {
+      <li>{{ feature }}</li>
+    }
+  </ul>
+
+  # Accessibility
+  This Toggle Group set of directives is designed in accordance with the WAI-ARIA Authoring Practices Guide. For more details on accessibility features and guidelines, please refer to the [WAI-ARIA Toggle Button Practices](https://www.w3.org/WAI/ARIA/apg/patterns/button/). This ensures our component meets modern accessibility standards, providing an inclusive user experience.
+
+  ## Keyboard Navigation
+  <docs-table [columns]="keyboardColumns" [rows]="keyboardRows" />  
+</template>

@@ -1,0 +1,328 @@
+---
+title: Select
+description: Set of Angular directives to build a Select component using Vacui UI primitives.
+group: Directives
+slug: selecta
+---
+
+<script lang="ts">
+import { CodeHighlightComponent } from '../../../app/components/code/code.component' with { analog: 'imports' };
+import { AnatomyComponent } from '../../../app/components/anatomy/anatomy.component' with { analog: 'imports' };
+import { BadgeComponent } from '../../../app/components/badge/badge.component' with { analog: 'imports' };
+import { TableComponent } from '../../../app/components/table/table.component' with { analog: 'imports' };
+import { ExampleComponent } from '../../../app/components/example/example.component' with { analog: 'imports' };
+
+// ------ ANATOMY ------
+const componentStructure = {
+  name: 'vacSelectRoot',
+  children: [
+    { name: 'vacSelectTrigger', children: [{ name: 'vacSelectValue' }] },
+    { name: 'vacSelectContent', children: [
+      { name: 'vacSelectViewport', children: [
+        { name: 'vacSelectGroup', children: [
+          { name: 'vacSelectGroupLabel' },
+          { name: 'vacSelectItem', children: [
+            { name: 'vacSelectItemText' },
+            { name: 'vacSelectItemIndicator' }
+          ]}
+        ]},
+        { name: 'vacSelectSeparator' }
+      ]}
+    ]}
+  ]
+};
+
+// ------ COLUMNS ------
+const columnsInput = [
+  { header: 'Input', field: 'prop' },
+  { header: 'Default', field: 'default' },
+  { header: 'Type', field: 'type' },
+  { header: 'Description', field: 'description', widthFactor: 3  }
+];
+
+const outputColumns = [
+  { header: 'Output', field: 'output' },
+  { header: 'Returns', field: 'returns' },
+  { header: 'Description', field: 'description', widthFactor: 4 },
+];
+
+const attributesColumns = [
+  { header: 'Attribute', field: 'attribute' },
+  { header: 'Value', field: 'value', widthFactor: 4 },
+];
+
+const keyboardColumns = [
+  { header: 'Key', field: 'key' },
+  { header: 'Description', field: 'description', widthFactor: 3 },
+];
+
+const stateVarsColumns = [
+  { header: 'Name', field: 'name' },
+  { header: 'Default', field: 'default' },
+  { header: 'Type', field: 'type', widthFactor: 2 },
+];
+
+const stateMethodsColumns = [
+  { header: 'Method', field: 'method' },
+  { header: 'Return', field: 'return' },
+  { header: 'Arguments', field: 'arguments', widthFactor: 2 },
+];
+
+// ------ ROWS ------
+const rootInputRows = [
+  { id: 1, prop: 'value', default: 'null', type: 'SelectValue<T>', description: 'The selected value(s) of the select component.' },
+  { id: 2, prop: 'open', default: 'false', type: 'boolean', description: 'Whether the select dropdown is open.' },
+  { id: 3, prop: 'disabled', default: 'false', type: 'boolean', description: 'Whether or not the select is disabled.' },
+  { id: 4, prop: 'required', default: 'false', type: 'boolean', description: 'When true, makes the select required before submitting.' },
+  { id: 5, prop: 'multiple', default: 'false', type: 'boolean', description: 'When true, allows multiple selections.' },
+  { id: 6, prop: 'name', default: 'null', type: 'string | null', description: 'The name of the hidden select element for form submission.' },
+  { id: 7, prop: 'compareWith', default: '(o1, o2) => o1 === o2', type: 'SelectCompareWith<T>', description: 'A function to compare values. Useful when using complex objects as values.' },
+  { id: 8, prop: 'onEscapeKeyDown', default: '—', type: '(event: KeyboardEvent) => void', description: 'Event handler for Escape key press.' },
+];
+
+const rootOutputRows = [
+  { id: 1, output: 'valueChange', returns: 'SelectValue<T>', description: 'Event handler emitted when the value of the select changes.' },
+  { id: 2, output: 'openChange', returns: 'boolean', description: 'Event handler emitted when the open state changes.' },
+  { id: 3, output: 'highlightChange', returns: 'SelectValue<T>', description: 'Event handler emitted when the highlighted item changes.' },
+];
+
+const rootAttrRows = [
+  { id: 1, attribute: 'data-state', value: '"open" | "closed"' },
+  { id: 2, attribute: 'data-disabled', value: 'Shows when disabled' },
+];
+
+const contentInputRows = [
+  { id: 1, prop: 'position', default: 'bottom', type: '"top" | "right" | "bottom" | "left"', description: 'The position of the dropdown relative to the trigger.' },
+  { id: 2, prop: 'positionOffset', default: '0', type: 'number', description: 'Offset distance for the position.' },
+  { id: 3, prop: 'align', default: 'center', type: '"start" | "center" | "end"', description: 'The alignment of the dropdown.' },
+  { id: 4, prop: 'alignOffset', default: '0', type: 'number', description: 'Offset distance for the alignment.' },
+  { id: 5, prop: 'avoidCollisions', default: 'true', type: 'boolean', description: 'Whether to avoid collisions with the viewport edges.' },
+  { id: 6, prop: 'collisionPadding', default: '10', type: 'number | { top?: number; left?: number; bottom?: number; right?: number }', description: 'Padding between dropdown and viewport edges when avoiding collisions.' },
+];
+
+const contentAttrRows = [
+  { id: 1, attribute: 'data-position', value: '"top" | "right" | "bottom" | "left"' },
+  { id: 2, attribute: 'data-align', value: '"start" | "center" | "end"' },
+  { id: 3, attribute: 'data-state', value: '"open" | "closed"' },
+  { id: 4, attribute: 'aria-activedescendant', value: 'ID of highlighted option (non-multiple only)' },
+];
+
+const triggerAttrRows = [
+  { id: 1, attribute: 'aria-expanded', value: 'true when open, false otherwise' },
+  { id: 2, attribute: 'aria-controls', value: 'ID of dropdown content' },
+  { id: 3, attribute: 'aria-disabled', value: 'true when disabled, false otherwise' },
+  { id: 4, attribute: 'data-state', value: '"open" | "closed"' },
+  { id: 5, attribute: 'data-disabled', value: 'Shows when disabled' },
+  { id: 6, attribute: 'aria-required', value: 'true when required, false otherwise' },
+];
+
+const valueInputRows = [
+  { id: 1, prop: 'placeholder', default: '""', type: 'string', description: 'Placeholder text when no option is selected.' },
+  { id: 2, prop: 'displayWith', default: 'null', type: '(value: string) => string', description: 'A function to transform how the value is displayed.' },
+];
+
+const itemInputRows = [
+  { id: 1, prop: 'value*', default: '—', type: 'SelectValue<T>', description: 'The value of the select item.' },
+  { id: 2, prop: 'disabled', default: 'false', type: 'boolean', description: 'Whether or not the select item is disabled.' },
+];
+
+const itemAttrRows = [
+  { id: 1, attribute: 'aria-selected', value: 'true when selected, false otherwise' },
+  { id: 2, attribute: 'data-state', value: '"checked" | "unchecked"' },
+  { id: 3, attribute: 'data-disabled', value: 'Shows when disabled' },
+  { id: 4, attribute: 'data-highlighted', value: 'Shows when highlighted' },
+];
+
+const groupAttrRows = [
+  { id: 1, attribute: 'aria-labelledby', value: 'ID of group label' },
+];
+
+const stateRows = [
+  { id: 1, name: 'open', default: 'false', type: 'WritableSignal<boolean>' },
+  { id: 2, name: 'disabled', default: 'false', type: 'WritableSignal<boolean>' },
+  { id: 3, name: 'required', default: 'false', type: 'WritableSignal<boolean>' },
+  { id: 4, name: 'multiple', default: 'false', type: 'WritableSignal<boolean>' },
+  { id: 5, name: 'selectedValues', default: '[]', type: 'WritableSignal<T[]>' },
+  { id: 6, name: 'items', default: '[]', type: 'WritableSignal<Item<T>[]>' },
+  { id: 7, name: 'highlighted', default: 'null', type: 'WritableSignal<SelectValue<T>>' },
+  { id: 8, name: 'dataState', default: '—', type: 'ComputedSignal<"open" | "closed">' },
+  { id: 9, name: 'ariaControls', default: 'random-id', type: 'WritableSignal<string>' },
+];
+
+const stateMethodRows = [
+  { id: 1, method: 'toggleOpening', arguments: '()', return: 'void' },
+  { id: 2, method: 'toggleSelection', arguments: '(value: T)', return: 'void' },
+  { id: 3, method: 'addInstance', arguments: '(item: Item<T>)', return: 'void' },
+  { id: 4, method: 'removeInstance', arguments: '(value: T)', return: 'void' },
+  { id: 5, method: 'findLabelByValue', arguments: '(value: T)', return: 'string' },
+  { id: 6, method: 'isSelected', arguments: '(value: SelectValue<T>)', return: 'boolean' },
+  { id: 7, method: 'addSelectedValue', arguments: '(value: SelectValue<T>)', return: 'void' },
+];
+
+const keyboardRows = [
+  { key: 'Space/Enter', description: 'Selects the highlighted item.' },
+  { key: 'ArrowUp/ArrowDown', description: 'Navigates through the list of options.' },
+  { key: 'Escape', description: 'Closes the select dropdown.' },
+  { key: 'Type characters', description: 'Searches for options matching the typed characters.' },
+];
+
+const demoHighlights = ["SelectPrimitivesModule", "vacSelectRoot", "vacSelectTrigger", "vacSelectValue", "vacSelectContent", "vacSelectViewport", "vacSelectItem", "vacSelectItemText", "vacSelectItemIndicator"];
+
+const features = [
+  'Full keyboard navigation and type-to-select.',
+  'Support for nested option groups.',
+  'Single and multiple selection modes.',
+  'Customizable positioning and alignment.',
+  'Fully accessible and ARIA compliant.',
+  'Form integration with hidden native select.',
+];
+
+const templateVariableExample = `
+<div vacSelectRoot #select="vacSelectRoot">
+  <button vacSelectTrigger>
+    <span vacSelectValue [placeholder]="'Select an option...'"></span>
+  </button>
+  <div *vacSelectVisibility>
+    <div vacSelectContent>
+      <div vacSelectViewport>
+        @if (select.state.items().length === 0) {
+          <div>No items available</div>
+        } @else {
+          <div *ngFor="let item of select.state.items()">
+            {{ item.label }}
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>`;
+
+const typesAndInterfaces = `
+export type SelectValue<T> = T | T[] | null;
+export type SelectCompareWith<T> = (v1: T | null, v2: T | null) => boolean;
+export interface Item<T> {
+  value: T;
+  label: string;
+  disabled: boolean;
+  element: HTMLElement;
+}`;
+</script>
+
+<template lang="md">
+
+  Select directive toolkit that offers a seamless and accessible solution for creating custom select/dropdown components.
+
+  <docs-example name="select" />
+
+  ## Installation
+  Add and import the module into your imports section.
+
+  <docs-code code="import { SelectPrimitivesModule } from '@vacui-ui/primitives/select';" language="ts" />
+
+  # Anatomy
+  Directive's set structure.
+
+  <docs-anatomy [node]="componentStructure" />
+
+  # Input props
+
+  ## SelectRoot <docs-badge text="Attribute Directive" color="purple" />
+  The root directive that contains the select component parts. Handles the state and bindings. It uses the [keyboard navigation directive](keyboard) under the hood, extending its inputs to this directive. 
+
+  <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+
+  <div class="mt-4">
+    <docs-table [columns]="outputColumns" [rows]="rootOutputRows" />  
+  </div>
+
+  <div class="mt-4">
+    <docs-table [columns]="attributesColumns" [rows]="rootAttrRows" />  
+  </div>
+
+  ## SelectTrigger <docs-badge text="Attribute Directive" color="purple" />
+  A directive that acts as the trigger button for opening the select dropdown.
+
+  <docs-table [columns]="attributesColumns" [rows]="triggerAttrRows" />
+
+  ## SelectValue <docs-badge text="Attribute Directive" color="purple" />
+  Directive that displays the selected value(s) or placeholder.
+
+  <docs-table [columns]="columnsInput" [rows]="valueInputRows" />
+
+  ## SelectContent <docs-badge text="Attribute Directive" color="purple" />
+  The dropdown content container that holds the select options.
+
+  <div class="mt-4">
+    <docs-table [columns]="columnsInput" [rows]="contentInputRows" />
+  </div>
+
+  <div class="mt-4">
+    <docs-table [columns]="attributesColumns" [rows]="contentAttrRows" />
+  </div>
+
+  ## SelectItem <docs-badge text="Attribute Directive" color="purple" />
+  Each individual option in the select dropdown.
+
+  <div class="mt-4">
+    <docs-table [columns]="columnsInput" [rows]="itemInputRows" />
+  </div>
+
+  <div class="mt-4">
+    <docs-table [columns]="attributesColumns" [rows]="itemAttrRows" />
+  </div>
+
+  ## SelectGroup <docs-badge text="Attribute Directive" color="purple" />
+  Groups related select options.
+
+  <docs-table [columns]="attributesColumns" [rows]="groupAttrRows" />
+
+  ## SelectItemIndicator <docs-badge text="Structural Directive" color="blue" />
+  Content inside this directive is rendered only when the item is selected.
+
+  ## SelectVisibility <docs-badge text="Structural Directive" color="blue" />
+  Controls the content visibility based on the select's open state.
+
+  ## SelectViewport <docs-badge text="Attribute Directive" color="purple" />
+  Container for scrollable content in the dropdown.
+
+  ## SelectGroupLabel <docs-badge text="Attribute Directive" color="purple" />
+  Label for option groups.
+
+  ## SelectItemText <docs-badge text="Attribute Directive" color="purple" />
+  Text content for select items.
+
+  ## SelectSeparator <docs-badge text="Attribute Directive" color="purple" />
+  A visual separator between items or groups.
+
+  # State
+
+  `SelectStateService` allows to access the select component properties.
+
+  ## Access directive API with exportAS
+
+  We can access the state of the select using a template variable. All the directives expose themselves with the same name. We have access to the directive's attributes and also the `state` service.
+
+  ### Example
+  We could use it with any other directive. For example with `#select="vacSelectRoot"` and access the state.
+
+  <docs-code [code]="templateVariableExample" language="html" />
+
+  ## State API - SelectStateService
+
+  Documentation for the select state service API.
+
+  ### Variables
+  <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />  
+
+  ### Methods
+  <docs-table [columns]="stateMethodsColumns" [rows]="stateMethodRows" />  
+
+  # Types and interfaces
+  <docs-code [code]="typesAndInterfaces" language="ts" />
+
+  # Accessibility
+  This Select set of directives is designed in accordance with the WAI-ARIA Authoring Practices Guide. For more details on accessibility features and guidelines, please refer to the [WAI-ARIA Combobox Practices](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/). This ensures our component meets modern accessibility standards, providing an inclusive user experience.
+
+  ## Keyboard Navigation
+  <docs-table [columns]="keyboardColumns" [rows]="keyboardRows" />  
+</template>
