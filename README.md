@@ -72,7 +72,7 @@ Here's a simple example using the Collapsible component:
 
 For comprehensive documentation and examples, visit our documentation site [https://vacui-ui.com](https://vacui-ui.com).
 
-## Contributing
+## Contributing (Coming soon)
 
 We welcome contributions! Please read our [contributing guidelines](CONTRIBUTING.md) to get started.
 
@@ -86,10 +86,16 @@ git clone https://github.com/yourusername/vacui-ui.git
 cd vacui-ui
 
 # Install dependencies
-npm install
+pnpm install
 
 # Start the development server
-npm run start
+pnpm nx serve docs
+
+# Running unit tests
+nx test primitives
+
+# Running storybook
+nx storybook primitive
 ```
 
 ## License
