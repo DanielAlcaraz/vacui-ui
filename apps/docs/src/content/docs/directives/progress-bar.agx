@@ -1,0 +1,133 @@
+---
+title: Progress
+description: Set of Angular directives to build a Progress component using Vacui UI primitives.
+group: Directives
+slug: progress-bar
+---
+
+<script lang="ts">
+import { CodeHighlightComponent } from '../../../app/components/code/code.component' with { analog: 'imports' };
+import { AnatomyComponent } from '../../../app/components/anatomy/anatomy.component' with { analog: 'imports' };
+import { BadgeComponent } from '../../../app/components/badge/badge.component' with { analog: 'imports' };
+import { TableComponent } from '../../../app/components/table/table.component' with { analog: 'imports' };
+import { ExampleComponent } from '../../../app/components/example/example.component' with { analog: 'imports' };
+
+// ------ ANATOMY ------
+const componentStructure = {
+  name: 'vacProgressRoot',
+  children: [
+    { name: 'vacProgressIndicator' },
+  ]
+};
+
+// ------ COLUMNS ------
+const columnsInput = [
+  { header: 'Input', field: 'prop' },
+  { header: 'Default', field: 'default' },
+  { header: 'Type', field: 'type' },
+  { header: 'Required', field: 'required' }
+];
+
+const attributesColumns = [
+  { header: 'Attribute', field: 'attribute' },
+  { header: 'Value', field: 'value', widthFactor: 3 },
+];
+
+const stateVarsColumns = [
+  { header: 'Name', field: 'name' },
+  { header: 'Default', field: 'default' },
+  { header: 'Type', field: 'type', widthFactor: 2 },
+];
+
+// ------ ROWS ------
+const rootInputRows = [
+  { id: 1, prop: 'value', default: 'null', type: 'number | null', required: 'false' },
+  { id: 2, prop: 'max', default: '100', type: 'number', required: 'false' },
+];
+
+const rootAttrRows = [
+  { id: 1, attribute: 'data-state', value: '"indeterminate" | "loading" | "complete' },
+  { id: 2, attribute: 'data-value', value: 'Shows value' },
+  { id: 3, attribute: 'data-max', value: 'Shows max' },
+];
+
+const indicatorAttrRows = [
+  { id: 1, attribute: 'data-state', value: '"indeterminate" | "loading" | "complete' },
+  { id: 2, attribute: 'data-value', value: 'Shows value' },
+  { id: 3, attribute: 'data-max', value: 'Shows max' },
+];
+
+const stateRows = [
+  { id: 1, name: 'value', default: 'null', type: 'WritableSignal<number | null>' },
+  { id: 2, name: 'max', default: '100', type: 'WritableSignal<number>' },
+  { id: 3, name: 'getProgressState', default: '"indeterminate"', type: 'Signal<"indeterminate" | "complete" | "loading">' },
+];
+
+const features = [
+  'It adds reading technology support.',
+];
+
+const demoHighlights = ["ProgressPrimitivesModule", "vacProgressRoot", "vacProgressIndicator"];
+
+const templateVariableExample = `
+<div vacProgressRoot #root="vacProgressRoot">
+  <span vacProgressIndicator>{{ root.getProgressState() }}</span>
+</div>`;
+</script>
+
+<template lang="md">
+
+  Set of directives to build an accessible progress bar.
+
+  <docs-example name="progress" />
+
+  ## Installation
+  Add and import the module into your imports section.
+
+  <docs-code code="import { ProgressPrimitivesModule } from '@vacui-kit/primitives/progress';" language="ts" />
+
+  Or
+
+  <docs-code code="import { ProgressRootDirective, ProgressIndicatorDirective } from '@vacui-kit/primitives/progress';" language="ts" />
+
+  # Anatomy
+  Directive's set structure.
+
+  <docs-anatomy [node]="componentStructure" />
+
+  # Input props
+
+  ## ProgressRoot <docs-badge text="Attribute Directive" color="purple" />
+  The root directive to build a progressbar. Handles the state and bindings.
+
+  <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+
+  <div class="mt-4">
+    <docs-table [columns]="attributesColumns" [rows]="rootAttrRows" />  
+  </div>
+
+  ## ProgressIndicator <docs-badge text="Attribute Directive" color="purple" />
+  A directive to bind the state and the accessibility rules to the indicator element.
+
+  <docs-table [columns]="attributesColumns" [rows]="indicatorAttrRows" />
+
+  # State
+
+  `ProgressStateService` allows to control the inputs and get the progress state.
+
+  ## Access directive API with exportAS
+
+  We can access the state of the progress using a template variable. All the directives expose themself with the same name. We have access to the directive's attributes and also the `state` service.
+
+  ### Example
+  We could use it with any other directive. For example with `#root="vacProgressRoot"` and access the state.
+
+  <docs-code [code]="templateVariableExample" language="html" />
+
+  ## State API - ProgressStateService
+
+  Documentation for the progress state service API.
+
+  ### Variables
+  <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />  
+</template>

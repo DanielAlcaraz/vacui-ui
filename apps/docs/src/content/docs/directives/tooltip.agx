@@ -1,0 +1,219 @@
+---
+title: Tooltip
+description: Set of Angular directives to build a Tooltip using Vacui UI primitives.
+group: Directives
+slug: tooltip
+---
+
+<script lang="ts">
+import { CodeHighlightComponent } from '../../../app/components/code/code.component' with { analog: 'imports' };
+import { AnatomyComponent } from '../../../app/components/anatomy/anatomy.component' with { analog: 'imports' };
+import { BadgeComponent } from '../../../app/components/badge/badge.component' with { analog: 'imports' };
+import { TableComponent } from '../../../app/components/table/table.component' with { analog: 'imports' };
+import { ExampleComponent } from '../../../app/components/example/example.component' with { analog: 'imports' };
+
+// ------ ANATOMY ------
+// !DOCS
+const componentStructure = {
+  name: 'vacTooltipRoot',
+  children: [
+    { name: 'vacTooltipTrigger' },
+    { name: 'vacTooltipContent', children: [{ name: 'vacTooltipArrow' }] }
+  ]
+};
+
+// ------ COLUMNS ------
+const columnsInput = [
+  { header: 'Input', field: 'prop' },
+  { header: 'Default', field: 'default' },
+  { header: 'Type', field: 'type' },
+  { header: 'Description', field: 'description', widthFactor: 3  }
+];
+
+const outputColumns = [
+  { header: 'Output', field: 'output' },
+  { header: 'Returns', field: 'returns' },
+  { header: 'Description', field: 'description', widthFactor: 4 },
+];
+
+const attributesColumns = [
+  { header: 'Attribute', field: 'attribute' },
+  { header: 'Value', field: 'value', widthFactor: 4 },
+];
+
+const stateVarsColumns = [
+  { header: 'Name', field: 'name' },
+  { header: 'Default', field: 'default' },
+  { header: 'Type', field: 'type', widthFactor: 2 },
+];
+
+// ------ ROWS ------
+const rootInputRows = [
+  { id: 1, prop: 'open', default: 'false', type: 'boolean', description: 'Controls the open state of the tooltip.' },
+  { id: 2, prop: 'openDelay', default: '0', type: 'number', description: 'Delay in milliseconds before the tooltip appears.' },
+  { id: 3, prop: 'closeDelay', default: '0', type: 'number', description: 'Delay in milliseconds before the tooltip disappears.' },
+];
+
+// !DOCS
+const contentInputRows = [
+  { id: 1, prop: 'position', default: 'top', type: '"top" | "right" | "bottom" | "left"', description: 'The preferred position of the tooltip relative to the trigger.' },
+  { id: 2, prop: 'avoidCollisions', default: 'true', type: 'boolean', description: 'Whether the tooltip should flip its position when it would collide with the viewport boundaries.' },
+  { id: 3, prop: 'collisionPadding', default: '0', type: 'number | { top?: number; left?: number; bottom?: number; right?: number }', description: 'Padding between the tooltip and the viewport edges when avoiding collisions.' },
+  { id: 4, prop: 'align', default: 'center', type: '"start" | "center" | "end"', description: 'Alignment of the tooltip relative to the trigger element.' },
+  { id: 5, prop: 'alignOffset', default: '0', type: 'number', description: 'Offset in pixels for the tooltip alignment.' },
+  { id: 6, prop: 'sticky', default: '"partial"', type: '"partial" | "always"', description: 'Controls the behavior when repositioning the tooltip to avoid collisions.' },
+  { id: 7, prop: 'sideOffset', default: '0', type: 'number', description: 'Offset in pixels between the tooltip and the trigger element.' },
+];
+
+const contentOutputRows = [
+  { id: 1, output: 'tooltipRendered', returns: '{ position: TooltipPosition; triggerElement: HTMLElement; contentElement: HTMLElement }', description: 'Event emitted when the tooltip is rendered with its final position and elements.' },
+];
+
+const contentAttrRows = [
+  { id: 1, attribute: 'data-state', value: '"open" | "partly-opened" | "closed"' },
+  { id: 2, attribute: 'data-position', value: '"top" | "right" | "bottom" | "left"' },
+  { id: 3, attribute: 'data-align', value: '"start" | "center" | "end"' },
+  { id: 4, attribute: 'role', value: '"tooltip"' },
+];
+
+const arrowInputRows = [
+  { id: 1, prop: 'arrowSize', default: '8', type: '{ width: number; height: number } | number', description: 'Size of the arrow in pixels. Can be a single number for square arrows or an object for custom dimensions.' },
+];
+
+const triggerAttrRows = [
+  { id: 1, attribute: 'data-state', value: '"open" | "partly-opened" | "closed"' },
+  { id: 2, attribute: 'aria-describedby', value: 'ID of the tooltip content element' },
+];
+
+const stateRows = [
+  { id: 1, name: 'id', default: 'random-id', type: 'string' },
+  { id: 2, name: 'mouseHover', default: 'false', type: 'signal<boolean>' },
+  { id: 3, name: 'open', default: 'false', type: 'signal<boolean>' },
+  { id: 4, name: 'openDelay', default: '0', type: 'signal<number>' },
+  { id: 5, name: 'closeDelay', default: '0', type: 'signal<number>' },
+  { id: 6, name: 'contentHover', default: 'true', type: 'signal<boolean>' },
+  { id: 7, name: 'openState', default: 'closed', type: 'computed<"open" | "partly-opened" | "closed">' },
+];
+
+const codeDemo = ``;
+
+const demoHighlights = ["TooltipPrimitivesModule", "vacTooltipRoot", "vacTooltipTrigger", "vacTooltipContent", "vacTooltipArrow"];
+
+const features = [
+  'Customizable positions and alignments',
+  'Smart collision detection and avoidance',
+  'Optional arrow with customizable size',
+  'Configurable open and close delays',
+  'Mouse hover tracking across tooltip and trigger',
+  'Proper ARIA attributes for accessibility',
+];
+
+const templateVariableExample = `
+<div vacTooltipRoot [openDelay]="300" [closeDelay]="200" #root="vacTooltipRoot">
+  <button vacTooltipTrigger>
+    Hover me
+  </button>
+  
+  <ng-template vacTooltipContent="top" [vacTooltipContentAvoidCollisions]="true">
+    <div class="tooltip-content">
+      <span>This is a tooltip</span>
+      <div vacTooltipArrow [arrowSize]="10"></div>
+    </div>
+  </ng-template>
+</div>
+`;
+
+const typesAndInterfaces = `
+export type TooltipPosition = 'top' | 'right' | 'bottom' | 'left';
+
+export interface TooltipListener {
+  activate: (element: HTMLElement) => void;
+  deactivate: () => void;
+}`;
+</script>
+
+<template lang="md">
+
+  Tooltip directive toolkit that offers a seamless and accessible solution for creating tooltips with customizable positioning and appearance.
+
+  <docs-example name="tooltip" />
+
+  ## Installation
+  Add and import the module into your imports section.
+
+  <docs-code code="import { TooltipPrimitivesModule } from '@vacui-kit/primitives/tooltip';" language="ts" />
+
+  # Anatomy
+  Directive's set structure.
+
+  <docs-anatomy [node]="componentStructure" />
+
+  # Input props
+
+  ## TooltipRoot <docs-badge text="Attribute Directive" color="purple" />
+  The root directive that contains the tooltip trigger and content. Manages the tooltip state.
+
+  <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+
+  ## TooltipTrigger <docs-badge text="Attribute Directive" color="purple" />
+  The directive that marks an element as the tooltip trigger. The tooltip will be shown when hovering over this element.
+
+  <div class="mt-4">
+    <docs-table [columns]="attributesColumns" [rows]="triggerAttrRows" />
+  </div>
+
+  ## TooltipContent <docs-badge text="Attribute Directive" color="purple" />
+  The directive that defines the content of the tooltip. It is applied to an `ng-template`.
+
+  <div class="mt-4">
+    <docs-table [columns]="columnsInput" [rows]="contentInputRows" />
+  </div>
+
+  <div class="mt-4">
+    <docs-table [columns]="outputColumns" [rows]="contentOutputRows" />  
+  </div>
+
+  <div class="mt-4">
+    <docs-table [columns]="attributesColumns" [rows]="contentAttrRows" />
+  </div>
+
+  ## TooltipArrow <docs-badge text="Attribute Directive" color="purple" />
+  Optional directive to add an arrow to the tooltip that points toward the trigger element.
+
+  <div class="mt-4">
+    <docs-table [columns]="columnsInput" [rows]="arrowInputRows" />
+  </div>
+
+  # State
+
+  `TooltipService` allows to access the tooltip properties.
+
+  ## Access directive API with exportAS
+
+  We can access the state of the tooltip using a template variable. All the directives expose themselves with the same name. We have access to the directive's attributes and also the `state` service.
+
+  ### Example
+  We could use it with any other directive. For example with `#root="vacTooltipRoot"` and access the state.
+
+  <docs-code [code]="templateVariableExample" language="html" />
+
+  ## State API - TooltipService
+
+  Documentation for the tooltip state service API.
+
+  ### Variables
+  <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />  
+
+  # Types and interfaces
+  <docs-code [code]="typesAndInterfaces" language="ts" />
+
+  # Features
+  <ul>
+    @for (feature of features; track feature) {
+      <li>{{ feature }}</li>
+    }
+  </ul>
+
+  # Accessibility
+  This Tooltip set of directives is designed in accordance with the WAI-ARIA Authoring Practices Guide. The tooltip trigger is properly connected to the tooltip content using `aria-describedby`, and the tooltip content has the appropriate `role="tooltip"` attribute. This ensures our component meets modern accessibility standards, providing an inclusive user experience.
+</template>

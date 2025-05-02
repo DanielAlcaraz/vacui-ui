@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "types": [],
+    "target": "ES2022",
+    "useDefineForClassFields": false,
+    "allowImportingTsExtensions": true
+  },
+  "files": ["src/main.ts", "src/main.server.ts"],
+  "include": ["src", "@vacui-kit/primitives"],
+  "entries": ["src", "'../../primitives/**/*.ts'"],
+  "exclude": ["**/*.test.ts", "**/*.spec.ts", "../../primitives/**/*spec.ts", "../../primitives/**/*mock.ts"]
+}

@@ -1,0 +1,59 @@
+---
+title: Getting started
+description: Install Vacui UI, a headless UI library for Angular.
+group: Overview
+slug: getting-started
+---
+
+<script lang="ts">
+import { CodeHighlightComponent } from '../../../app/components/code/code.component' with { analog: 'imports' };
+
+const primitivesModule = `
+  import { CollapsiblePrimitivesModule } from "@vacui-kit/primitives/collapsible";
+`;
+
+const directivesImport = `
+  import { CollapsibleRootDirective, CollapsibleContentDirective, CollapsibleTriggerDirective } from "@vacui-kit/primitives/collapsible";
+`;
+
+const code = `
+<div vacCollapsibleRoot [(open)]="open">
+  <div>
+    <h3>Header content</h3>
+    <button vacCollapsibleTrigger class="toggle-button">
+      <icon [name]="open ? 'Up' : 'Down'"></icon>
+    </button>
+  </div>
+  <div vacCollapsibleContent class="content">
+    This is the content that will be shown or hidden based on the collapsible state.
+  </div>
+</div>
+`;
+</script>
+
+<template lang="md">
+
+  This guide walks you through setting up the `@vacui-kit` library in your Angular project.
+
+  # Install
+  ## Prerequisites
+  - **Angular** - v17.3.0 or higher.
+
+  <docs-code code="npm i @vacui-kit/primitives" language="shell" />
+
+  # Getting started
+  For developers looking to leverage the full suite of the directive functionality with minimal setup, importing the PrimitivesModule of each directive set offers an easy way to get started. Each module includes all necessary directives for creating a component:
+
+  <docs-code [code]=primitivesModule language="ts" />
+
+  Each directive in `@vacui-kit/primitives` is designed as standalone. Incorporating the root primitive from each set is essential. The root primitive orchestrates the shared state, seamlessly aligning the functionalities of child directives to ensure cohesive operation within your application.
+
+  For more granular control, you can choose to import only the specific directives you need.
+
+  <docs-code [code]=directivesImport language="ts" />
+
+  ## Using the primitives
+  Once you have imported the PrimitivesModule into your module or standalone component, you are ready to incorporate the directives directly within your templates. Here is a quick snippet to demonstrate its usage:
+
+  <docs-code [code]=code language="html" />
+</template>

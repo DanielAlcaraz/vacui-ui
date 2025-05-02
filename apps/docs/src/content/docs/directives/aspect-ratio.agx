@@ -1,0 +1,68 @@
+---
+title: Aspect Ratio
+description: Set of Angular directives to build an aspect-ratio using Vacui UI primitives.
+group: Directives
+slug: aspect-ratio
+---
+
+<script lang="ts">
+import { CodeHighlightComponent } from '../../../app/components/code/code.component' with { analog: 'imports' };
+import { AnatomyComponent } from '../../../app/components/anatomy/anatomy.component' with { analog: 'imports' };
+import { BadgeComponent } from '../../../app/components/badge/badge.component' with { analog: 'imports' };
+import { TableComponent } from '../../../app/components/table/table.component' with { analog: 'imports' };
+import { ExampleComponent } from '../../../app/components/example/example.component' with { analog: 'imports' };
+
+// ------ ANATOMY ------
+const componentStructure = {
+  name: '*vacAspectRatio',
+  children: []
+};
+
+// ------ COLUMNS ------
+const columnsInput = [
+  { header: 'Input', field: 'prop' },
+  { header: 'Default', field: 'default' },
+  { header: 'Type', field: 'type' },
+  { header: 'Required', field: 'required' }
+];
+
+const totalColumns = 4;
+
+// ------ ROWS INPUTS ------
+const rootInputRows = [
+  { prop: 'ratio', default: 1, type: 'number', required: 'false' },
+];
+
+const example = `
+<custom-img-component *vacAspectRatio="16 / 9"></custom-img-component>
+`;
+</script>
+
+<template lang="md">
+
+  The Aspect Ratio directive provides a powerful and flexible solution for maintaining a specific aspect ratio for an element, ensuring its width and height remain in a precise relationship as the viewport or element size changes.
+
+  <docs-example name="aspectRatio" />
+
+  ## Installation
+  Add and import the module into your imports section.
+
+  <docs-code code="import { AspectRatioPrimitivesModule } from '@vacui-kit/primitives/aspect-ratio';" language="shell" />
+
+  # Anatomy
+  Directive's set structure.
+
+  <docs-anatomy [node]="componentStructure" />
+
+  # Input props
+
+  ## AspectRatioRoot <docs-badge text="Structural Directive" />
+  It constrains the element with the desired aspect ratio.
+
+  <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+
+  # Use with custom components
+  The directive can be applied directly to custom Angular components.
+
+  <docs-code [code]="example" language="html" />
+</template>

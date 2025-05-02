@@ -1,0 +1,226 @@
+---
+title: Radio Group
+description: Set of Angular directives to build a Radio group using Vacui UI primitives.
+group: Directives
+slug: radio-group
+---
+
+<script lang="ts">
+import { CodeHighlightComponent } from '../../../app/components/code/code.component' with { analog: 'imports' };
+import { AnatomyComponent } from '../../../app/components/anatomy/anatomy.component' with { analog: 'imports' };
+import { BadgeComponent } from '../../../app/components/badge/badge.component' with { analog: 'imports' };
+import { TableComponent } from '../../../app/components/table/table.component' with { analog: 'imports' };
+import { ExampleComponent } from '../../../app/components/example/example.component' with { analog: 'imports' };
+
+// ------ ANATOMY ------
+const componentStructure = {
+  name: 'vacRadioGroupRoot',
+  children: [
+    { name: 'vacRadioGroupItem', children: [{ name: 'vacRadioGroupIndicator' }] },
+    { name: 'vacRadioGroupInput' },
+  ]
+};
+
+// ------ COLUMNS ------
+const columnsInput = [
+  { header: 'Input', field: 'prop' },
+  { header: 'Default', field: 'default' },
+  { header: 'Type', field: 'type' },
+  { header: 'Description', field: 'description', widthFactor: 3  }
+];
+
+const outputColumns = [
+  { header: 'Output', field: 'output' },
+  { header: 'Returns', field: 'returns' },
+  { header: 'Description', field: 'description', widthFactor: 4 },
+];
+
+const attributesColumns = [
+  { header: 'Attribute', field: 'attribute' },
+  { header: 'Value', field: 'value', widthFactor: 4 },
+];
+
+const keyboardColumns = [
+  { header: 'Key', field: 'key' },
+  { header: 'Description', field: 'description', widthFactor: 3 },
+];
+
+const stateVarsColumns = [
+  { header: 'Name', field: 'name' },
+  { header: 'Default', field: 'default' },
+  { header: 'Type', field: 'type', widthFactor: 2 },
+];
+
+const stateMethodsColumns = [
+  { header: 'Method', field: 'method' },
+  { header: 'Return', field: 'return' },
+  { header: 'Arguments', field: 'arguments', widthFactor: 2 },
+];
+
+// ------ ROWS ------
+const rootInputRows = [
+  { id: 1, prop: 'value', default: '—', type: 'string', description: 'The selected value of the radio group.' },
+  { id: 2, prop: 'disabled', default: 'false', type: 'boolean', description: 'Whether or not the radio group is disabled.' },
+  { id: 3, prop: 'required', default: 'false', type: 'boolean', description: 'When true, makes the radio group required before submitting.' },
+  { id: 4, prop: 'name', default: '—', type: 'boolean', description: 'The name of the group. If it isn\'t setted, generates an automatic name.' },
+  { id: 5, prop: 'orientation', default: 'vertical', type: '"vertical" | "horizontal"', description: 'The orientation of the radio group.' },
+  { id: 6, prop: 'loop', default: 'true', type: 'boolean', description: 'When true, keyboard navigation will continue navigating.' },
+];
+
+const rootOutputRows = [
+  { id: 1, output: 'valueChange', description: 'Event handler emitted when the value of the radio group changes', returns: 'string' },
+];
+
+const rootAttrRows = [
+  { id: 1, attribute: 'data-disabled', value: 'Shows when disabled' },
+];
+
+const itemInputRows = [
+  { id: 1, prop: 'value*', default: '—', type: 'string', description: 'The value of the radio item.' },
+  { id: 2, prop: 'disabled', default: 'false', type: 'boolean', description: 'Whether or not the radio item is disabled.' },
+];
+
+const itemAttrRows = [
+  { id: 1, attribute: 'data-state', value: '"open" | "closed"' },
+  { id: 2, attribute: 'data-disabled', value: 'Shows when disabled' },
+];
+
+const indicatorAttrRows = [
+  { id: 1, attribute: 'data-state', value: '"open" | "closed"' },
+  { id: 2, attribute: 'data-disabled', value: 'Shows when disabled' },
+];
+
+const inputInputRows = [
+  { id: 1, prop: 'value*', default: '—', type: 'string', description: 'The value associated to the radio item.' },
+];
+
+const stateRows = [
+  { id: 1, name: 'value', default: '—', type: 'WritableSignal<boolean>' },
+  { id: 2, name: 'disabled', default: 'false', type: 'WritableSignal<boolean>' },
+  { id: 3, name: 'name', default: 'random-id', type: 'WritableSignal<string>' },
+  { id: 4, name: 'required', default: 'false', type: 'WritableSignal<boolean>' },
+  { id: 5, name: 'radioItems', default: '—', type: 'Map<string, Item>' },
+];
+
+const stateMethodRows = [
+  { id: 1, method: 'registerItem', arguments: '(value: string, disabled = false, elementRef: ElementRef)', return: 'void' },
+  { id: 2, method: 'unregisterItem', arguments: '(value: string)', return: 'void' },
+];
+
+const keyboardRows = [
+  { key: 'Home', description: 'Navigates to the first element.' },
+  { key: 'End', description: 'Navigates to the last elemenet.' },
+  { key: 'ArrowUp', description: 'Navigates to the previous element when orientation is "vertical"' },
+  { key: 'ArrowDown', description: 'Navigates to the previous element when orientation is "vertical"' },
+  { key: 'ArrowRight', description: 'Navigates to the next element when orientation is "horizontal"' },
+  { key: 'ArrowLeft', description: 'Navigates to the previous element when orientation is "horizontal"' },
+];
+
+const codeDemo = ``;
+
+const demoHighlights = ["RadioGroupPrimitivesModule", "vacRadioGroupRoot", "vacRadioGroupItem", "vacRadioGroupIndicator", "vacRadioGroupInput"];
+
+const features = [
+  'Full keyboard navigation.',
+  'Can be controlled or uncontrolled',
+];
+
+const templateVariableExample = `
+<div vacRadioGroupRoot #root="vacRadioGroupRoot">
+  <button vacRadioGroupItem>
+    @if (root.state.disabled()) {
+      <div vacRadioGroupIndicator>Disabled Indicator</div>
+    } @else {
+      <div vacRadioGroupIndicator>Default Indicator</div>
+    }
+  </button>
+</div>`;
+
+const typesAndInterfaces = `
+type Item = { disabled: WritableSignal<boolean>, elementRef: ElementRef };`;
+</script>
+
+<template lang="md">
+
+  Radio group directive toolkit that offers a seamless and accessible solution for creating radio groups.
+
+  <docs-example name="radioGroup" />
+
+  ## Installation
+  Add and import the module into your imports section.
+
+  <docs-code code="import { RadioGroupPrimitivesModule } from '@vacui-kit/primitives/radio-group';" language="ts" />
+
+  # Anatomy
+  Directive's set structure.
+
+  <docs-anatomy [node]="componentStructure" />
+
+  # Input props
+
+  ## RadioGroupRoot <docs-badge text="Attribute Directive" color="purple" />
+  The root directive that contains the radio items. Handles the state and bindings. It uses the [keyboard navigation directive](keyboard) under the hood, extending its inputs to this directive. 
+
+  <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+
+  <div class="mt-4">
+    <docs-table [columns]="outputColumns" [rows]="rootOutputRows" />  
+  </div>
+
+  <div class="mt-4">
+    <docs-table [columns]="attributesColumns" [rows]="rootAttrRows" />  
+  </div>
+
+  ## RadioGroupItem <docs-badge text="Attribute Directive" color="purple" />
+  A directive to bind the state and the accessibility rules to the trigger element.
+
+  <div class="mt-4">
+    <docs-table [columns]="columnsInput" [rows]="itemInputRows" />
+  </div>
+
+  <div class="mt-4">
+    <docs-table [columns]="attributesColumns" [rows]="itemAttrRows" />
+  </div>
+
+  ## RadioGroupIndicator <docs-badge text="Attribute Directive" color="purple" />
+  The indicator inside the radio item.
+
+  <docs-table [columns]="attributesColumns" [rows]="indicatorAttrRows" />
+
+  ## RadioGroupInput <docs-badge text="Attribute Directive" color="purple" />
+  Directive to hide and bind the input to the custom radio group.
+
+  <docs-table [columns]="columnsInput" [rows]="inputInputRows" />
+
+  # State
+
+  `RadioGroupStateService` allows to access the radio group properties.
+
+  ## Access directive API with exportAS
+
+  We can access the state of the collapsible using a template variable. All the directives expose themself with the same name. We have access to the directive's attributes and also the `state` service.
+
+  ### Example
+  We could use it with any other directive. For example with `#root="vacCollapsibleRoot"` and access the state.
+
+  <docs-code [code]="templateVariableExample" language="html" />
+
+  ## State API - RadioGroupStateService
+
+  Documentation for the radio group state service API.
+
+  ### Variables
+  <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />  
+
+  ### Methods
+  <docs-table [columns]="stateMethodsColumns" [rows]="stateMethodRows" />  
+
+  # Types and interfaces
+  <docs-code [code]="typesAndInterfaces" language="ts" />
+
+  # Accessibility
+  This RadioGroup set of directives is designed in accordance with the WAI-ARIA Authoring Practices Guide. For more details on accessibility features and guidelines, please refer to the [WAI-ARIA Radio Group Practices](https://www.w3.org/WAI/ARIA/apg/patterns/radio/). This ensures our component meets modern accessibility standards, providing an inclusive user experience.
+
+  ## Keyboard Navigation
+  <docs-table [columns]="keyboardColumns" [rows]="keyboardRows" />  
+</template>

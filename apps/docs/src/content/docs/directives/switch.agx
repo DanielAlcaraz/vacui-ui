@@ -1,0 +1,147 @@
+---
+title: Switch
+description: Set of Angular directives to build a Switch toggle using Vacui UI primitives.
+group: Directives
+slug: switch
+---
+
+<script lang="ts">
+import { CodeHighlightComponent } from '../../../app/components/code/code.component' with { analog: 'imports' };
+import { AnatomyComponent } from '../../../app/components/anatomy/anatomy.component' with { analog: 'imports' };
+import { BadgeComponent } from '../../../app/components/badge/badge.component' with { analog: 'imports' };
+import { TableComponent } from '../../../app/components/table/table.component' with { analog: 'imports' };
+import { ExampleComponent } from '../../../app/components/example/example.component' with { analog: 'imports' };
+
+// ------ ANATOMY ------
+const componentStructure = {
+  name: 'vacSwitchRoot',
+  children: [
+    { name: 'vacSwitchThumb' },
+    { name: 'vacSwitchInput' }
+  ]
+};
+
+// ------ COLUMNS ------
+const columnsInput = [
+  { header: 'Input', field: 'prop' },
+  { header: 'Default', field: 'default' },
+  { header: 'Type', field: 'type' },
+  { header: 'Description', field: 'description', widthFactor: 3  }
+];
+
+const outputColumns = [
+  { header: 'Output', field: 'output' },
+  { header: 'Returns', field: 'returns' },
+  { header: 'Description', field: 'description', widthFactor: 4 },
+];
+
+const attributesColumns = [
+  { header: 'Attribute', field: 'attribute' },
+  { header: 'Value', field: 'value', widthFactor: 4 },
+];
+
+const keyboardColumns = [
+  { header: 'Key', field: 'key' },
+  { header: 'Description', field: 'description', widthFactor: 3 },
+];
+
+// ------ ROWS ------
+const rootInputRows = [
+  { id: 1, prop: 'checked', default: 'false', type: 'model<boolean>', description: 'The checked state of the switch. Use two-way binding with [(checked)].' },
+  { id: 2, prop: 'disabled', default: 'false', type: 'boolean', description: 'Whether or not the switch is disabled.' },
+  { id: 3, prop: 'required', default: 'false', type: 'boolean', description: 'Whether or not the switch is required.' },
+  { id: 4, prop: 'name', default: 'random-id', type: 'string', description: 'The name of the switch. If not provided, a random ID is generated.' },
+  { id: 5, prop: 'value', default: 'on', type: 'string', description: 'The value of the switch when it is checked.' },
+];
+
+const rootAttrRows = [
+  { id: 1, attribute: 'data-state', value: '"checked" | "unchecked"' },
+  { id: 2, attribute: 'data-disabled', value: '"true" or null' },
+  { id: 3, attribute: 'aria-checked', value: 'true when checked' },
+  { id: 4, attribute: 'aria-required', value: 'true when required' },
+  { id: 5, attribute: 'role', value: 'switch' },
+];
+
+const thumbAttrRows = [
+  { id: 1, attribute: 'data-state', value: '"checked" | "unchecked"' },
+  { id: 2, attribute: 'data-disabled', value: '"true" or null' },
+];
+
+const keyboardRows = [
+  { key: 'Space', description: 'Toggles the switch.' },
+  { key: 'Enter', description: 'Toggles the switch.' },
+];
+
+const codeDemo = ``;
+
+const demoHighlights = ["SwitchPrimitivesModule", "vacSwitchRoot", "vacSwitchThumb", "vacSwitchInput"];
+
+const features = [
+  'Keyboard accessible',
+  'Full ARIA support',
+  'Can be controlled or uncontrolled',
+  'Support for forms with hidden input',
+];
+
+const templateVariableExample = `
+<button vacSwitchRoot #switch="vacSwitchRoot" [(checked)]="isOn">
+  <span>
+    Switch is {{ switch.checked() ? 'ON' : 'OFF' }}
+  </span>
+  <div vacSwitchThumb></div>
+  <ng-template vacSwitchInput>
+    <input>
+  </ng-template>
+</button>`;
+</script>
+
+<template lang="md">
+
+  Switch directive toolkit that offers a seamless and accessible solution for creating toggle switches.
+
+  <docs-example name="switch" />
+
+  ## Installation
+  Add and import the module into your imports section.
+
+  <docs-code code="import { SwitchPrimitivesModule } from '@vacui-kit/primitives/switch';" language="ts" />
+
+  # Anatomy
+  Directive's set structure.
+
+  <docs-anatomy [node]="componentStructure" />
+
+  # Input props
+
+  ## SwitchRoot <docs-badge text="Attribute Directive" color="purple" />
+  The root directive that contains the switch components. Handles the state and bindings.
+
+  <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+
+  <div class="mt-4">
+    <docs-table [columns]="attributesColumns" [rows]="rootAttrRows" />  
+  </div>
+
+  ## SwitchThumb <docs-badge text="Attribute Directive" color="purple" />
+  The visual indicator that shows the current state of the switch.
+
+  <docs-table [columns]="attributesColumns" [rows]="thumbAttrRows" />
+
+  ## SwitchInput <docs-badge text="Structural Directive" color="purple" />
+  A directive that creates a hidden input for form integration. It should be used with an ng-template containing an input element.
+
+  # Access directive API with exportAS
+
+  We can access the state of the switch using a template variable. All the directives expose themselves with the same name. We have access to the directive's attributes and state.
+
+  ### Example
+  Using the template variable to display the current state of the switch.
+
+  <docs-code [code]="templateVariableExample" language="html" />
+
+  # Accessibility
+  This Switch set of directives is designed in accordance with the WAI-ARIA Authoring Practices Guide. This ensures our component meets modern accessibility standards, providing an inclusive user experience.
+
+  ## Keyboard Navigation
+  <docs-table [columns]="keyboardColumns" [rows]="keyboardRows" />  
+</template>

@@ -1,0 +1,1301 @@
+[
+  {
+    "title": "Accordion",
+    "url": "/accordion",
+    "sectionTitle": "Accordion",
+    "content": [
+      "A toolkit of Angular directives designed to construct a fully customizable accordion, enabling developers to define interactive, collapsible content areas tailored to specific application needs.",
+      "## Installation Add and import the module into your imports section.",
+      "# Anatomy Directive's set structure.",
+      "> Do not recommend to use directives directly in custom components tags. It will work, but the aria attributes will be set in the component tag instead than your HTML element withing your component.",
+      "# Input props",
+      "## AccordionRoot The root directive for the accordion. Handles the accordion state, configuration and keyboard navigation.",
+      "&nbsp; &nbsp;",
+      "## AccordionItem",
+      "&nbsp;",
+      "## AccordionHeader &nbsp; Use this directive when your trigger is inside an non heading element (h1, h2...) to apply the correct accessibility rules.",
+      "&nbsp;",
+      "## AccordionTrigger Toggle the accordion item and changes its state.",
+      "## AccordionContent Contains the collapsible content for an accordion item.",
+      "# State AccordionRootDirective injects an accordion state and exposes an API to interact with the items. Most of the time you wouldn't need it, but it is accessible within the template and it can be useful when we create a new directive or component...",
+      "## Access directive API with exportAS We can access the state of the accordion using a template variable. All the directives expose themself with the same name, for example, in the previous demo we are using #accItem=\"accordionItem\". With accItem we...",
+      "### Example We could use it with any other directive. For example with #image=\"vacAvatarRoot\" and access the state.",
+      "## State API - AccordionStateService Documentation for the accordion state service API.",
+      "### Variables",
+      "### Methods",
+      "## Types Avatar types that you can import.",
+      "# Accessibility This accordion component is designed in accordance with the WAI-ARIA Authoring Practices Guide. For more details on accessibility features and guidelines, please refer to the WAI-ARIA Accordion Practices. This ensures our component...",
+      "## Keyboard Navigation Keyboard navigation uses an internal directive system to control the keyboard flow. You can read more about it in KeyboardNavigationDirective. KeyboardNavigationDirective props are extended directly in the AccordionRoot...",
+      "# Examples ## Build a custom trigger using the accordion state We can create custom components/directives that will interact with the accordion state. It can be useful when we need to implement custom logic into one or more of our pieces. Remember...",
+      "Once we created our trigger component. We can implement it inside the root directive."
+    ],
+    "tags": [
+      "Directives"
+    ],
+    "createdAt": "2025-04-27T19:34:42.756Z",
+    "updatedAt": "2025-04-27T19:34:42.756Z"
+  },
+  {
+    "title": "Accordion",
+    "url": "/accordion#input-props",
+    "sectionTitle": "root Properties",
+    "content": [
+      "itemChange: Returns the opened items (no default)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "root"
+    ],
+    "createdAt": "2025-04-27T19:34:42.756Z",
+    "updatedAt": "2025-04-27T19:34:42.756Z"
+  },
+  {
+    "title": "Accordion",
+    "url": "/accordion#types-and-interfaces",
+    "sectionTitle": "Types and Interfaces",
+    "content": [
+      "AccordionOrientation: 'horizontal' | 'vertical'",
+      "AccordionState: 'open' | 'closed'",
+      "AccordionItem: interface",
+      "AccordionConfig: interface"
+    ],
+    "tags": [
+      "Directives",
+      "Types"
+    ],
+    "createdAt": "2025-04-27T19:34:42.756Z",
+    "updatedAt": "2025-04-27T19:34:42.756Z"
+  },
+  {
+    "title": "Aspect Ratio",
+    "url": "/aspect-ratio",
+    "sectionTitle": "Aspect Ratio",
+    "content": [
+      "The Aspect Ratio directive provides a powerful and flexible solution for maintaining a specific aspect ratio for an element, ensuring its width and height remain in a precise relationship as the viewport or element size changes.",
+      "## Installation Add and import the module into your imports section.",
+      "# Anatomy Directive's set structure.",
+      "# Input props",
+      "## AspectRatioRoot It constrains the element with the desired aspect ratio.",
+      "# Use with custom components The directive can be applied directly to custom Angular components."
+    ],
+    "tags": [
+      "Directives"
+    ],
+    "createdAt": "2025-04-27T19:34:42.756Z",
+    "updatedAt": "2025-04-27T19:34:42.756Z"
+  },
+  {
+    "title": "Avatar",
+    "url": "/avatar",
+    "sectionTitle": "Avatar",
+    "content": [
+      "A toolkit of Angular directives designed to build a fully customizable avatar image component, will a fallback to represent the image.",
+      "## Installation Add and import the module into your imports section.",
+      "# Anatomy Directive's set structure.",
+      "# Input props",
+      "## AvatarRoot The root directive for the avatar. Handles the avatar state. It doesn't have any inputs, outputs or attributes.",
+      "## AvatarImage &nbsp; A directive to listen the image render.",
+      "&nbsp;",
+      "## AvatarFallback &nbsp; Use this directive to show a fallback when the image is not available.",
+      "# State AvatarStateService allows to load and listen the status of an image.",
+      "## Access directive API with exportAS We can access the state of the avatar using a template variable. All the directives expose themself with the same name. We have access to the directive's attributes and also the state service.",
+      "### Example We could use it with any other directive. For example with #image=\"vacAvatarRoot\" and access the state.",
+      "## State API - AvatarStateService Documentation for the avatar state service API.",
+      "### Variables",
+      "### Methods",
+      "## Types/Interfaces Avatar interfaces that you can import."
+    ],
+    "tags": [
+      "Directives"
+    ],
+    "createdAt": "2025-04-27T19:34:42.757Z",
+    "updatedAt": "2025-04-27T19:34:42.757Z"
+  },
+  {
+    "title": "Avatar",
+    "url": "/avatar#input-props",
+    "sectionTitle": "item Properties",
+    "content": [
+      "loadingStatusChange: A callback invoked when the loading status store of the image changes. (no default)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "item"
+    ],
+    "createdAt": "2025-04-27T19:34:42.757Z",
+    "updatedAt": "2025-04-27T19:34:42.757Z"
+  },
+  {
+    "title": "Checkbox",
+    "url": "/checkbox",
+    "sectionTitle": "Checkbox",
+    "content": [
+      "A checkbox directive set that provides a flexible and accessible way to enhance form interactions, enabling full customization with indeterminate states and dynamic property bindings.",
+      "## Installation Add and import the module into your imports section.",
+      "Or",
+      "# Anatomy Directive's set structure.",
+      "> Do not recommend to use directives directly in custom components tags. It will work, but the aria attributes will be set in the component tag instead than your HTML element withing your component.",
+      "# Input props",
+      "## CheckboxRoot The root directive for the checkbox. Handles the state, keyboard navigation and bindings.",
+      "&nbsp; &nbsp;",
+      "## CheckboxInput A directive to bind the state and the accessibility rules to the input element.",
+      "# State CheckboxStateService allows to control the inputs and toggle of the checkbox.",
+      "## Access directive API with exportAS We can access the state of the checkbox using a template variable. All the directives expose themself with the same name. We have access to the directive's attributes and also the state service.",
+      "### Example We could use it with any other directive. For example with #check=\"vacCheckboxRoot\" and access the state.",
+      "## State API - CheckboxStateService Documentation for the checkbox state service API.",
+      "### Variables",
+      "### Methods",
+      "## Types/Interfaces Avatar interfaces that you can import.",
+      "# Accessibility This checkbox set of directives is designed in accordance with the WAI-ARIA Authoring Practices Guide. For more details on accessibility features and guidelines, please refer to the WAI-ARIA Checkbox Practices. This ensures our...",
+      "## Keyboard Navigation"
+    ],
+    "tags": [
+      "Directives"
+    ],
+    "createdAt": "2025-04-27T19:34:42.758Z",
+    "updatedAt": "2025-04-27T19:34:42.758Z"
+  },
+  {
+    "title": "Checkbox",
+    "url": "/checkbox#input-props",
+    "sectionTitle": "root Properties",
+    "content": [
+      "checkedChange: Event handler called when the state of the checkbox changes. (no default)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "root"
+    ],
+    "createdAt": "2025-04-27T19:34:42.758Z",
+    "updatedAt": "2025-04-27T19:34:42.758Z"
+  },
+  {
+    "title": "Checkbox",
+    "url": "/checkbox#types-and-interfaces",
+    "sectionTitle": "Types and Interfaces",
+    "content": [
+      "CheckboxStatus: 'checked' | 'unchecked' | 'indeterminate'"
+    ],
+    "tags": [
+      "Directives",
+      "Types"
+    ],
+    "createdAt": "2025-04-27T19:34:42.758Z",
+    "updatedAt": "2025-04-27T19:34:42.758Z"
+  },
+  {
+    "title": "Collapsible",
+    "url": "/collapsible",
+    "sectionTitle": "Collapsible",
+    "content": [
+      "A toolkit of Angular directives designed to construct a fully customizable accordion, enabling developers to define interactive, collapsible content areas tailored to specific application needs.",
+      "## Installation Add and import the module into your imports section.",
+      "# Anatomy Directive's set structure.",
+      "> Do not recommend to use directives directly in custom components tags. It will work, but the aria attributes will be set in the component tag instead than your HTML element withing your component.",
+      "# Input props",
+      "## CollapsibleRoot The root directive for the collapsible. Handles the state and bindings.",
+      "&nbsp; &nbsp;",
+      "## CollapsibleTrigger A directive to bind the state and the accessibility rules to the trigger element.",
+      "## CollapsibleContent A directive to bind the state and the accessibility rules to the content element. To hide the content, you can use an @if or hide it with css like in the previous example. If you didn't set a state, you can access the open...",
+      "# State CollapsibleStateService allows to control the inputs and toggle of the collapsible.",
+      "## Access directive API with exportAS We can access the state of the collapsible using a template variable. All the directives expose themself with the same name. We have access to the directive's attributes and also the state service.",
+      "### Example We could use it with any other directive. For example with #root=\"vacCollapsibleRoot\" and access the state.",
+      "## State API - CollapsibleStateService Documentation for the collapsible state service API.",
+      "### Variables",
+      "### Methods",
+      "# Accessibility This collapsible set of directives is designed in accordance with the WAI-ARIA Authoring Practices Guide. For more details on accessibility features and guidelines, please refer to the WAI-ARIA Collapsible Practices. This ensures our...",
+      "## Keyboard Navigation When we focus the trigger directive vacCollapsibleTrigger we can toggle it."
+    ],
+    "tags": [
+      "Directives"
+    ],
+    "createdAt": "2025-04-27T19:34:42.758Z",
+    "updatedAt": "2025-04-27T19:34:42.758Z"
+  },
+  {
+    "title": "Collapsible",
+    "url": "/collapsible#input-props",
+    "sectionTitle": "root Properties",
+    "content": [
+      "openChange: Event handler emitted when the state of the collapsible changes (no default)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "root"
+    ],
+    "createdAt": "2025-04-27T19:34:42.758Z",
+    "updatedAt": "2025-04-27T19:34:42.758Z"
+  },
+  {
+    "title": "Keyboard Navigation",
+    "url": "/keyboard-navigation",
+    "sectionTitle": "Keyboard Navigation",
+    "content": [
+      "Set of directives that offers an easy and accessible solution for creating keyboard navigation between custom elements.",
+      "## Installation Add and import the module into your imports section.",
+      "Or",
+      "# Anatomy Directive's set structure.",
+      "# Input props",
+      "## KeyNavigationeRoot The root directive that syncs the navigable items. It listens to the keydown and focusout events in the container.",
+      "## KeyNavigationItem A directive to register/remove the element in the navigation root.",
+      "<div class=\"mt-4\"> </div>",
+      "# Navigation Rules THe directive allow us to set custom keyboard rules and override the existing ones.",
+      "## Default Navigation Rules Default set of rules that are binded into the root.",
+      "## Override a rule We can override default navigation rules by providing a new NavigationRule object with override.",
+      "## Add a callback in an existing rule We can add a callback to an existing rule by providing a new NavigationRule object and override: false. It will call our callback before the navigation.",
+      "## Create a new rules We can also create existing rules by providing a new NavigationRule object. It will add a listener to the root and call your callback.",
+      "# Exported types and interfaces"
+    ],
+    "tags": [
+      "Directives"
+    ],
+    "createdAt": "2025-04-27T19:34:42.758Z",
+    "updatedAt": "2025-04-27T19:34:42.758Z"
+  },
+  {
+    "title": "Keyboard Navigation",
+    "url": "/keyboard-navigation#input-props",
+    "sectionTitle": "root Properties",
+    "content": [
+      "loop: Navigate from the first item to the last and vice versa. (true)",
+      "disabled: Disable the keyboard navigation (false)",
+      "direction: Navigation direction, use Down/Up or Left/Right keys. (vertical)",
+      "tabNavigation: When active, allows items to get focus with tab. (true)",
+      "navigationRules: Add or override custom key rules. ([])",
+      "focusCallback: Gets called every time an item gets focused. (—)",
+      "rememberLastFocus: Only works with tabNavigation = false. Remember last focused when it leaves the root (true)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "root"
+    ],
+    "createdAt": "2025-04-27T19:34:42.758Z",
+    "updatedAt": "2025-04-27T19:34:42.758Z"
+  },
+  {
+    "title": "Keyboard Navigation",
+    "url": "/keyboard-navigation#input-props",
+    "sectionTitle": "item Properties",
+    "content": [
+      "disabled: Disable item from getting focus. (false)",
+      "startFocus: When true, focus will start in the selected item when we enter root for the first time. (false)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "item"
+    ],
+    "createdAt": "2025-04-27T19:34:42.758Z",
+    "updatedAt": "2025-04-27T19:34:42.758Z"
+  },
+  {
+    "title": "Keyboard Navigation",
+    "url": "/keyboard-navigation#features",
+    "sectionTitle": "Features",
+    "content": [
+      "Allows overriding of navigation rules",
+      "Allow to disable an element navigation",
+      "Provides an option to disable tab navigation",
+      "Enables definition of navigation orientation",
+      "Supports creation of loop navigation",
+      "Set callbacks to existing navigation rules"
+    ],
+    "tags": [
+      "Directives",
+      "Features"
+    ],
+    "createdAt": "2025-04-27T19:34:42.758Z",
+    "updatedAt": "2025-04-27T19:34:42.758Z"
+  },
+  {
+    "title": "Keyboard Navigation",
+    "url": "/keyboard-navigation#types-and-interfaces",
+    "sectionTitle": "Types and Interfaces",
+    "content": [
+      "NavigationDirection: 'vertical' | 'horizontal'",
+      "NavigationRule: interface"
+    ],
+    "tags": [
+      "Directives",
+      "Types"
+    ],
+    "createdAt": "2025-04-27T19:34:42.758Z",
+    "updatedAt": "2025-04-27T19:34:42.758Z"
+  },
+  {
+    "title": "Label",
+    "url": "/label",
+    "sectionTitle": "Label",
+    "content": [
+      "The label directive provides a solution to create an accessible label.",
+      "## Installation Add and import the module into your imports section.",
+      "# Anatomy Directive's set structure.",
+      "## LabelRoot Apply to a label. Disables text selection when double clicking the label."
+    ],
+    "tags": [
+      "Directives"
+    ],
+    "createdAt": "2025-04-27T19:34:42.759Z",
+    "updatedAt": "2025-04-27T19:34:42.759Z"
+  },
+  {
+    "title": "Label",
+    "url": "/label#features",
+    "sectionTitle": "Features",
+    "content": [
+      "Disables text selection when double clicking the label."
+    ],
+    "tags": [
+      "Directives",
+      "Features"
+    ],
+    "createdAt": "2025-04-27T19:34:42.759Z",
+    "updatedAt": "2025-04-27T19:34:42.759Z"
+  },
+  {
+    "title": "Modal",
+    "url": "/modal",
+    "sectionTitle": "Modal",
+    "content": [
+      "A toolkit of Angular directives designed to construct a fully customizable and accessible dialog component.",
+      "## Installation Add and import the module into your imports section.",
+      "Or",
+      "# Anatomy Directive's set structure.",
+      "> Do not recommend to use directives directly in custom components tags. It will work, but the aria attributes will be set in the component tag instead than your HTML element withing your component.",
+      "# Input props",
+      "## DialogRoot The root directive for the dialog. Handles the state, configuration and keyboard navigation.",
+      "&nbsp; &nbsp;",
+      "## DialogTrigger The dialog trigger that opens the dialog.",
+      "## Portal When used, portals send your content into the body.",
+      "## DialogOverlay A layer that covers the inert part of the view when the dialog is open.",
+      "## DialogContent Contains content to be rendered in the open dialog.",
+      "&nbsp;",
+      "## DialogClose The button trigger that closes the dialog.",
+      "## DialogTitle &nbsp; An accessible title to be announced when the dialog is opened.",
+      "## DialogDescription &nbsp; Description of the dialog.",
+      "# State DialogStateService injects an accordion state and exposes an API to interact with the items. Most of the time you wouldn't need it, but it is accessible within the template and it can be useful when we create a new directive or component to...",
+      "## Access directive API with exportAS We can access the state of the accordion using a template variable. All the directives expose themself with the same name, for example, in the previous demo we are using #accItem=\"accordionItem\". With accItem we...",
+      "### Example We could use it with any other directive. For example with #image=\"vacAvatarRoot\" and access the state.",
+      "## State API - AccordionStateService Documentation for the accordion state service API.",
+      "### Variables",
+      "# Accessibility This accordion component is designed in accordance with the WAI-ARIA Authoring Practices Guide. For more details on accessibility features and guidelines, please refer to the WAI-ARIA Dialog Practices. This ensures our component...",
+      "## Keyboard Navigation Keyboard navigation uses an internal directive system to control the keyboard flow. You can read more about it in KeyboardNavigationDirective. KeyboardNavigationDirective props are extended directly in the AccordionRoot..."
+    ],
+    "tags": [
+      "Directives"
+    ],
+    "createdAt": "2025-04-27T19:34:42.759Z",
+    "updatedAt": "2025-04-27T19:34:42.759Z"
+  },
+  {
+    "title": "Modal",
+    "url": "/modal#input-props",
+    "sectionTitle": "root Properties",
+    "content": [
+      "openChange: Returns true if it is opened, false otherwise (no default)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "root"
+    ],
+    "createdAt": "2025-04-27T19:34:42.759Z",
+    "updatedAt": "2025-04-27T19:34:42.759Z"
+  },
+  {
+    "title": "Modal",
+    "url": "/modal#input-props",
+    "sectionTitle": "content Properties",
+    "content": [
+      "pointerDownOutside: Event handler called when a pointer event occurs outside the bounds of the component. (no default)",
+      "focusOutside: Event handler called when an interaction (pointer or focus event) happens outside the bounds of the component. (no default)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "content"
+    ],
+    "createdAt": "2025-04-27T19:34:42.759Z",
+    "updatedAt": "2025-04-27T19:34:42.759Z"
+  },
+  {
+    "title": "Progress",
+    "url": "/progress-bar",
+    "sectionTitle": "Progress",
+    "content": [
+      "Set of directives to build an accessible progress bar.",
+      "## Installation Add and import the module into your imports section.",
+      "Or",
+      "# Anatomy Directive's set structure.",
+      "# Input props",
+      "## ProgressRoot The root directive to build a progressbar. Handles the state and bindings.",
+      "<div class=\"mt-4\"> </div>",
+      "## ProgressIndicator A directive to bind the state and the accessibility rules to the indicator element.",
+      "# State",
+      "ProgressStateService allows to control the inputs and get the progress state.",
+      "## Access directive API with exportAS",
+      "We can access the state of the progress using a template variable. All the directives expose themself with the same name. We have access to the directive's attributes and also the state service.",
+      "### Example We could use it with any other directive. For example with #root=\"vacProgressRoot\" and access the state.",
+      "## State API - ProgressStateService",
+      "Documentation for the progress state service API.",
+      "### Variables"
+    ],
+    "tags": [
+      "Directives"
+    ],
+    "createdAt": "2025-04-27T19:34:42.759Z",
+    "updatedAt": "2025-04-27T19:34:42.759Z"
+  },
+  {
+    "title": "Progress",
+    "url": "/progress-bar#features",
+    "sectionTitle": "Features",
+    "content": [
+      "It adds reading technology support."
+    ],
+    "tags": [
+      "Directives",
+      "Features"
+    ],
+    "createdAt": "2025-04-27T19:34:42.759Z",
+    "updatedAt": "2025-04-27T19:34:42.759Z"
+  },
+  {
+    "title": "Radio Group",
+    "url": "/radio-group",
+    "sectionTitle": "Radio Group",
+    "content": [
+      "Radio group directive toolkit that offers a seamless and accessible solution for creating radio groups.",
+      "## Installation Add and import the module into your imports section.",
+      "# Anatomy Directive's set structure.",
+      "# Input props",
+      "## RadioGroupRoot The root directive that contains the radio items. Handles the state and bindings. It uses the keyboard navigation directive under the hood, extending its inputs to this directive.",
+      "<div class=\"mt-4\"> </div>",
+      "<div class=\"mt-4\"> </div>",
+      "## RadioGroupItem A directive to bind the state and the accessibility rules to the trigger element.",
+      "<div class=\"mt-4\"> </div>",
+      "<div class=\"mt-4\"> </div>",
+      "## RadioGroupIndicator The indicator inside the radio item.",
+      "## RadioGroupInput Directive to hide and bind the input to the custom radio group.",
+      "# State",
+      "RadioGroupStateService allows to access the radio group properties.",
+      "## Access directive API with exportAS",
+      "We can access the state of the collapsible using a template variable. All the directives expose themself with the same name. We have access to the directive's attributes and also the state service.",
+      "### Example We could use it with any other directive. For example with #root=\"vacCollapsibleRoot\" and access the state.",
+      "## State API - RadioGroupStateService",
+      "Documentation for the radio group state service API.",
+      "### Variables",
+      "### Methods",
+      "# Types and interfaces",
+      "# Accessibility This RadioGroup set of directives is designed in accordance with the WAI-ARIA Authoring Practices Guide. For more details on accessibility features and guidelines, please refer to the WAI-ARIA Radio Group Practices. This ensures our...",
+      "## Keyboard Navigation"
+    ],
+    "tags": [
+      "Directives"
+    ],
+    "createdAt": "2025-04-27T19:34:42.760Z",
+    "updatedAt": "2025-04-27T19:34:42.760Z"
+  },
+  {
+    "title": "Radio Group",
+    "url": "/radio-group#input-props",
+    "sectionTitle": "root Properties",
+    "content": [
+      "value: The selected value of the radio group. (—)",
+      "disabled: Whether or not the radio group is disabled. (false)",
+      "required: When true, makes the radio group required before submitting. (false)",
+      "name: The name of the group. If it isn\\ (—)",
+      "orientation: The orientation of the radio group. (vertical)",
+      "loop: When true, keyboard navigation will continue navigating. (true)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "root"
+    ],
+    "createdAt": "2025-04-27T19:34:42.760Z",
+    "updatedAt": "2025-04-27T19:34:42.760Z"
+  },
+  {
+    "title": "Radio Group",
+    "url": "/radio-group#input-props",
+    "sectionTitle": "item Properties",
+    "content": [
+      "value*: The value of the radio item. (—)",
+      "disabled: Whether or not the radio item is disabled. (false)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "item"
+    ],
+    "createdAt": "2025-04-27T19:34:42.760Z",
+    "updatedAt": "2025-04-27T19:34:42.760Z"
+  },
+  {
+    "title": "Radio Group",
+    "url": "/radio-group#input-props",
+    "sectionTitle": "input Properties",
+    "content": [
+      "value*: The value associated to the radio item. (—)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "input"
+    ],
+    "createdAt": "2025-04-27T19:34:42.760Z",
+    "updatedAt": "2025-04-27T19:34:42.760Z"
+  },
+  {
+    "title": "Radio Group",
+    "url": "/radio-group#features",
+    "sectionTitle": "Features",
+    "content": [
+      "Full keyboard navigation.",
+      "Can be controlled or uncontrolled"
+    ],
+    "tags": [
+      "Directives",
+      "Features"
+    ],
+    "createdAt": "2025-04-27T19:34:42.760Z",
+    "updatedAt": "2025-04-27T19:34:42.760Z"
+  },
+  {
+    "title": "Select",
+    "url": "/selecta",
+    "sectionTitle": "Select",
+    "content": [
+      "Select directive toolkit that offers a seamless and accessible solution for creating custom select/dropdown components.",
+      "## Installation Add and import the module into your imports section.",
+      "# Anatomy Directive's set structure.",
+      "# Input props",
+      "## SelectRoot The root directive that contains the select component parts. Handles the state and bindings. It uses the keyboard navigation directive under the hood, extending its inputs to this directive.",
+      "<div class=\"mt-4\"> </div>",
+      "<div class=\"mt-4\"> </div>",
+      "## SelectTrigger A directive that acts as the trigger button for opening the select dropdown.",
+      "## SelectValue Directive that displays the selected value(s) or placeholder.",
+      "## SelectContent The dropdown content container that holds the select options.",
+      "<div class=\"mt-4\"> </div>",
+      "<div class=\"mt-4\"> </div>",
+      "## SelectItem Each individual option in the select dropdown.",
+      "<div class=\"mt-4\"> </div>",
+      "<div class=\"mt-4\"> </div>",
+      "## SelectGroup Groups related select options.",
+      "## SelectItemIndicator Content inside this directive is rendered only when the item is selected.",
+      "## SelectVisibility Controls the content visibility based on the select's open state.",
+      "## SelectViewport Container for scrollable content in the dropdown.",
+      "## SelectGroupLabel Label for option groups.",
+      "## SelectItemText Text content for select items.",
+      "## SelectSeparator A visual separator between items or groups.",
+      "# State",
+      "SelectStateService allows to access the select component properties.",
+      "## Access directive API with exportAS",
+      "We can access the state of the select using a template variable. All the directives expose themselves with the same name. We have access to the directive's attributes and also the state service.",
+      "### Example We could use it with any other directive. For example with #select=\"vacSelectRoot\" and access the state.",
+      "## State API - SelectStateService",
+      "Documentation for the select state service API.",
+      "### Variables",
+      "### Methods",
+      "# Types and interfaces",
+      "# Accessibility This Select set of directives is designed in accordance with the WAI-ARIA Authoring Practices Guide. For more details on accessibility features and guidelines, please refer to the WAI-ARIA Combobox Practices. This ensures our...",
+      "## Keyboard Navigation"
+    ],
+    "tags": [
+      "Directives"
+    ],
+    "createdAt": "2025-04-27T19:34:42.760Z",
+    "updatedAt": "2025-04-27T19:34:42.760Z"
+  },
+  {
+    "title": "Select",
+    "url": "/selecta#input-props",
+    "sectionTitle": "root Properties",
+    "content": [
+      "value: The selected value(s) of the select component. (null)",
+      "open: Whether the select dropdown is open. (false)",
+      "disabled: Whether or not the select is disabled. (false)",
+      "required: When true, makes the select required before submitting. (false)",
+      "multiple: When true, allows multiple selections. (false)",
+      "name: The name of the hidden select element for form submission. (null)",
+      "compareWith: A function to compare values. Useful when using complex objects as values. ((o1, o2) => o1 === o2)",
+      "onEscapeKeyDown: Event handler for Escape key press. (—)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "root"
+    ],
+    "createdAt": "2025-04-27T19:34:42.760Z",
+    "updatedAt": "2025-04-27T19:34:42.760Z"
+  },
+  {
+    "title": "Select",
+    "url": "/selecta#input-props",
+    "sectionTitle": "content Properties",
+    "content": [
+      "position: The position of the dropdown relative to the trigger. (bottom)",
+      "positionOffset: Offset distance for the position. (0)",
+      "align: The alignment of the dropdown. (center)",
+      "alignOffset: Offset distance for the alignment. (0)",
+      "avoidCollisions: Whether to avoid collisions with the viewport edges. (true)",
+      "collisionPadding: Padding between dropdown and viewport edges when avoiding collisions. (10)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "content"
+    ],
+    "createdAt": "2025-04-27T19:34:42.760Z",
+    "updatedAt": "2025-04-27T19:34:42.760Z"
+  },
+  {
+    "title": "Select",
+    "url": "/selecta#input-props",
+    "sectionTitle": "value Properties",
+    "content": [
+      "placeholder: Placeholder text when no option is selected. (no default)",
+      "displayWith: A function to transform how the value is displayed. (null)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "value"
+    ],
+    "createdAt": "2025-04-27T19:34:42.760Z",
+    "updatedAt": "2025-04-27T19:34:42.760Z"
+  },
+  {
+    "title": "Select",
+    "url": "/selecta#input-props",
+    "sectionTitle": "item Properties",
+    "content": [
+      "value*: The value of the select item. (—)",
+      "disabled: Whether or not the select item is disabled. (false)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "item"
+    ],
+    "createdAt": "2025-04-27T19:34:42.760Z",
+    "updatedAt": "2025-04-27T19:34:42.760Z"
+  },
+  {
+    "title": "Select",
+    "url": "/selecta#features",
+    "sectionTitle": "Features",
+    "content": [
+      "Full keyboard navigation and type-to-select.",
+      "Support for nested option groups.",
+      "Single and multiple selection modes.",
+      "Customizable positioning and alignment.",
+      "Fully accessible and ARIA compliant.",
+      "Form integration with hidden native select."
+    ],
+    "tags": [
+      "Directives",
+      "Features"
+    ],
+    "createdAt": "2025-04-27T19:34:42.760Z",
+    "updatedAt": "2025-04-27T19:34:42.760Z"
+  },
+  {
+    "title": "Separator",
+    "url": "/separator",
+    "sectionTitle": "Separator",
+    "content": [
+      "Separator directive that offers a seamless and accessible solution for building separators.",
+      "## Installation Add and import the module into your imports section.",
+      "# Anatomy Directive's set structure.",
+      "# Input props",
+      "## SeparatorRoot Creates the separator.",
+      "<div class=\"mt-4\"> </div>",
+      "# Accessibility The separator directive is designed in accordance with the WAI-ARIA Authoring Practices Guide. For more details on accessibility features and guidelines, please refer to the WAI-ARIA Separator Practices. This ensures our component..."
+    ],
+    "tags": [
+      "Directives"
+    ],
+    "createdAt": "2025-04-27T19:34:42.760Z",
+    "updatedAt": "2025-04-27T19:34:42.760Z"
+  },
+  {
+    "title": "Separator",
+    "url": "/separator#input-props",
+    "sectionTitle": "root Properties",
+    "content": [
+      "orientation: Separator orientation (horizontal)",
+      "decorative: Remove an element\\ (false)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "root"
+    ],
+    "createdAt": "2025-04-27T19:34:42.760Z",
+    "updatedAt": "2025-04-27T19:34:42.760Z"
+  },
+  {
+    "title": "Separator",
+    "url": "/separator#features",
+    "sectionTitle": "Features",
+    "content": [
+      "Support decorative separators",
+      "Supports horizontal and vertical orientation"
+    ],
+    "tags": [
+      "Directives",
+      "Features"
+    ],
+    "createdAt": "2025-04-27T19:34:42.760Z",
+    "updatedAt": "2025-04-27T19:34:42.760Z"
+  },
+  {
+    "title": "Slider",
+    "url": "/slider",
+    "sectionTitle": "Slider",
+    "content": [
+      "Set of directives to build an accessible slider component with support for multiple thumbs, keyboard navigation, and various customization options.",
+      "## Features",
+      "- Supports multiple thumbs - Keyboard navigation - Vertical and horizontal orientations - Customizable step size - Minimum distance between thumbs - Inverted values option - Accessible WAI-ARIA compliant",
+      "## Installation Add and import the module into your imports section.",
+      "## Anatomy Directive's set structure.",
+      "## Input props",
+      "### SliderRoot The root directive to build a slider. Handles the state and event bindings.",
+      "### Output events",
+      "<div class=\"mt-4\"> </div>",
+      "### SliderTrack Defines the track element where the thumb(s) slide.",
+      "### SliderRange Represents the filled part of the track between the minimum value and the thumb, or between two thumbs.",
+      "### SliderThumb The draggable thumb to change the slider value. Multiple thumbs are supported.",
+      "### SliderInput A hidden input that syncs with the slider value for form submissions.",
+      "## Examples",
+      "### Range Slider (Multiple Thumbs)",
+      "### Vertical Slider",
+      "## Keyboard Navigation",
+      "## State",
+      "SliderStateService allows to control the inputs and get the slider state.",
+      "### Access directive API with exportAS",
+      "We can access the state of the slider using a template variable. All the directives expose themselves with the same name. We have access to the directive's attributes and also the state service.",
+      "### State API - SliderStateService",
+      "Documentation for the slider state service API.",
+      "## Accessibility",
+      "The slider is built with accessibility in mind and follows WAI-ARIA patterns:",
+      "- Each thumb has the appropriate ARIA attributes (aria-valuemin, aria-valuemax, aria-valuenow, aria-orientation) - Keyboard navigation supports all standard interactions - Focus management is handled properly between thumbs - Screen reader..."
+    ],
+    "tags": [
+      "Directives"
+    ],
+    "createdAt": "2025-04-27T19:34:42.761Z",
+    "updatedAt": "2025-04-27T19:34:42.761Z"
+  },
+  {
+    "title": "Slider",
+    "url": "/slider#input-props",
+    "sectionTitle": "root Properties",
+    "content": [
+      "min: Minimum value the slider can have (0)",
+      "max: Maximum value the slider can have (100)",
+      "step: Step increment for value changes (1)",
+      "orientation: Orientation of the slider (horizontal)",
+      "disabled: Whether the slider is disabled (false)",
+      "bigStepFactor: Multiplier for step when using keyboard navigation with shift key (10)",
+      "name: Name for the hidden input field (random-id)",
+      "minStepsBetweenThumbs: Minimum number of steps between multiple thumbs (0)",
+      "value: Values for the slider thumbs ([])",
+      "inverted: Whether the slider values are inverted (false)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "root"
+    ],
+    "createdAt": "2025-04-27T19:34:42.761Z",
+    "updatedAt": "2025-04-27T19:34:42.761Z"
+  },
+  {
+    "title": "Slider",
+    "url": "/slider#input-props",
+    "sectionTitle": "root Properties",
+    "content": [
+      "valueChange: Emitted when the slider value changes (no default)",
+      "valueCommit: Emitted when the user finishes interacting with the slider (no default)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "root"
+    ],
+    "createdAt": "2025-04-27T19:34:42.761Z",
+    "updatedAt": "2025-04-27T19:34:42.761Z"
+  },
+  {
+    "title": "Switch",
+    "url": "/switch",
+    "sectionTitle": "Switch",
+    "content": [
+      "Switch directive toolkit that offers a seamless and accessible solution for creating toggle switches.",
+      "## Installation Add and import the module into your imports section.",
+      "# Anatomy Directive's set structure.",
+      "# Input props",
+      "## SwitchRoot The root directive that contains the switch components. Handles the state and bindings.",
+      "<div class=\"mt-4\"> </div>",
+      "## SwitchThumb The visual indicator that shows the current state of the switch.",
+      "## SwitchInput A directive that creates a hidden input for form integration. It should be used with an ng-template containing an input element.",
+      "# Access directive API with exportAS",
+      "We can access the state of the switch using a template variable. All the directives expose themselves with the same name. We have access to the directive's attributes and state.",
+      "### Example Using the template variable to display the current state of the switch.",
+      "# Accessibility This Switch set of directives is designed in accordance with the WAI-ARIA Authoring Practices Guide. This ensures our component meets modern accessibility standards, providing an inclusive user experience.",
+      "## Keyboard Navigation"
+    ],
+    "tags": [
+      "Directives"
+    ],
+    "createdAt": "2025-04-27T19:34:42.761Z",
+    "updatedAt": "2025-04-27T19:34:42.761Z"
+  },
+  {
+    "title": "Switch",
+    "url": "/switch#input-props",
+    "sectionTitle": "root Properties",
+    "content": [
+      "checked: The checked state of the switch. Use two-way binding with [(checked)]. (false)",
+      "disabled: Whether or not the switch is disabled. (false)",
+      "required: Whether or not the switch is required. (false)",
+      "name: The name of the switch. If not provided, a random ID is generated. (random-id)",
+      "value: The value of the switch when it is checked. (on)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "root"
+    ],
+    "createdAt": "2025-04-27T19:34:42.761Z",
+    "updatedAt": "2025-04-27T19:34:42.761Z"
+  },
+  {
+    "title": "Switch",
+    "url": "/switch#features",
+    "sectionTitle": "Features",
+    "content": [
+      "Keyboard accessible",
+      "Full ARIA support",
+      "Can be controlled or uncontrolled",
+      "Support for forms with hidden input"
+    ],
+    "tags": [
+      "Directives",
+      "Features"
+    ],
+    "createdAt": "2025-04-27T19:34:42.761Z",
+    "updatedAt": "2025-04-27T19:34:42.761Z"
+  },
+  {
+    "title": "Tabs",
+    "url": "/tabs",
+    "sectionTitle": "Tabs",
+    "content": [
+      "Tabs directive toolkit that offers a seamless and accessible solution for creating tab interfaces.",
+      "## Installation Add and import the module into your imports section.",
+      "# Anatomy Directive's set structure.",
+      "# Input props",
+      "## TabsRoot The root directive that contains the tabs list and content. Handles the state and bindings.",
+      "<div class=\"mt-4\"> </div>",
+      "<div class=\"mt-4\"> </div>",
+      "## TabsList A container for the tab triggers that handles keyboard navigation and accessibility.",
+      "<div class=\"mt-4\"> </div>",
+      "<div class=\"mt-4\"> </div>",
+      "## TabsTrigger The clickable element that activates its associated content.",
+      "<div class=\"mt-4\"> </div>",
+      "## TabsContent The content panel that displays when its associated trigger is selected.",
+      "<div class=\"mt-4\"> </div>",
+      "# State",
+      "TabsStateService allows to access the tabs properties.",
+      "## Access directive API with exportAS",
+      "We can access the state of the tabs using a template variable. All the directives expose themself with the same name. We have access to the directive's attributes and also the state service.",
+      "### Example We could use it with any other directive. For example with #tabs=\"vacTabsRoot\" and access the state.",
+      "## State API - TabsStateService",
+      "Documentation for the tabs state service API.",
+      "### Variables",
+      "### Methods",
+      "# Types and interfaces",
+      "# Accessibility This Tabs set of directives is designed in accordance with the WAI-ARIA Authoring Practices Guide. For more details on accessibility features and guidelines, please refer to the WAI-ARIA Tabs Practices. This ensures our component...",
+      "## Keyboard Navigation"
+    ],
+    "tags": [
+      "Directives"
+    ],
+    "createdAt": "2025-04-27T19:34:42.761Z",
+    "updatedAt": "2025-04-27T19:34:42.761Z"
+  },
+  {
+    "title": "Tabs",
+    "url": "/tabs#input-props",
+    "sectionTitle": "root Properties",
+    "content": [
+      "value: The selected value of the tabs. (null)",
+      "orientation: The orientation of the tabs component. (horizontal)",
+      "automatic: When true, tab selection happens automatically on focus. (true)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "root"
+    ],
+    "createdAt": "2025-04-27T19:34:42.761Z",
+    "updatedAt": "2025-04-27T19:34:42.761Z"
+  },
+  {
+    "title": "Tabs",
+    "url": "/tabs#input-props",
+    "sectionTitle": "list Properties",
+    "content": [
+      "loop: When true, keyboard navigation will loop through the tabs. (true)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "list"
+    ],
+    "createdAt": "2025-04-27T19:34:42.761Z",
+    "updatedAt": "2025-04-27T19:34:42.761Z"
+  },
+  {
+    "title": "Tabs",
+    "url": "/tabs#input-props",
+    "sectionTitle": "trigger Properties",
+    "content": [
+      "value*: The value of the tab trigger. (—)",
+      "disabled: Whether or not the tab trigger is disabled. (false)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "trigger"
+    ],
+    "createdAt": "2025-04-27T19:34:42.761Z",
+    "updatedAt": "2025-04-27T19:34:42.761Z"
+  },
+  {
+    "title": "Tabs",
+    "url": "/tabs#input-props",
+    "sectionTitle": "content Properties",
+    "content": [
+      "value*: The value of the tab content, must match a tab trigger value. (—)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "content"
+    ],
+    "createdAt": "2025-04-27T19:34:42.761Z",
+    "updatedAt": "2025-04-27T19:34:42.761Z"
+  },
+  {
+    "title": "Tabs",
+    "url": "/tabs#features",
+    "sectionTitle": "Features",
+    "content": [
+      "Full keyboard navigation.",
+      "Vertical and horizontal orientation.",
+      "Can be controlled or uncontrolled.",
+      "Automatic or manual activation."
+    ],
+    "tags": [
+      "Directives",
+      "Features"
+    ],
+    "createdAt": "2025-04-27T19:34:42.761Z",
+    "updatedAt": "2025-04-27T19:34:42.761Z"
+  },
+  {
+    "title": "Tabs",
+    "url": "/tabs#types-and-interfaces",
+    "sectionTitle": "Types and Interfaces",
+    "content": [
+      "Orientation: 'vertical' | 'horizontal'",
+      "Direction: 'ltr' | 'rtl'",
+      "ActivationMode: 'automatic' | 'manual'",
+      "ActivationState: 'active' | 'inactive'",
+      "Tab: interface"
+    ],
+    "tags": [
+      "Directives",
+      "Types"
+    ],
+    "createdAt": "2025-04-27T19:34:42.761Z",
+    "updatedAt": "2025-04-27T19:34:42.761Z"
+  },
+  {
+    "title": "Toggle Group",
+    "url": "/toggle-group",
+    "sectionTitle": "Toggle Group",
+    "content": [
+      "Toggle group directive toolkit that offers a seamless and accessible solution for creating toggle groups with single or multiple selection.",
+      "## Installation Add and import the module into your imports section.",
+      "# Anatomy Directive's set structure.",
+      "# Input props",
+      "## ToggleGroupRoot The root directive that contains the toggle items. Handles the state and bindings.",
+      "<div class=\"mt-4\"> </div>",
+      "<div class=\"mt-4\"> </div>",
+      "## ToggleGroupItem A directive to bind the state and the accessibility rules to the toggle element.",
+      "<div class=\"mt-4\"> </div>",
+      "<div class=\"mt-4\"> </div>",
+      "<div class=\"mt-4\"> </div>",
+      "# State",
+      "ToggleGroupStateService allows to access the toggle group properties.",
+      "## Access directive API with exportAS",
+      "We can access the state of the toggle group using a template variable. All the directives expose themselves with the same name. We have access to the directive's attributes and also the state service.",
+      "### Example We could use it with any other directive. For example with #root=\"vacToggleGroupRoot\" and access the state.",
+      "## State API - ToggleGroupStateService",
+      "Documentation for the toggle group state service API.",
+      "### Variables",
+      "### Item Methods",
+      "# Features <ul> @for (feature of features; track feature) { {{ feature }} } </ul>",
+      "# Accessibility This Toggle Group set of directives is designed in accordance with the WAI-ARIA Authoring Practices Guide. For more details on accessibility features and guidelines, please refer to the WAI-ARIA Toggle Button Practices. This ensures...",
+      "## Keyboard Navigation"
+    ],
+    "tags": [
+      "Directives"
+    ],
+    "createdAt": "2025-04-27T19:34:42.761Z",
+    "updatedAt": "2025-04-27T19:34:42.761Z"
+  },
+  {
+    "title": "Toggle Group",
+    "url": "/toggle-group#input-props",
+    "sectionTitle": "root Properties",
+    "content": [
+      "type: The type of selection for the toggle group. (single)",
+      "disabled: Whether or not the toggle group is disabled. (false)",
+      "orientation: The orientation of the toggle group. (horizontal)",
+      "rovingFocus: When true, enables roving focus behavior. (true)",
+      "loop: When true, keyboard navigation will loop back to the start/end. (false)",
+      "value: The value(s) of the toggle group. (null)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "root"
+    ],
+    "createdAt": "2025-04-27T19:34:42.761Z",
+    "updatedAt": "2025-04-27T19:34:42.761Z"
+  },
+  {
+    "title": "Toggle Group",
+    "url": "/toggle-group#input-props",
+    "sectionTitle": "item Properties",
+    "content": [
+      "value*: The value of the toggle item. (—)",
+      "disabled: Whether or not the toggle item is disabled. (false)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "item"
+    ],
+    "createdAt": "2025-04-27T19:34:42.761Z",
+    "updatedAt": "2025-04-27T19:34:42.761Z"
+  },
+  {
+    "title": "Toggle Group",
+    "url": "/toggle-group#features",
+    "sectionTitle": "Features",
+    "content": [
+      "Full keyboard navigation.",
+      "Supports both single and multiple selection modes.",
+      "Provides roving focus capabilities.",
+      "Can be controlled or uncontrolled"
+    ],
+    "tags": [
+      "Directives",
+      "Features"
+    ],
+    "createdAt": "2025-04-27T19:34:42.761Z",
+    "updatedAt": "2025-04-27T19:34:42.761Z"
+  },
+  {
+    "title": "Toggle",
+    "url": "/toggle",
+    "sectionTitle": "Toggle",
+    "content": [
+      "Toggle directive that offers a simple and accessible solution for creating toggle buttons.",
+      "## Installation Add and import the module into your imports section.",
+      "# Anatomy Directive's structure.",
+      "# Input props",
+      "## ToggleRoot The main directive that manages the toggle state and behavior.",
+      "<div class=\"mt-4\"> </div>",
+      "# Access directive API with exportAS",
+      "We can access the state of the toggle using a template variable.",
+      "### Example Using the template variable to display the current state of the toggle.",
+      "# Accessibility This Toggle directive is designed in accordance with the WAI-ARIA Authoring Practices Guide for toggle buttons. This ensures our component meets modern accessibility standards, providing an inclusive user experience.",
+      "## Keyboard Navigation"
+    ],
+    "tags": [
+      "Directives"
+    ],
+    "createdAt": "2025-04-27T19:34:42.761Z",
+    "updatedAt": "2025-04-27T19:34:42.761Z"
+  },
+  {
+    "title": "Toggle",
+    "url": "/toggle#input-props",
+    "sectionTitle": "root Properties",
+    "content": [
+      "pressed: The pressed state of the toggle. Use two-way binding with [(pressed)]. (null)",
+      "disabled: Whether or not the toggle is disabled. (false)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "root"
+    ],
+    "createdAt": "2025-04-27T19:34:42.761Z",
+    "updatedAt": "2025-04-27T19:34:42.761Z"
+  },
+  {
+    "title": "Toggle",
+    "url": "/toggle#features",
+    "sectionTitle": "Features",
+    "content": [
+      "Keyboard accessible",
+      "Full ARIA support",
+      "Can be controlled or uncontrolled",
+      "Simple single-directive implementation"
+    ],
+    "tags": [
+      "Directives",
+      "Features"
+    ],
+    "createdAt": "2025-04-27T19:34:42.761Z",
+    "updatedAt": "2025-04-27T19:34:42.761Z"
+  },
+  {
+    "title": "Tooltip",
+    "url": "/tooltip",
+    "sectionTitle": "Tooltip",
+    "content": [
+      "Tooltip directive toolkit that offers a seamless and accessible solution for creating tooltips with customizable positioning and appearance.",
+      "## Installation Add and import the module into your imports section.",
+      "# Anatomy Directive's set structure.",
+      "# Input props",
+      "## TooltipRoot The root directive that contains the tooltip trigger and content. Manages the tooltip state.",
+      "## TooltipTrigger The directive that marks an element as the tooltip trigger. The tooltip will be shown when hovering over this element.",
+      "<div class=\"mt-4\"> </div>",
+      "## TooltipContent The directive that defines the content of the tooltip. It is applied to an ng-template.",
+      "<div class=\"mt-4\"> </div>",
+      "<div class=\"mt-4\"> </div>",
+      "<div class=\"mt-4\"> </div>",
+      "## TooltipArrow Optional directive to add an arrow to the tooltip that points toward the trigger element.",
+      "<div class=\"mt-4\"> </div>",
+      "# State",
+      "TooltipService allows to access the tooltip properties.",
+      "## Access directive API with exportAS",
+      "We can access the state of the tooltip using a template variable. All the directives expose themselves with the same name. We have access to the directive's attributes and also the state service.",
+      "### Example We could use it with any other directive. For example with #root=\"vacTooltipRoot\" and access the state.",
+      "## State API - TooltipService",
+      "Documentation for the tooltip state service API.",
+      "### Variables",
+      "# Types and interfaces",
+      "# Features <ul> @for (feature of features; track feature) { {{ feature }} } </ul>",
+      "# Accessibility This Tooltip set of directives is designed in accordance with the WAI-ARIA Authoring Practices Guide. The tooltip trigger is properly connected to the tooltip content using aria-describedby, and the tooltip content has the..."
+    ],
+    "tags": [
+      "Directives"
+    ],
+    "createdAt": "2025-04-27T19:34:42.762Z",
+    "updatedAt": "2025-04-27T19:34:42.762Z"
+  },
+  {
+    "title": "Tooltip",
+    "url": "/tooltip#input-props",
+    "sectionTitle": "root Properties",
+    "content": [
+      "open: Controls the open state of the tooltip. (false)",
+      "openDelay: Delay in milliseconds before the tooltip appears. (0)",
+      "closeDelay: Delay in milliseconds before the tooltip disappears. (0)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "root"
+    ],
+    "createdAt": "2025-04-27T19:34:42.762Z",
+    "updatedAt": "2025-04-27T19:34:42.762Z"
+  },
+  {
+    "title": "Tooltip",
+    "url": "/tooltip#input-props",
+    "sectionTitle": "content Properties",
+    "content": [
+      "position: The preferred position of the tooltip relative to the trigger. (top)",
+      "avoidCollisions: Whether the tooltip should flip its position when it would collide with the viewport boundaries. (true)",
+      "collisionPadding: Padding between the tooltip and the viewport edges when avoiding collisions. (0)",
+      "align: Alignment of the tooltip relative to the trigger element. (center)",
+      "alignOffset: Offset in pixels for the tooltip alignment. (0)",
+      "sticky: Controls the behavior when repositioning the tooltip to avoid collisions. (no default)",
+      "sideOffset: Offset in pixels between the tooltip and the trigger element. (0)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "content"
+    ],
+    "createdAt": "2025-04-27T19:34:42.762Z",
+    "updatedAt": "2025-04-27T19:34:42.762Z"
+  },
+  {
+    "title": "Tooltip",
+    "url": "/tooltip#input-props",
+    "sectionTitle": "arrow Properties",
+    "content": [
+      "arrowSize: Size of the arrow in pixels. Can be a single number for square arrows or an object for custom dimensions. (8)"
+    ],
+    "tags": [
+      "Directives",
+      "Props",
+      "arrow"
+    ],
+    "createdAt": "2025-04-27T19:34:42.762Z",
+    "updatedAt": "2025-04-27T19:34:42.762Z"
+  },
+  {
+    "title": "Tooltip",
+    "url": "/tooltip#features",
+    "sectionTitle": "Features",
+    "content": [
+      "Customizable positions and alignments",
+      "Smart collision detection and avoidance",
+      "Optional arrow with customizable size",
+      "Configurable open and close delays",
+      "Mouse hover tracking across tooltip and trigger",
+      "Proper ARIA attributes for accessibility"
+    ],
+    "tags": [
+      "Directives",
+      "Features"
+    ],
+    "createdAt": "2025-04-27T19:34:42.762Z",
+    "updatedAt": "2025-04-27T19:34:42.762Z"
+  },
+  {
+    "title": "Tooltip",
+    "url": "/tooltip#types-and-interfaces",
+    "sectionTitle": "Types and Interfaces",
+    "content": [
+      "TooltipPosition: 'top' | 'right' | 'bottom' | 'left'",
+      "TooltipListener: interface"
+    ],
+    "tags": [
+      "Directives",
+      "Types"
+    ],
+    "createdAt": "2025-04-27T19:34:42.762Z",
+    "updatedAt": "2025-04-27T19:34:42.762Z"
+  }
+]

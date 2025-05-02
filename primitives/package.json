@@ -1,0 +1,28 @@
+{
+  "name": "@vacui-kit/primitives",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^17.3.0 || ^18.0.0 || ^19.0.0",
+    "@angular/core": "^17.3.0 || ^18.0.0 || ^19.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "keywords": [
+    "angular",
+    "typescript",
+    "library",
+    "component",
+    "headless",
+    "primitives",
+    "vacui"
+  ],
+  "sideEffects": false,
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielAlcaraz/vacui-ui"
+  },
+  "homepage": "https://vacui-ui.com"
+}

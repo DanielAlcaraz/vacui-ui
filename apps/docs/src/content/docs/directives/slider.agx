@@ -1,0 +1,276 @@
+---
+title: Slider
+description: Set of Angular directives to build a Slider component using Vacui UI primitives.
+group: Directives
+slug: slider
+---
+
+<script lang="ts">
+import { CodeHighlightComponent } from '../../../app/components/code/code.component' with { analog: 'imports' };
+import { AnatomyComponent } from '../../../app/components/anatomy/anatomy.component' with { analog: 'imports' };
+import { BadgeComponent } from '../../../app/components/badge/badge.component' with { analog: 'imports' };
+import { TableComponent } from '../../../app/components/table/table.component' with { analog: 'imports' };
+import { ExampleComponent } from '../../../app/components/example/example.component' with { analog: 'imports' };
+
+// ------ ANATOMY ------
+const componentStructure = {
+  name: 'vacSliderRoot',
+  children: [
+    { name: 'vacSliderTrack', children: [
+      { name: 'vacSliderRange' },
+      { name: 'vacSliderThumb' }
+    ]},
+    { name: 'vacSliderInput' }
+  ]
+};
+
+// ------ COLUMNS ------
+const columnsInput = [
+  { header: 'Input', field: 'prop' },
+  { header: 'Default', field: 'default' },
+  { header: 'Type', field: 'type' },
+  { header: 'Description', field: 'description', widthFactor: 2 }
+];
+
+const attributesColumns = [
+  { header: 'Attribute', field: 'attribute' },
+  { header: 'Value', field: 'value', widthFactor: 3 },
+];
+
+const stateVarsColumns = [
+  { header: 'Name', field: 'name' },
+  { header: 'Default', field: 'default' },
+  { header: 'Type', field: 'type', widthFactor: 2 },
+  { header: 'Description', field: 'description', widthFactor: 2 }
+];
+
+const keyboardNavColumns = [
+  { header: 'Key', field: 'key' },
+  { header: 'Action', field: 'action', widthFactor: 3 },
+];
+
+// ------ ROWS ------
+const rootInputRows = [
+  { id: 1, prop: 'min', default: '0', type: 'number', description: 'Minimum value the slider can have' },
+  { id: 2, prop: 'max', default: '100', type: 'number', description: 'Maximum value the slider can have' },
+  { id: 3, prop: 'step', default: '1', type: 'number', description: 'Step increment for value changes' },
+  { id: 4, prop: 'orientation', default: 'horizontal', type: '"horizontal" | "vertical"', description: 'Orientation of the slider' },
+  { id: 5, prop: 'disabled', default: 'false', type: 'boolean', description: 'Whether the slider is disabled' },
+  { id: 6, prop: 'bigStepFactor', default: '10', type: 'number', description: 'Multiplier for step when using keyboard navigation with shift key' },
+  { id: 7, prop: 'name', default: 'random-id', type: 'string', description: 'Name for the hidden input field' },
+  { id: 8, prop: 'minStepsBetweenThumbs', default: '0', type: 'number', description: 'Minimum number of steps between multiple thumbs' },
+  { id: 9, prop: 'value', default: '[]', type: 'number[]', description: 'Values for the slider thumbs' },
+  { id: 10, prop: 'inverted', default: 'false', type: 'boolean', description: 'Whether the slider values are inverted' }
+];
+
+const rootOutputRows = [
+  { id: 1, prop: 'valueChange', type: 'EventEmitter<number[]>', description: 'Emitted when the slider value changes' },
+  { id: 2, prop: 'valueCommit', type: 'EventEmitter<number[]>', description: 'Emitted when the user finishes interacting with the slider' }
+];
+
+const rootAttrRows = [
+  { id: 1, attribute: 'data-orientation', value: '"horizontal" | "vertical"' },
+  { id: 2, attribute: 'data-disabled', value: 'boolean' }
+];
+
+const thumbAttrRows = [
+  { id: 1, attribute: 'data-orientation', value: '"horizontal" | "vertical"' },
+  { id: 2, attribute: 'data-disabled', value: 'boolean' },
+  { id: 3, attribute: 'aria-valuemin', value: 'Shows minimum value' },
+  { id: 4, attribute: 'aria-valuemax', value: 'Shows maximum value' },
+  { id: 5, attribute: 'aria-valuenow', value: 'Shows current value' },
+  { id: 6, attribute: 'aria-orientation', value: 'Shows orientation' }
+];
+
+const trackAttrRows = [
+  { id: 1, attribute: 'data-orientation', value: '"horizontal" | "vertical"' },
+  { id: 2, attribute: 'data-disabled', value: 'boolean' }
+];
+
+const rangeAttrRows = [
+  { id: 1, attribute: 'data-orientation', value: '"horizontal" | "vertical"' },
+  { id: 2, attribute: 'data-disabled', value: 'boolean' }
+];
+
+const keyboardNavRows = [
+  { id: 1, key: 'Arrow Left', action: 'Decrease value by step (or by step * bigStepFactor with Shift)' },
+  { id: 2, key: 'Arrow Right', action: 'Increase value by step (or by step * bigStepFactor with Shift)' },
+  { id: 3, key: 'Arrow Up', action: 'Increase value by step (or by step * bigStepFactor with Shift)' },
+  { id: 4, key: 'Arrow Down', action: 'Decrease value by step (or by step * bigStepFactor with Shift)' },
+  { id: 5, key: 'Page Up', action: 'Increase value by step * bigStepFactor' },
+  { id: 6, key: 'Page Down', action: 'Decrease value by step * bigStepFactor' },
+  { id: 7, key: 'Home', action: 'Set value to minimum' },
+  { id: 8, key: 'End', action: 'Set value to maximum' }
+];
+
+const stateRows = [
+  { id: 1, name: 'min', default: '0', type: 'Signal<number>', description: 'Minimum value the slider can have' },
+  { id: 2, name: 'max', default: '100', type: 'Signal<number>', description: 'Maximum value the slider can have' },
+  { id: 3, name: 'step', default: '1', type: 'Signal<number>', description: 'Step increment for value changes' },
+  { id: 4, name: 'orientation', default: 'horizontal', type: 'Signal<"horizontal" | "vertical">', description: 'Orientation of the slider' },
+  { id: 5, name: 'disabled', default: 'false', type: 'Signal<boolean>', description: 'Whether the slider is disabled' },
+  { id: 6, name: 'bigStepFactor', default: '10', type: 'Signal<number>', description: 'Multiplier for step when using keyboard navigation with shift key' },
+  { id: 7, name: 'name', default: 'random-id', type: 'Signal<string>', description: 'Name for the hidden input field' },
+  { id: 8, name: 'minStepsBetweenThumbs', default: '0', type: 'Signal<number>', description: 'Minimum number of steps between multiple thumbs' },
+  { id: 9, name: 'value', default: '[]', type: 'MutableSignal<number[]>', description: 'Values for the slider thumbs' },
+  { id: 10, name: 'inverted', default: 'false', type: 'Signal<boolean>', description: 'Whether the slider values are inverted' },
+  { id: 11, name: 'thumbs', default: '[]', type: 'MutableSignal<Thumb[]>', description: 'Array of thumb elements' },
+  { id: 12, name: 'addThumb', default: '-', type: '(thumb: Thumb) => void', description: 'Method to add a thumb to the slider' }
+];
+
+const demoHighlights = [
+  "SliderPrimitivesModule",
+  "vacSliderRoot",
+  "vacSliderTrack",
+  "vacSliderRange",
+  "vacSliderThumb",
+  "vacSliderInput"
+];
+
+const rangeExample = `
+<div vacSliderRoot [value]="[25, 75]" class="relative w-64 h-10">
+  <div vacSliderTrack class="absolute h-2 top-1/2 -translate-y-1/2 w-full bg-gray-200 rounded-full">
+    <div vacSliderRange class="bg-blue-500 h-full rounded-full"></div>
+    <div vacSliderThumb class="block w-5 h-5 bg-white border border-blue-500 rounded-full shadow"></div>
+    <div vacSliderThumb class="block w-5 h-5 bg-white border border-blue-500 rounded-full shadow"></div>
+  </div>
+  <input vacSliderInput />
+</div>
+`;
+
+const verticalExample = `
+<div 
+  vacSliderRoot
+  [min]="0"
+  [max]="100"
+  [step]="1"
+  orientation="vertical" 
+  class="relative h-64 w-10"
+>
+  <div 
+    vacSliderTrack 
+    class="absolute w-2 left-1/2 -translate-x-1/2 h-full bg-gray-200 rounded-full"
+  >
+    <div 
+      vacSliderRange 
+      class="bg-blue-500 w-full rounded-full"
+    ></div>
+    <div 
+      vacSliderThumb 
+      class="block w-5 h-5 bg-white border border-blue-500 rounded-full shadow"
+    ></div>
+  </div>
+  <input vacSliderInput />
+</div>
+`;
+
+const templateVariableExample = `
+<div vacSliderRoot #root="vacSliderRoot" [value]="[50]">
+  <div vacSliderTrack>
+    <div vacSliderRange></div>
+    <div vacSliderThumb></div>
+  </div>
+  <input vacSliderInput />
+  <div>Current value: {{ root.state.value()[0] }}</div>
+</div>
+`;
+</script>
+
+<template lang="md">
+
+  Set of directives to build an accessible slider component with support for multiple thumbs, keyboard navigation, and various customization options.
+
+  <docs-example name="slider" />
+
+  ## Features
+
+  - Supports multiple thumbs
+  - Keyboard navigation
+  - Vertical and horizontal orientations
+  - Customizable step size
+  - Minimum distance between thumbs
+  - Inverted values option
+  - Accessible WAI-ARIA compliant
+
+  ## Installation
+  Add and import the module into your imports section.
+
+  <docs-code code="import { SliderPrimitivesModule } from '@vacui-kit/primitives/slider';" language="ts" />
+
+  ## Anatomy
+  Directive's set structure.
+
+  <docs-anatomy [node]="componentStructure" />
+
+  ## Input props
+
+  ### SliderRoot <docs-badge text="Attribute Directive" color="purple" />
+  The root directive to build a slider. Handles the state and event bindings.
+
+  <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+
+  ### Output events
+
+  <docs-table [columns]="[{ header: 'Output', field: 'prop' }, { header: 'Type', field: 'type' }, { header: 'Description', field: 'description', widthFactor: 2 }]" [rows]="rootOutputRows" />
+
+  <div class="mt-4">
+    <docs-table [columns]="attributesColumns" [rows]="rootAttrRows" />
+  </div>
+
+  ### SliderTrack <docs-badge text="Attribute Directive" color="purple" />
+  Defines the track element where the thumb(s) slide.
+
+  <docs-table [columns]="attributesColumns" [rows]="trackAttrRows" />
+
+  ### SliderRange <docs-badge text="Attribute Directive" color="purple" />
+  Represents the filled part of the track between the minimum value and the thumb, or between two thumbs.
+
+  <docs-table [columns]="attributesColumns" [rows]="rangeAttrRows" />
+
+  ### SliderThumb <docs-badge text="Attribute Directive" color="purple" />
+  The draggable thumb to change the slider value. Multiple thumbs are supported.
+
+  <docs-table [columns]="attributesColumns" [rows]="thumbAttrRows" />
+
+  ### SliderInput <docs-badge text="Attribute Directive" color="purple" />
+  A hidden input that syncs with the slider value for form submissions.
+
+  ## Examples
+
+  ### Range Slider (Multiple Thumbs)
+
+  <docs-code [code]="rangeExample" language="html" />
+
+  ### Vertical Slider
+
+  <docs-code [code]="verticalExample" language="html" />
+
+  ## Keyboard Navigation
+
+  <docs-table [columns]="keyboardNavColumns" [rows]="keyboardNavRows" />
+
+  ## State
+
+  `SliderStateService` allows to control the inputs and get the slider state.
+
+  ### Access directive API with exportAS
+
+  We can access the state of the slider using a template variable. All the directives expose themselves with the same name. We have access to the directive's attributes and also the `state` service.
+
+  <docs-code [code]="templateVariableExample" language="html" />
+
+  ### State API - SliderStateService
+
+  Documentation for the slider state service API.
+
+  <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />
+
+  ## Accessibility
+
+  The slider is built with accessibility in mind and follows WAI-ARIA patterns:
+
+  - Each thumb has the appropriate ARIA attributes (`aria-valuemin`, `aria-valuemax`, `aria-valuenow`, `aria-orientation`)
+  - Keyboard navigation supports all standard interactions
+  - Focus management is handled properly between thumbs
+  - Screen reader announcements are provided for value changes
+</template>
