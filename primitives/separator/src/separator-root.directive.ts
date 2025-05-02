@@ -1,5 +1,5 @@
 import { Directive, computed, input } from '@angular/core';
-import { hostBinding } from '@vacui-ui/primitives/utils';
+import { hostBinding } from '@vacui-kit/primitives/utils';
 import { SeparatorOrientation } from './separator.model';
 
 @Directive({

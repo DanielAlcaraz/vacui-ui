@@ -165,11 +165,11 @@ const keyboardRows = [
   ## Installation
   Add and import the module into your imports section.
 
-  <docs-code code="import { DialogPrimitivesModule } from '@vacui-ui/primitives/dialog';" language="shell" />
+  <docs-code code="import { DialogPrimitivesModule } from '@vacui-kit/primitives/dialog';" language="shell" />
   
   Or
 
-  <docs-code code="import { DialogRootDirective, DialogCloseDirective, DialogContentDirective, DialogDescriptionDirective, DialogOverlayDirective, DialogTitleDirective, DialogTriggerDirective } from '@vacui-ui/primitives/dialog/index';" language="shell" />
+  <docs-code code="import { DialogRootDirective, DialogCloseDirective, DialogContentDirective, DialogDescriptionDirective, DialogOverlayDirective, DialogTitleDirective, DialogTriggerDirective } from '@vacui-kit/primitives/dialog/index';" language="shell" />
 
   # Anatomy
   Directive's set structure.

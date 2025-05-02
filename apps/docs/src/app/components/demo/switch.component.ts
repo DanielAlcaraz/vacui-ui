@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { SwitchInputDirective, SwitchRootDirective, SwitchThumbDirective } from '@vacui-ui/primitives/switch';
+import { SwitchInputDirective, SwitchRootDirective, SwitchThumbDirective } from '@vacui-kit/primitives/switch';
 
 @Component({
   selector: 'vac-switch',

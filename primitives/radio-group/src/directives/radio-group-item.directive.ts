@@ -11,8 +11,8 @@ import {
   untracked,
 } from '@angular/core';
 import { RadioGroupService } from '../state/radio-group-state.service';
-import { KeyNavigationItemDirective } from '@vacui-ui/primitives/key-navigation';
-import { hostBinding } from '@vacui-ui/primitives/utils';
+import { KeyNavigationItemDirective } from '@vacui-kit/primitives/key-navigation';
+import { hostBinding } from '@vacui-kit/primitives/utils';
 import { RadioGroupRootDirective } from './radio-group-root.directive';
 
 @Directive({

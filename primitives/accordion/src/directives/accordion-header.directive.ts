@@ -1,5 +1,5 @@
 import { Directive, computed, inject, input } from '@angular/core';
-import { hostBinding } from '@vacui-ui/primitives/utils';
+import { hostBinding } from '@vacui-kit/primitives/utils';
 import { AccordionStateService } from '../state/accordion.service';
 import { AccordionItemDirective } from './accordion-item.directive';
 

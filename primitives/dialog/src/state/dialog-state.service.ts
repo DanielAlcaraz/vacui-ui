@@ -1,5 +1,5 @@
 import { Injectable, computed, signal } from '@angular/core';
-import { generateRandomId } from '@vacui-ui/primitives/utils';
+import { generateRandomId } from '@vacui-kit/primitives/utils';
 
 @Injectable()
 export class DialogStateService {

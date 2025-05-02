@@ -1,6 +1,6 @@
 import { Directive, inject } from '@angular/core';
 import { SelectGroupDirective } from './select-group.directive';
-import { hostBinding } from '@vacui-ui/primitives/utils';
+import { hostBinding } from '@vacui-kit/primitives/utils';
 import { SelectStateService } from '../state/select-state.service';
 
 @Directive({

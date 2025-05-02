@@ -1,6 +1,6 @@
 import { Directive, ElementRef, HostListener, OnDestroy, OnInit, computed, inject } from '@angular/core';
-import { KeyNavigationItemDirective } from '@vacui-ui/primitives/key-navigation';
-import { hostBinding } from '@vacui-ui/primitives/utils';
+import { KeyNavigationItemDirective } from '@vacui-kit/primitives/key-navigation';
+import { hostBinding } from '@vacui-kit/primitives/utils';
 import { AccordionStateService } from '../state/accordion.service';
 import { AccordionItemDirective } from './accordion-item.directive';
 import { AccordionRootDirective } from './accordion-root.directive';

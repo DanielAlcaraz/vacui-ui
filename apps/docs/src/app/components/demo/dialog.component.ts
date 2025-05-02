@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { PortalDirective } from '@vacui-ui/primitives/portal';
+import { PortalDirective } from '@vacui-kit/primitives/portal';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import {
   DialogRootDirective,
@@ -9,7 +9,7 @@ import {
   DialogOverlayDirective,
   DialogTitleDirective,
   DialogTriggerDirective,
-} from '@vacui-ui/primitives/dialog';
+} from '@vacui-kit/primitives/dialog';
 
 @Component({
   selector: 'vac-dialog',

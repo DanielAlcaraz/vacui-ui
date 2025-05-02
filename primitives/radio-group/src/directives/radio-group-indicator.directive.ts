@@ -1,5 +1,5 @@
 import { Directive, computed, inject } from '@angular/core';
-import { hostBinding } from '@vacui-ui/primitives/utils';
+import { hostBinding } from '@vacui-kit/primitives/utils';
 import { RadioGroupService } from '../state/radio-group-state.service';
 import { RadioGroupItemDirective } from './radio-group-item.directive';
 

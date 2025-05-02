@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { KeyNavigationRootDirective, KeyNavigationItemDirective } from '@vacui-ui/primitives/key-navigation';
+import { KeyNavigationRootDirective, KeyNavigationItemDirective } from '@vacui-kit/primitives/key-navigation';
 
 @Component({
   selector: 'vac-keyboard',

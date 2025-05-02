@@ -32,7 +32,7 @@ const config: Config = {
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
-    '^@vacui-ui/primitives/(.*)$': '<rootDir>/$1/index.ts',
+    '^@vacui-kit/primitives/(.*)$': '<rootDir>/$1/index.ts',
   },
 
   // A preset that is used as a base for Jest's configuration

@@ -1,5 +1,5 @@
 import { Directive, signal } from '@angular/core';
-import { generateRandomId, hostBinding } from '@vacui-ui/primitives/utils';
+import { generateRandomId, hostBinding } from '@vacui-kit/primitives/utils';
 
 @Directive({
   selector: '[vacSelectGroup]',

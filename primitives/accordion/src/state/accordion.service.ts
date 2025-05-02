@@ -1,6 +1,6 @@
 import { ElementRef, Injectable, computed, signal } from '@angular/core';
 import { AccordionConfig, AccordionItem, AccordionOrientation, AccordionValue } from '../model/accordion.model';
-import { mutable } from '@vacui-ui/primitives/utils';
+import { mutable } from '@vacui-kit/primitives/utils';
 
 @Injectable()
 export class AccordionStateService {

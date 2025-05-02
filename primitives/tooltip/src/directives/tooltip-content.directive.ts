@@ -17,7 +17,7 @@ import {
 import { TooltipService } from '../controller/tooltip.service';
 import { TooltipPosition } from '../model/tooltip.model';
 import { TooltipArrowDirective } from './tooltip-arrow.directive';
-import { createPositioningManager, PositioningOptions } from '@vacui-ui/primitives/utils';
+import { createPositioningManager, PositioningOptions } from '@vacui-kit/primitives/utils';
 
 @Directive({
   selector: '[vacTooltipContent]',

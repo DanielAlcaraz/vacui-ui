@@ -8,7 +8,7 @@ import {
 import { Component, input } from '@angular/core';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { heroMinus, heroPlus } from '@ng-icons/heroicons/outline';
-import { AccordionContentDirective, AccordionHeaderDirective, AccordionItemDirective, AccordionRootDirective, AccordionTriggerDirective } from '@vacui-ui/primitives/accordion';
+import { AccordionContentDirective, AccordionHeaderDirective, AccordionItemDirective, AccordionRootDirective, AccordionTriggerDirective } from '@vacui-kit/primitives/accordion';
 
 interface AccordionItem {
   id: string;

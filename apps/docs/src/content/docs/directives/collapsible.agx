@@ -122,7 +122,7 @@ const keyboardRows = [
   ## Installation
   Add and import the module into your imports section.
 
-  <docs-code code="import { CollapsiblePrimitivesModule } from '@vacui-ui/primitives/collapsible';" language="shell" />
+  <docs-code code="import { CollapsiblePrimitivesModule } from '@vacui-kit/primitives/collapsible';" language="shell" />
 
   # Anatomy
   Directive's set structure.

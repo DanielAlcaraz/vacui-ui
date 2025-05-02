@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { provideIcons } from '@ng-icons/core';
 import { heroChevronUpDown } from '@ng-icons/heroicons/outline';
 import { SelectItemComponent } from './select-item.component';
-import { PortalDirective } from '@vacui-ui/primitives/portal';
+import { PortalDirective } from '@vacui-kit/primitives/portal';
 import {
   SelectCompareWith,
   SelectContentDirective,
@@ -15,7 +15,7 @@ import {
   SelectValueDirective,
   SelectViewportDirective,
   SelectVisibilityDirective,
-} from '@vacui-ui/primitives/select';
+} from '@vacui-kit/primitives/select';
 
 @Component({
   selector: 'vac-select-test',

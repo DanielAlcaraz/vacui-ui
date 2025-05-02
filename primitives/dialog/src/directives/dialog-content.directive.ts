@@ -11,7 +11,7 @@ import {
   signal,
   untracked,
 } from '@angular/core';
-import { FocusTrap, ScrollLockService } from '@vacui-ui/primitives/utils';
+import { FocusTrap, ScrollLockService } from '@vacui-kit/primitives/utils';
 import { DialogStateService } from '../state/dialog-state.service';
 import { DOCUMENT } from '@angular/common';
 

@@ -1,5 +1,5 @@
 import { Directive, inject, input, output } from '@angular/core';
-import { connectSignals, hostBinding } from '@vacui-ui/primitives/utils';
+import { connectSignals, hostBinding } from '@vacui-kit/primitives/utils';
 import { Orientation } from '../models/tabs.model';
 import { TabsStateService } from '../state/tabs-state.service';
 

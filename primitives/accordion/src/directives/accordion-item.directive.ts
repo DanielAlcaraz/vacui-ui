@@ -1,5 +1,5 @@
 import { Directive, OnDestroy, OnInit, computed, effect, inject, input } from '@angular/core';
-import { generateRandomId, hostBinding } from '@vacui-ui/primitives/utils';
+import { generateRandomId, hostBinding } from '@vacui-kit/primitives/utils';
 import { AccordionItem } from '../model/accordion.model';
 import { AccordionStateService } from '../state/accordion.service';
 

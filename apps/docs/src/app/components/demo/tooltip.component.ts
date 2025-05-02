@@ -4,8 +4,8 @@ import {
   TooltipContentDirective,
   TooltipArrowDirective,
   TooltipTriggerDirective,
-} from '@vacui-ui/primitives/tooltip';
-import { PortalDirective } from '@vacui-ui/primitives/portal';
+} from '@vacui-kit/primitives/tooltip';
+import { PortalDirective } from '@vacui-kit/primitives/portal';
 import {
   trigger,
   state,

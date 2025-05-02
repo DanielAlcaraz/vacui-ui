@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { SeparatorRootDirective } from '@vacui-ui/primitives/separator';
+import { SeparatorRootDirective } from '@vacui-kit/primitives/separator';
 
 @Component({
   selector: 'vac-separator',

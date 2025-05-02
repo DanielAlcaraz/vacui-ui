@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, NgZone, ChangeDetectorRef, afterNextRender, computed, signal, OnInit } from '@angular/core';
-import { ProgressRootDirective, ProgressIndicatorDirective } from '@vacui-ui/primitives/progress';
+import { ProgressRootDirective, ProgressIndicatorDirective } from '@vacui-kit/primitives/progress';
 
 @Component({
   selector: 'vac-progress',

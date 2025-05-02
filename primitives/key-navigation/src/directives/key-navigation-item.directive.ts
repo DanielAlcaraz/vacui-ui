@@ -12,7 +12,7 @@ import {
   input,
   model,
 } from '@angular/core';
-import { generateRandomId } from '@vacui-ui/primitives/utils';
+import { generateRandomId } from '@vacui-kit/primitives/utils';
 import { KeyboardNavigationService } from '../state/keyboard-navigation.service';
 
 @Directive({

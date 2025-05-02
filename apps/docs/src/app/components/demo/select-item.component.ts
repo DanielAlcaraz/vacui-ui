@@ -6,7 +6,7 @@ import {
   SelectItemDirective,
   SelectItemIndicatorDirective,
   SelectItemTextDirective,
-} from '@vacui-ui/primitives/select';
+} from '@vacui-kit/primitives/select';
 
 @Component({
   selector: 'vac-select-item',

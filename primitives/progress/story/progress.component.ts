@@ -1,5 +1,5 @@
 import { AfterRenderPhase, ChangeDetectionStrategy, Component, OnDestroy, NgZone, ChangeDetectorRef, afterNextRender, computed, signal } from '@angular/core';
-import { ProgressPrimitivesModule } from '@vacui-ui/primitives/progress';
+import { ProgressPrimitivesModule } from '@vacui-kit/primitives/progress';
 
 @Component({
   selector: 'vacui-ui-progress',

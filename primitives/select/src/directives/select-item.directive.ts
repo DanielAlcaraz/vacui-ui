@@ -10,11 +10,11 @@ import {
   signal,
   untracked,
 } from '@angular/core';
-import { KeyNavigationItemDirective } from '@vacui-ui/primitives/key-navigation';
+import { KeyNavigationItemDirective } from '@vacui-kit/primitives/key-navigation';
 import { SelectStateService } from '../state/select-state.service';
 import { SelectValue } from '../model/select.model';
 import { SelectRootDirective } from './select-root.directive';
-import { generateRandomId, hostBinding } from '@vacui-ui/primitives/utils';
+import { generateRandomId, hostBinding } from '@vacui-kit/primitives/utils';
 
 @Directive({
   selector: '[vacSelectItem]',

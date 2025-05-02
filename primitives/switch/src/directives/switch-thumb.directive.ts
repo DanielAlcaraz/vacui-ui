@@ -1,6 +1,6 @@
 import { Directive, inject } from "@angular/core";
 import { SwitchRootDirective } from "./switch-root.directive";
-import { hostBinding } from "@vacui-ui/primitives/utils";
+import { hostBinding } from "@vacui-kit/primitives/utils";
 
 @Directive({
   selector: '[vacSwitchThumb]',

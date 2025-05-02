@@ -13,7 +13,7 @@ export function viteDirectoryResolver() {
     // This hook runs when Vite tries to resolve an import
     resolveId(source, importer, options) {
       // Only process our primitives imports
-      if (source.startsWith('@vacui-ui/primitives/') && !source.endsWith('/index')) {
+      if (source.startsWith('@vacui-kit/primitives/') && !source.endsWith('/index')) {
         // Make sure we're not already handling an index file and not a file with extension
         if (!source.endsWith('.ts') && !source.endsWith('.js')) {
           // Log what we're doing for debugging
@@ -74,14 +74,14 @@ export default defineConfig(({ mode }) => {
       extensions: ['.ts', '.js', '.json', '.mjs'],
       // Verify our aliases
       alias: {
-        '@vacui-ui/primitives': resolve(__dirname, '../../primitives'),
+        '@vacui-kit/primitives': resolve(__dirname, '../../primitives'),
         tslib: resolve(__dirname, '../../node_modules/tslib/tslib.js'),
       }
     },
 
     ssr: {
       noExternal: [
-        '@vacui-ui/primitives'
+        '@vacui-kit/primitives'
       ],
     },
     
@@ -128,7 +128,7 @@ export default defineConfig(({ mode }) => {
     
     // Help Vite optimize dependencies
     optimizeDeps: {
-      include: ['@vacui-ui/primitives'],
+      include: ['@vacui-kit/primitives'],
       // Force Vite to process these directories
       entries: [
         './src/**/*.ts',

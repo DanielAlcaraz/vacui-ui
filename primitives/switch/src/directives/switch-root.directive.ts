@@ -1,5 +1,5 @@
 import { Directive, ElementRef, HostListener, computed, inject, input, model } from '@angular/core';
-import { generateRandomId, hostBinding } from '@vacui-ui/primitives/utils';
+import { generateRandomId, hostBinding } from '@vacui-kit/primitives/utils';
 
 @Directive({
   selector: '[vacSwitchRoot]',

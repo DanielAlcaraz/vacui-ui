@@ -1,6 +1,6 @@
 import { Directive, inject, input, output } from '@angular/core';
-import { KeyNavigationRootDirective } from '@vacui-ui/primitives/key-navigation';
-import { connectSignals, hostBinding } from '@vacui-ui/primitives/utils';
+import { KeyNavigationRootDirective } from '@vacui-kit/primitives/key-navigation';
+import { connectSignals, hostBinding } from '@vacui-kit/primitives/utils';
 import { AccordionOrientation, AccordionValue } from '../model/accordion.model';
 import { AccordionStateService } from '../state/accordion.service';
 

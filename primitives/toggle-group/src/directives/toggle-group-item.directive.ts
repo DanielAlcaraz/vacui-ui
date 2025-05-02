@@ -12,7 +12,7 @@ import {
   OnInit,
   untracked,
 } from '@angular/core';
-import { hostBinding } from '@vacui-ui/primitives/utils';
+import { hostBinding } from '@vacui-kit/primitives/utils';
 import { ToggleGroupStateService } from '../state/toggle-group-state.service';
 import { ToggleGroupRootDirective } from './toggle-group-root.directive';
 

@@ -1,6 +1,6 @@
 import { Directive, ElementRef, Renderer2, effect, inject, input } from '@angular/core';
 import { ProgressStateService } from '../state/progress-state.service';
-import { connectSignals } from '@vacui-ui/primitives/utils';
+import { connectSignals } from '@vacui-kit/primitives/utils';
 
 @Directive({
   selector: '[vacProgressRoot]',

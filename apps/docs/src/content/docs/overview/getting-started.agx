@@ -9,11 +9,11 @@ slug: getting-started
 import { CodeHighlightComponent } from '../../../app/components/code/code.component' with { analog: 'imports' };
 
 const primitivesModule = `
-  import { CollapsiblePrimitivesModule } from "@vacui-ui/primitives/collapsible";
+  import { CollapsiblePrimitivesModule } from "@vacui-kit/primitives/collapsible";
 `;
 
 const directivesImport = `
-  import { CollapsibleRootDirective, CollapsibleContentDirective, CollapsibleTriggerDirective } from "@vacui-ui/primitives/collapsible";
+  import { CollapsibleRootDirective, CollapsibleContentDirective, CollapsibleTriggerDirective } from "@vacui-kit/primitives/collapsible";
 `;
 
 const code = `
@@ -33,20 +33,20 @@ const code = `
 
 <template lang="md">
 
-  This guide walks you through setting up the `@vacui-ui` library in your Angular project.
+  This guide walks you through setting up the `@vacui-kit` library in your Angular project.
 
   # Install
   ## Prerequisites
   - **Angular** - v17.3.0 or higher.
 
-  <docs-code code="npm i @vacui-ui/primitives" language="shell" />
+  <docs-code code="npm i @vacui-kit/primitives" language="shell" />
 
   # Getting started
   For developers looking to leverage the full suite of the directive functionality with minimal setup, importing the PrimitivesModule of each directive set offers an easy way to get started. Each module includes all necessary directives for creating a component:
 
   <docs-code [code]=primitivesModule language="ts" />
 
-  Each directive in `@vacui-ui/primitives` is designed as standalone. Incorporating the root primitive from each set is essential. The root primitive orchestrates the shared state, seamlessly aligning the functionalities of child directives to ensure cohesive operation within your application.
+  Each directive in `@vacui-kit/primitives` is designed as standalone. Incorporating the root primitive from each set is essential. The root primitive orchestrates the shared state, seamlessly aligning the functionalities of child directives to ensure cohesive operation within your application.
 
   For more granular control, you can choose to import only the specific directives you need.
 

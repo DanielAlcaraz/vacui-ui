@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { generateRandomId, mutable } from '@vacui-ui/primitives/utils';
+import { generateRandomId, mutable } from '@vacui-kit/primitives/utils';
 
 export interface Thumb {
   element: HTMLElement

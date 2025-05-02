@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { heroChevronDown, heroChevronUp } from '@ng-icons/heroicons/outline';
-import { CollapsibleRootDirective, CollapsibleTriggerDirective, CollapsibleContentDirective } from '@vacui-ui/primitives/collapsible';
+import { CollapsibleRootDirective, CollapsibleTriggerDirective, CollapsibleContentDirective } from '@vacui-kit/primitives/collapsible';
 
 @Component({
   selector: 'vac-collapsible',

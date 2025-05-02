@@ -1,6 +1,6 @@
 import { Directive, HostBinding, computed, effect, inject } from '@angular/core';
 import { SliderStateService } from '../state/slider.state.service';
-import { hostBinding } from '@vacui-ui/primitives/utils';
+import { hostBinding } from '@vacui-kit/primitives/utils';
 
 @Directive({
   selector: '[vacSliderRange]',

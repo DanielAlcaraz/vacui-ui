@@ -1,6 +1,6 @@
 import { Injectable, Renderer2, computed, inject, signal } from '@angular/core';
 import { TooltipListener } from '../model/tooltip.model';
-import { generateRandomId } from '@vacui-ui/primitives/utils';
+import { generateRandomId } from '@vacui-kit/primitives/utils';
 
 @Injectable()
 export class TooltipService {

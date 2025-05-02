@@ -8,7 +8,7 @@ import {
   inject,
   input,
 } from '@angular/core';
-import { hostBinding } from '@vacui-ui/primitives/utils';
+import { hostBinding } from '@vacui-kit/primitives/utils';
 import { ActivationState } from '../models/tabs.model';
 import { TabsStateService } from '../state/tabs-state.service';
 

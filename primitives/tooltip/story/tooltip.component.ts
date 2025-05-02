@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { TooltipPosition } from '../src/model/tooltip.model';
 import { TooltipPrimitivesModule } from '../src/tooltip.module';
-import { SliderPrimitivesModule } from '@vacui-ui/primitives/slider';
+import { SliderPrimitivesModule } from '@vacui-kit/primitives/slider';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { PortalDirective } from '@vacui-ui/primitives/portal';
+import { PortalDirective } from '@vacui-kit/primitives/portal';
 
 @Component({
   selector: 'vacui-ui-tooltip',

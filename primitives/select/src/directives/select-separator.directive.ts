@@ -1,5 +1,5 @@
 import { Directive } from '@angular/core';
-import { SeparatorRootDirective } from '@vacui-ui/primitives/separator';
+import { SeparatorRootDirective } from '@vacui-kit/primitives/separator';
 
 @Directive({
   selector: '[vacSelectSeparator]',

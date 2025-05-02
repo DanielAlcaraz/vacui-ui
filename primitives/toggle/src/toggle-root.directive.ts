@@ -1,5 +1,5 @@
 import { Directive, HostListener, computed, input, model } from '@angular/core';
-import { hostBinding } from '@vacui-ui/primitives/utils';
+import { hostBinding } from '@vacui-kit/primitives/utils';
 
 @Directive({
   selector: '[vacToggleRoot]',

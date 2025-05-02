@@ -1,6 +1,6 @@
 import { Directive, inject, input, model, output } from '@angular/core';
-import { KeyboardNavigationService, KeyNavigationRootDirective } from '@vacui-ui/primitives/key-navigation';
-import { connectSignals, hostBinding } from '@vacui-ui/primitives/utils';
+import { KeyboardNavigationService, KeyNavigationRootDirective } from '@vacui-kit/primitives/key-navigation';
+import { connectSignals, hostBinding } from '@vacui-kit/primitives/utils';
 import { RadioGroupService } from '../state/radio-group-state.service';
 
 @Directive({

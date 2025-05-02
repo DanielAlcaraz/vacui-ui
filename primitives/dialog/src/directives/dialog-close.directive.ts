@@ -1,5 +1,5 @@
 import { Directive, HostListener, inject } from '@angular/core';
-import { hostBinding, isSelectionKey } from '@vacui-ui/primitives/utils';
+import { hostBinding, isSelectionKey } from '@vacui-kit/primitives/utils';
 import { DialogStateService } from '../state/dialog-state.service';
 
 @Directive({

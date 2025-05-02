@@ -1,5 +1,5 @@
 import { Directive, ElementRef, HostListener, Renderer2, inject, input } from '@angular/core';
-import { hostBinding } from '@vacui-ui/primitives/utils';
+import { hostBinding } from '@vacui-kit/primitives/utils';
 import { Tab } from '../models/tabs.model';
 import { TabsStateService } from '../state/tabs-state.service';
 

@@ -1,5 +1,5 @@
 import { Directive, inject, input, output } from '@angular/core';
-import { connectSignals, hostBinding } from '@vacui-ui/primitives/utils';
+import { connectSignals, hostBinding } from '@vacui-kit/primitives/utils';
 import { DialogStateService } from '../state/dialog-state.service';
 
 @Directive({

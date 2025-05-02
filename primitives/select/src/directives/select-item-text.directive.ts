@@ -1,5 +1,5 @@
 import { Directive, ElementRef, OnInit, effect, inject } from '@angular/core';
-import { hostBinding } from '@vacui-ui/primitives/utils';
+import { hostBinding } from '@vacui-kit/primitives/utils';
 import { SelectItemDirective } from './select-item.directive';
 
 @Directive({

@@ -13,7 +13,7 @@ import {
   signal,
   untracked,
 } from '@angular/core';
-import { PositioningOptions, createPositioningManager, hostBinding } from '@vacui-ui/primitives/utils';
+import { PositioningOptions, createPositioningManager, hostBinding } from '@vacui-kit/primitives/utils';
 import { SelectStateService } from '../state/select-state.service';
 
 @Directive({

@@ -217,7 +217,7 @@ export interface Item<T> {
   ## Installation
   Add and import the module into your imports section.
 
-  <docs-code code="import { SelectPrimitivesModule } from '@vacui-ui/primitives/select';" language="ts" />
+  <docs-code code="import { SelectPrimitivesModule } from '@vacui-kit/primitives/select';" language="ts" />
 
   # Anatomy
   Directive's set structure.

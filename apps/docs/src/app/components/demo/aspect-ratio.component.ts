@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
 import { NgStyle } from '@angular/common';
-import { AspectRatioRootDirective } from '@vacui-ui/primitives/aspect-ratio';
+import { AspectRatioRootDirective } from '@vacui-kit/primitives/aspect-ratio';
 
 @Component({
   selector: 'vac-aspect-ratio',

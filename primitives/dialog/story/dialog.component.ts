@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DialogPrimitivesModule } from '../src/dialog.module';
-import { PortalDirective } from '@vacui-ui/primitives/portal';
+import { PortalDirective } from '@vacui-kit/primitives/portal';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({

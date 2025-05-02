@@ -79,7 +79,7 @@ const templateVariableExample = `
   ## Installation
   Add and import the module into your imports section.
 
-  <docs-code code="import { TogglePrimitivesModule } from '@vacui-ui/primitives/toggle';" language="ts" />
+  <docs-code code="import { TogglePrimitivesModule } from '@vacui-kit/primitives/toggle';" language="ts" />
 
   # Anatomy
   Directive's structure.

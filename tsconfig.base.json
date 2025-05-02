@@ -15,8 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@vacui-ui/primitives": ["./primitives"],
-      "@vacui-ui/primitives/*": ["./primitives/*", "./primitives/*/index.ts"]
+      "@vacui-kit/primitives": ["./primitives"],
+      "@vacui-kit/primitives/*": ["./primitives/*", "./primitives/*/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

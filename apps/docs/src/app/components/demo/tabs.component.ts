@@ -1,7 +1,7 @@
 import { AnimationBuilder, animate, style } from '@angular/animations';
 import { NgClass } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, Renderer2, viewChild, viewChildren } from '@angular/core';
-import { Orientation, TabsContentDirective, TabsListDirective, TabsRootDirective, TabsTriggerDirective } from '@vacui-ui/primitives/tabs';
+import { Orientation, TabsContentDirective, TabsListDirective, TabsRootDirective, TabsTriggerDirective } from '@vacui-kit/primitives/tabs';
 
 @Component({
   selector: 'vac-tabs',

@@ -47,7 +47,7 @@ const example = `
   ## Installation
   Add and import the module into your imports section.
 
-  <docs-code code="import { AspectRatioPrimitivesModule } from '@vacui-ui/primitives/aspect-ratio';" language="shell" />
+  <docs-code code="import { AspectRatioPrimitivesModule } from '@vacui-kit/primitives/aspect-ratio';" language="shell" />
 
   # Anatomy
   Directive's set structure.

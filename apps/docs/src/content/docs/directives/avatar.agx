@@ -83,7 +83,7 @@ const stateExample = `
   ## Installation
   Add and import the module into your imports section.
 
-  <docs-code code="import { AspectRatioPrimitivesModule } from '@vacui-ui/primitives/avatar';" language="shell" />
+  <docs-code code="import { AspectRatioPrimitivesModule } from '@vacui-kit/primitives/avatar';" language="shell" />
 
   # Anatomy
   Directive's set structure.

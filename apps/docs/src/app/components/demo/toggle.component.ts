@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { ToggleRootDirective } from '@vacui-ui/primitives/toggle';
+import { ToggleRootDirective } from '@vacui-kit/primitives/toggle';
 
 @Component({
   selector: 'vac-toggle',

@@ -127,11 +127,11 @@ const keyboardRows = [
   ## Installation
   Add and import the module into your imports section.
 
-  <docs-code code="import { CheckboxPrimitivesModule } from '@vacui-ui/primitives/checkbox';" language="shell" />
+  <docs-code code="import { CheckboxPrimitivesModule } from '@vacui-kit/primitives/checkbox';" language="shell" />
 
   Or 
 
-  <docs-code code="import { CheckboxRootDirective, CheckboxInputDirective } from '@vacui-ui/primitives/checkbox';" language="shell" />
+  <docs-code code="import { CheckboxRootDirective, CheckboxInputDirective } from '@vacui-kit/primitives/checkbox';" language="shell" />
 
   # Anatomy
   Directive's set structure.

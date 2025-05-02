@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { SliderRootDirective, SliderInputDirective, SliderRangeDirective, SliderThumbDirective, SliderTrackDirective } from '@vacui-ui/primitives/slider';
+import { SliderRootDirective, SliderInputDirective, SliderRangeDirective, SliderThumbDirective, SliderTrackDirective } from '@vacui-kit/primitives/slider';
 
 @Component({
   selector: 'vac-slider',

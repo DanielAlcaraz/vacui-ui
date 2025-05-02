@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { RadioGroupRootDirective, RadioGroupItemDirective, RadioGroupInputDirective, RadioGroupIndicatorDirective } from '@vacui-ui/primitives/radio-group';
+import { RadioGroupRootDirective, RadioGroupItemDirective, RadioGroupInputDirective, RadioGroupIndicatorDirective } from '@vacui-kit/primitives/radio-group';
 
 @Component({
   selector: 'vac-radio-item',

@@ -1,6 +1,6 @@
 import { Directive, inject, effect, Renderer2, ElementRef, input, model, output } from '@angular/core';
 import { CollapsibleStateService } from '../state/collapsible.service';
-import { connectSignals } from '@vacui-ui/primitives/utils';
+import { connectSignals } from '@vacui-kit/primitives/utils';
 
 @Directive({
   selector: '[vacCollapsibleRoot]',

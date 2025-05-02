@@ -1,7 +1,7 @@
 import { PLATFORM_ID } from '@angular/core';
 import { render, screen, waitFor } from '@testing-library/angular';
 import userEvent from '@testing-library/user-event';
-import { PortalDirective } from '@vacui-ui/primitives/portal';
+import { PortalDirective } from '@vacui-kit/primitives/portal';
 import { axe } from 'jest-axe';
 import { SelectCompareWith } from '../model/select.model';
 import { SelectPrimitivesModule } from '../select.module';

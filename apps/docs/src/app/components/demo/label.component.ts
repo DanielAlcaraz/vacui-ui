@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LabelRootDirective } from '@vacui-ui/primitives/label';
+import { LabelRootDirective } from '@vacui-kit/primitives/label';
 
 @Component({
   selector: 'vac-label',

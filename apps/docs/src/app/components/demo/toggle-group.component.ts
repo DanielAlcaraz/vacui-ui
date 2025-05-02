@@ -1,6 +1,6 @@
 import { NgClass } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { ToggleGroupItemDirective, ToggleGroupRootDirective } from '@vacui-ui/primitives/toggle-group';
+import { ToggleGroupItemDirective, ToggleGroupRootDirective } from '@vacui-kit/primitives/toggle-group';
 
 @Component({
   selector: 'vac-toggle-group',

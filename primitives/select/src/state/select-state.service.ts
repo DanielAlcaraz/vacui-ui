@@ -1,5 +1,5 @@
 import { Injectable, computed, signal } from '@angular/core';
-import { generateRandomId, mutable } from '@vacui-ui/primitives/utils';
+import { generateRandomId, mutable } from '@vacui-kit/primitives/utils';
 import { Item, SelectValue } from '../model/select.model';
 
 @Injectable()

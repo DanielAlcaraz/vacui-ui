@@ -1,5 +1,5 @@
 import { Directive, ElementRef, computed, inject } from '@angular/core';
-import { hostBinding } from '@vacui-ui/primitives/utils';
+import { hostBinding } from '@vacui-kit/primitives/utils';
 import { SliderStateService } from '../state/slider.state.service';
 
 @Directive({

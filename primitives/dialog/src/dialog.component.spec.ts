@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { axe } from 'jest-axe';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogPrimitivesModule } from './dialog.module';
-import { PortalDirective } from '@vacui-ui/primitives/portal';
+import { PortalDirective } from '@vacui-kit/primitives/portal';
 import { PLATFORM_ID } from '@angular/core';
 
 interface DirectiveConfig {

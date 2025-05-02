@@ -8,7 +8,7 @@
     "allowImportingTsExtensions": true
   },
   "files": ["src/main.ts", "src/main.server.ts"],
-  "include": ["src", "@vacui-ui/primitives"],
+  "include": ["src", "@vacui-kit/primitives"],
   "entries": ["src", "'../../primitives/**/*.ts'"],
   "exclude": ["**/*.test.ts", "**/*.spec.ts", "../../primitives/**/*spec.ts", "../../primitives/**/*mock.ts"]
 }

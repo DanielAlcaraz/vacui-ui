@@ -1,5 +1,5 @@
 import { AfterViewInit, Directive, ElementRef, Injector, OnInit, Renderer2, effect, inject, untracked } from '@angular/core';
-import { hostBinding } from '@vacui-ui/primitives/utils';
+import { hostBinding } from '@vacui-kit/primitives/utils';
 import { TooltipService } from '../controller/tooltip.service';
 
 @Directive({

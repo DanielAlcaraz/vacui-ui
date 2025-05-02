@@ -3,7 +3,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 import { CommonModule } from '@angular/common';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { heroMinus, heroPlus } from '@ng-icons/heroicons/outline';
-import { AccordionPrimitivesModule } from '@vacui-ui/primitives/accordion';
+import { AccordionPrimitivesModule } from '@vacui-kit/primitives/accordion';
 
 interface AccordionItem {
   id: string;

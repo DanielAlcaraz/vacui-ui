@@ -1,6 +1,6 @@
 import { Directive, ElementRef, Renderer2, computed, effect, inject, input } from '@angular/core';
 import { RadioGroupService } from '../state/radio-group-state.service';
-import { hostBinding } from '@vacui-ui/primitives/utils';
+import { hostBinding } from '@vacui-kit/primitives/utils';
 
 @Directive({
   selector: '[vacRadioGroupInput]',

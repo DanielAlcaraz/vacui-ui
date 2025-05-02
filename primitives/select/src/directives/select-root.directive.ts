@@ -1,6 +1,6 @@
 import { Directive, ElementRef, Injector, OnInit, Renderer2, computed, effect, inject, input, output, untracked } from '@angular/core';
-import { KeyNavigationRootDirective, KeyboardNavigationService } from '@vacui-ui/primitives/key-navigation';
-import { connectSignals, hostBinding } from '@vacui-ui/primitives/utils';
+import { KeyNavigationRootDirective, KeyboardNavigationService } from '@vacui-kit/primitives/key-navigation';
+import { connectSignals, hostBinding } from '@vacui-kit/primitives/utils';
 import { SelectCompareWith, SelectValue } from '../model/select.model';
 import { SelectStateService } from '../state/select-state.service';
 

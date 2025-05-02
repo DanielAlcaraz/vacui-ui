@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AvatarRootDirective, AvatarImageDirective, AvatarFallbackDirective } from '@vacui-ui/primitives/avatar';
+import { AvatarRootDirective, AvatarImageDirective, AvatarFallbackDirective } from '@vacui-kit/primitives/avatar';
 
 @Component({
   selector: 'vac-avatar',

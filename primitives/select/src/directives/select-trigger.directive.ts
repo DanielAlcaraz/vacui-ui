@@ -1,5 +1,5 @@
 import { Directive, ElementRef, HostListener, computed, inject } from '@angular/core';
-import { hostBinding, isNavigationKey, isSelectionKey } from '@vacui-ui/primitives/utils';
+import { hostBinding, isNavigationKey, isSelectionKey } from '@vacui-kit/primitives/utils';
 import { SelectStateService } from '../state/select-state.service';
 import { SelectRootDirective } from './select-root.directive';
 

@@ -1,7 +1,7 @@
 import { Directive, ElementRef, HostListener, computed, inject } from '@angular/core';
 import { SliderStateService } from '../state/slider.state.service';
 import { SliderRootDirective } from './slider-root.directive';
-import { hostBinding } from '@vacui-ui/primitives/utils';
+import { hostBinding } from '@vacui-kit/primitives/utils';
 
 @Directive({
   selector: '[vacSliderThumb]',

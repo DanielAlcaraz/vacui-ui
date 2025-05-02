@@ -233,7 +233,7 @@ A toolkit of Angular directives designed to construct a fully customizable accor
   ## Installation
   Add and import the module into your imports section.
 
-  <docs-code code="import { AccordionPrimitivesModule } from '@vacui-ui/primitives/accordion';" language="shell" />
+  <docs-code code="import { AccordionPrimitivesModule } from '@vacui-kit/primitives/accordion';" language="shell" />
 
   # Anatomy
   Directive's set structure.
