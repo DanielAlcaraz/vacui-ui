@@ -1,13 +1,7 @@
 {
-  "name": "@vacui-ui/source",
+  "name": "@vacui-kit/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {
-    "prepublishOnly": "npm run ci",
-    "changeset": "cd primitives && pnpm exec changeset",
-    "publish-lib": "cd dist/primitives && npm publish --access public",
-    "release": "nx build primitives && pnpm changeset && pnpm publish-lib"
-  },
   "private": true,
   "dependencies": {
     "@analogjs/content": "1.13.1",

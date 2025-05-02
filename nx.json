@@ -81,6 +81,15 @@
     }
   ],
   "release": {
+    "versionPlans": true,
+    "conventionalCommits": {
+      "types": {
+        "docs": false
+      },
+      "chore": {
+          "changelog": false
+        }
+    },
     "version": {
       "generatorOptions": {
         "currentVersionResolver": "git-tag",

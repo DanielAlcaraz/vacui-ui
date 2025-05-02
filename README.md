@@ -3,7 +3,7 @@
 <div align="center">
 
 ![Vacui UI](https://img.shields.io/badge/Vacui%20UI-Headless%20Angular%20UI%20Library-7B42BC?style=for-the-badge)
-[![npm version](https://img.shields.io/npm/v/@vacui-ui/primitives?style=flat-square)](https://www.npmjs.com/package/@vacui-ui/primitives)
+[![npm version](https://img.shields.io/npm/v/@vacui-kit/primitives?style=flat-square)](https://www.npmjs.com/package/@vacui-kit/primitives)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Angular](https://img.shields.io/badge/Angular-17.3.0+-DD0031?style=flat-square&logo=angular)](https://angular.io/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.2+-3178C6?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
@@ -23,7 +23,7 @@
 ## Installation
 
 ```bash
-npm install @vacui-ui/primitives
+npm install @vacui-kit/primitives
 ```
 
 ## Getting Started
@@ -37,7 +37,7 @@ npm install @vacui-ui/primitives
 Import the modules for the primitives you want to use:
 
 ```typescript
-import { CollapsiblePrimitivesModule } from "@vacui-ui/primitives/collapsible";
+import { CollapsiblePrimitivesModule } from "@vacui-kit/primitives/collapsible";
 ```
 
 For more granular control, you can import specific directives:
@@ -47,7 +47,7 @@ import {
   CollapsibleRootDirective, 
   CollapsibleContentDirective, 
   CollapsibleTriggerDirective 
-} from "@vacui-ui/primitives/collapsible";
+} from "@vacui-kit/primitives/collapsible";
 ```
 
 ### Using in Templates
