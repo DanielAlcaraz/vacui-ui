@@ -5,6 +5,7 @@ import { DocPaginationComponent } from '../components/navigation/docs-pagination
 import { DocMenuComponent } from '../components/navigation/left-sidebar-menu/left-sidebar-menu.component';
 import { SlideoverComponent } from '../components/slide-over/slide-over.component';
 import { WarningBannerComponent } from '../components/banner/banner.component';
+import { NavComponent } from '../components/header/nav.component';
 
 @Component({
   standalone: true,
@@ -14,11 +15,17 @@ import { WarningBannerComponent } from '../components/banner/banner.component';
     SlideoverComponent,
     DocPaginationComponent,
     WarningBannerComponent,
+    NavComponent,
   ],
   template: `
     <div class="flex min-h-full flex-col dark:bg-gray-900">
-      <docs-warning-banner />
-      <header class="shrink-0 border-b border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-700">
+      <header
+      class="shrink-0 border-b border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-700"
+      >
+        <docs-warning-banner />
+        <div class="hidden sm:block">
+          <docs-nav />
+        </div>
         <!-- Header content -->
         <div class="block sm:hidden">
           <docs-slideover>
@@ -61,7 +68,7 @@ import { WarningBannerComponent } from '../components/banner/banner.component';
           <docs-navigation [currentUrl]="currentPath()" />
         </main>
         <!-- <aside class="sticky top-8 hidden w-80 shrink-0 xl:block dark:bg-gray-800 dark:text-gray-300"> -->
-          <!-- Document navigation component -->
+        <!-- Document navigation component -->
         <!-- </aside> -->
       </div>
     </div>

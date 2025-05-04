@@ -79,12 +79,6 @@ We welcome contributions! Please read our [contributing guidelines](CONTRIBUTING
 ### Development Setup
 
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/vacui-ui.git
-
-# Navigate to the project
-cd vacui-ui
-
 # Install dependencies
 pnpm install
 
@@ -92,10 +86,10 @@ pnpm install
 pnpm nx serve docs
 
 # Running unit tests
-nx test primitives
+pnpm nx test primitives
 
 # Running storybook
-nx storybook primitive
+pnpm nx storybook primitive
 ```
 
 ## License
