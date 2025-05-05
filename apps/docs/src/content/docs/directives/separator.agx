@@ -59,7 +59,11 @@ const demoHighlights = ["SeparatorPrimitivesModule", "vacSeparatorRoot"];
   ## Installation
   Add and import the module into your imports section.
 
+  ### Modules
   <docs-code code="import { SeparatorPrimitivesModule } from '@vacui-kit/primitives/separator';" language="ts" />
+
+  ### Standalone directives
+  <docs-code code="import { SeparatorRootDirective } from '@vacui-kit/primitives/separator';" language="ts" />
 
   # Anatomy
   Directive's set structure.

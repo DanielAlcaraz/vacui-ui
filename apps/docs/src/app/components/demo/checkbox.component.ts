@@ -1,7 +1,7 @@
 import { Component, input } from '@angular/core';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { heroCheck, heroMinus } from '@ng-icons/heroicons/outline';
-import { CheckboxRootDirective, CheckboxInputDirective } from '@vacui-kit/primitives/checkbox/index';
+import { CheckboxRootDirective, CheckboxInputDirective } from '@vacui-kit/primitives/checkbox';
 
 @Component({
   selector: 'vac-checkbox',

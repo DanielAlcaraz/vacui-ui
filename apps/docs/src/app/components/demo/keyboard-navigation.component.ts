@@ -19,7 +19,6 @@ import { KeyNavigationRootDirective, KeyNavigationItemDirective } from '@vacui-k
           vacKeyNavigationItem
           [disabled]="item.disabled"
           [startFocus]="item.startFocus"
-          (click)="addItem()"
         >
           {{ item.text }}
         </button>
@@ -33,8 +32,4 @@ export class KeyboardNavigationComponent {
     { text: 'Item 2', disabled: true, startFocus: false },
     { text: 'Item 3', disabled: false, startFocus: false },
   ];
-
-  addItem() {
-    this.items.unshift({ text: 'Item 0', disabled: false, startFocus: false });
-  }
 }

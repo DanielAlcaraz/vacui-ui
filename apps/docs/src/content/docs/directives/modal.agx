@@ -154,6 +154,16 @@ const keyboardRows = [
   { key: 'Escape', description: 'Closes the dialog and moves focus to the trigger.' },
 ];
 
+const codeImportsModule = `
+import { DialogPrimitivesModule } from '@vacui-kit/primitives/dialog';
+import { PortalPrimitivesModule } from '@vacui-kit/primitives/portal';
+`;
+
+const codeImportsDirectives = `
+import { DialogRootDirective, DialogCloseDirective, DialogContentDirective, DialogDescriptionDirective, DialogOverlayDirective, DialogTitleDirective, DialogTriggerDirective } from '@vacui-kit/primitives/dialog/index';
+import { PortalDirective } from '@vacui-kit/primitives/portal';
+`;
+
 </script>
 
 <template lang="md">
@@ -165,28 +175,30 @@ const keyboardRows = [
   ## Installation
   Add and import the module into your imports section.
 
-  <docs-code code="import { DialogPrimitivesModule } from '@vacui-kit/primitives/dialog';" language="shell" />
+  ### Modules
+  <docs-code [code]="codeImportsModule" language="ts" />
   
-  Or
-
-  <docs-code code="import { DialogRootDirective, DialogCloseDirective, DialogContentDirective, DialogDescriptionDirective, DialogOverlayDirective, DialogTitleDirective, DialogTriggerDirective } from '@vacui-kit/primitives/dialog/index';" language="shell" />
+  ### Standalone directives
+  <docs-code [code]="codeImportsDirectives" language="ts" />
 
   # Anatomy
   Directive's set structure.
 
   <docs-anatomy [node]="componentStructure" />
 
-  > Do not recommend to use directives directly in custom components tags. It will work, but the aria attributes will be set in the component tag instead than your HTML element withing your component.
-
   # Input props
 
   ## DialogRoot <docs-badge color="purple" text="Attribute" />
   The root directive for the dialog. Handles the state, configuration and keyboard navigation.
 
-  <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
-  &nbsp;
-  <docs-table [columns]="outputColumns" [rows]="rootOutputRows" />
-  &nbsp;
+  <div class="mt-4">
+    <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+  </div>
+
+  <div class="mt-4">
+    <docs-table [columns]="outputColumns" [rows]="rootOutputRows" />
+  </div>
+
   <docs-table [columns]="attributesColumns" [rows]="rootAttrRows" />
 
   ## DialogTrigger <docs-badge color="purple" text="Attribute directive" />
@@ -208,8 +220,10 @@ const keyboardRows = [
   Contains content to be rendered in the open dialog.
 
   <docs-table [columns]="outputColumns" [rows]="contentOutputRows" />
-  &nbsp;
-  <docs-table [columns]="attributesColumns" [rows]="contentAttrRows" />
+  
+  <div class="mt-4">
+    <docs-table [columns]="attributesColumns" [rows]="contentAttrRows" />
+  </div>
 
   ## DialogClose <docs-badge color="purple" text="Attribute directive" />
   The button trigger that closes the dialog.

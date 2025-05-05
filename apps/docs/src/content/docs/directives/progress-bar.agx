@@ -84,10 +84,10 @@ const templateVariableExample = `
   ## Installation
   Add and import the module into your imports section.
 
+  ### Modules
   <docs-code code="import { ProgressPrimitivesModule } from '@vacui-kit/primitives/progress';" language="ts" />
 
-  Or
-
+  ### Standalone directives
   <docs-code code="import { ProgressRootDirective, ProgressIndicatorDirective } from '@vacui-kit/primitives/progress';" language="ts" />
 
   # Anatomy

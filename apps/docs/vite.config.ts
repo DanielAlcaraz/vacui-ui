@@ -1,51 +1,9 @@
 /// <reference types="vitest" />
 
 import analog from '@analogjs/platform';
-import { defineConfig, splitVendorChunkPlugin, Plugin } from 'vite';
-import { readFileSync } from 'fs';
+import { defineConfig, splitVendorChunkPlugin } from 'vite';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { resolve } from 'path';
-
-export function viteDirectoryResolver() {
-  return {
-    name: 'vite-directory-resolver',
-    
-    // This hook runs when Vite tries to resolve an import
-    resolveId(source, importer, options) {
-      // Only process our primitives imports
-      if (source.startsWith('@vacui-kit/primitives/') && !source.endsWith('/index')) {
-        // Make sure we're not already handling an index file and not a file with extension
-        if (!source.endsWith('.ts') && !source.endsWith('.js')) {
-          // Log what we're doing for debugging
-          console.log(`[vite-directory-resolver] Redirecting ${source} to ${source}/index`);
-          
-          // Tell Vite to look for the index file instead
-          return `${source}/index`;
-        }
-      }
-      
-      // For other imports, let Vite handle them normally
-      return null;
-    }
-  };
-}
-
-function sourceQueryPlugin(): Plugin {
-  return {
-    name: 'source-query-plugin',
-    transform(code: string, id: string) {
-      // Check if the import has a ?source query
-      if (id.includes('?source')) {
-        // Get the source file path
-        const source = readFileSync(id.replace('?source', '')).toString();
-
-        // Replace the import statement with a string literal
-        code = `export default \`${source.replace(/`/g, '\\`').replace(/\${/g, '\\${')}\`;`;
-      }
-      return code;
-    },
-  };
-}
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -122,8 +80,7 @@ export default defineConfig(({ mode }) => {
         },
       }),
       nxViteTsPaths(),
-      splitVendorChunkPlugin(),
-      sourceQueryPlugin()
+      splitVendorChunkPlugin()
     ],
     
     // Help Vite optimize dependencies

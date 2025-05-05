@@ -127,18 +127,16 @@ const keyboardRows = [
   ## Installation
   Add and import the module into your imports section.
 
-  <docs-code code="import { CheckboxPrimitivesModule } from '@vacui-kit/primitives/checkbox';" language="shell" />
+  ### Module
+  <docs-code code="import { CheckboxPrimitivesModule } from '@vacui-kit/primitives/checkbox';" language="ts" />
 
-  Or 
-
-  <docs-code code="import { CheckboxRootDirective, CheckboxInputDirective } from '@vacui-kit/primitives/checkbox';" language="shell" />
+  ### Standalone directives
+  <docs-code code="import { CheckboxRootDirective, CheckboxInputDirective } from '@vacui-kit/primitives/checkbox';" language="ts" />
 
   # Anatomy
   Directive's set structure.
 
   <docs-anatomy [node]="componentStructure" />
-
-  > Do not recommend to use directives directly in custom components tags. It will work, but the aria attributes will be set in the component tag instead than your HTML element withing your component.
 
   # Input props
 
@@ -146,10 +144,14 @@ const keyboardRows = [
   The root directive for the checkbox. Handles the state, keyboard navigation and bindings.
 
   <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
-  &nbsp;
-  <docs-table [columns]="outputColumns" [rows]="rootOutputRows" />
-    &nbsp;
-  <docs-table [columns]="attributesColumns" [rows]="rootAttrRows" />
+  
+  <div class="mt-4">
+    <docs-table [columns]="outputColumns" [rows]="rootOutputRows" />
+  </div>
+
+  <div class="mt-4">
+    <docs-table [columns]="attributesColumns" [rows]="rootAttrRows" />
+  </div>
 
   ## CheckboxInput <docs-badge color="purple" text="Attribute directive" />
   A directive to bind the state and the accessibility rules to the input element.

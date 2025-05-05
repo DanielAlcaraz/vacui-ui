@@ -133,10 +133,10 @@ export type NavigationDirection = 'vertical' | 'horizontal';`;
   ## Installation
   Add and import the module into your imports section.
 
+  ### Module
   <docs-code code="import { KeyNavigationModule } from '@vacui-kit/primitives/key-navigation';" language="ts" />
 
-  Or
-
+  ### Standalone directives
   <docs-code code="import { KeyNavigationRootDirective, KeyNavigationItemDirective } from '@vacui-kit/primitives/key-navigation';" language="ts" />
 
   # Anatomy

@@ -163,7 +163,7 @@ export class ExampleComponent implements OnInit {
       );
 
       this.component = component;
-      this.tsCode = tsCode;
+      this.tsCode = tsCode as string;
       this.changeDetector.detectChanges();
     } catch (error) {
       console.error(`Error loading component ${this.name()}:`, error);

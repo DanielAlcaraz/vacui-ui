@@ -122,24 +122,30 @@ const keyboardRows = [
   ## Installation
   Add and import the module into your imports section.
 
-  <docs-code code="import { CollapsiblePrimitivesModule } from '@vacui-kit/primitives/collapsible';" language="shell" />
+  ### Module
+  <docs-code code="import { CollapsiblePrimitivesModule } from '@vacui-kit/primitives/collapsible';" language="ts" />
+
+  ### Standalone directives
+  <docs-code code="import { CollapsibleRootDirective, CollapsibleTriggerDirective, CollapsibleContentDirective } from '@vacui-kit/primitives/collapsible';" language="ts" />
 
   # Anatomy
   Directive's set structure.
 
   <docs-anatomy [node]="componentStructure" />
 
-  > Do not recommend to use directives directly in custom components tags. It will work, but the aria attributes will be set in the component tag instead than your HTML element withing your component.
-
   # Input props
 
   ## CollapsibleRoot <docs-badge color="purple" text="Attribute Directive" />
   The root directive for the collapsible. Handles the state and bindings.
 
-  <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
-  &nbsp;
-  <docs-table [columns]="outputColumns" [rows]="rootOutputRows" />
-    &nbsp;
+  <div class="mt-4">
+    <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+  </div>
+  
+  <div class="mt-4">
+    <docs-table [columns]="outputColumns" [rows]="rootOutputRows" />
+  </div>
+
   <docs-table [columns]="attributesColumns" [rows]="rootAttrRows" />
 
   ## CollapsibleTrigger <docs-badge color="purple" text="Attribute Directive" />

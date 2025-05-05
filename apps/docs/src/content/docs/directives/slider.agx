@@ -195,7 +195,11 @@ const templateVariableExample = `
   ## Installation
   Add and import the module into your imports section.
 
+  ### Module
   <docs-code code="import { SliderPrimitivesModule } from '@vacui-kit/primitives/slider';" language="ts" />
+
+  ### Standalone directives
+  <docs-code code="import { SliderRootDirective, SliderInputDirective, SliderRangeDirective, SliderThumbDirective, SliderTrackDirective } from '@vacui-kit/primitives/slider';" language="ts" />
 
   ## Anatomy
   Directive's set structure.

@@ -233,14 +233,16 @@ A toolkit of Angular directives designed to construct a fully customizable accor
   ## Installation
   Add and import the module into your imports section.
 
-  <docs-code code="import { AccordionPrimitivesModule } from '@vacui-kit/primitives/accordion';" language="shell" />
+  ### Module
+  <docs-code code="import { AccordionPrimitivesModule } from '@vacui-kit/primitives/accordion';" language="ts" />
+
+  ### Standalone directives
+  <docs-code code="import { AccordionContentDirective, AccordionHeaderDirective, AccordionItemDirective, AccordionRootDirective, AccordionTriggerDirective } from '@vacui-kit/primitives/accordion';" language="ts" />
 
   # Anatomy
   Directive's set structure.
 
   <docs-anatomy [node]="componentStructure" />
-
-  > Do not recommend to use directives directly in custom components tags. It will work, but the aria attributes will be set in the component tag instead than your HTML element withing your component.
 
   # Input props
 
@@ -248,23 +250,31 @@ A toolkit of Angular directives designed to construct a fully customizable accor
   The root directive for the accordion. Handles the accordion state, configuration and keyboard navigation.
 
   <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
-  &nbsp;
-  <docs-table [columns]="outputColumns" [rows]="rootOutputRows" />
-    &nbsp;
-  <docs-table [columns]="attributesColumns" [rows]="rootAttrRows" />
+
+  <div class="mt-4">
+    <docs-table [columns]="outputColumns" [rows]="rootOutputRows" />
+  </div>
+
+  <div class="mt-4">
+    <docs-table [columns]="attributesColumns" [rows]="rootAttrRows" />
+  </div>
 
   ## AccordionItem <docs-badge color="purple" text="Attribute" />
 
   <docs-table [columns]="columnsInput" [rows]="itemInputRows" />
-  &nbsp;
-  <docs-table [columns]="attributesColumns" [rows]="itemAttrRows" />
 
-  ## AccordionHeader <docs-badge color="purple" text="Attribute" />&nbsp;<docs-badge color="yellow" text="Optional" />
+  <div class="mt-4">
+    <docs-table [columns]="attributesColumns" [rows]="itemAttrRows" />
+  </div>
+
+  ## AccordionHeader <docs-badge color="purple" text="Attribute" /><docs-badge color="yellow" text="Optional" />
   Use this directive when your trigger is inside an non heading element (h1, h2...) to apply the correct accessibility rules.
 
   <docs-table [columns]="columnsInput" [rows]="headerInputRows" />
-  &nbsp;
-  <docs-table [columns]="attributesColumns" [rows]="itemAttrRows" />
+
+  <div class="mt-4">
+    <docs-table [columns]="attributesColumns" [rows]="itemAttrRows" />
+  </div>
 
   ## AccordionTrigger <docs-badge color="purple" text="Attribute" />
   Toggle the accordion item and changes its state.

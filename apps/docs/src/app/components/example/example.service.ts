@@ -1,4 +1,5 @@
 import { Injectable, Type } from '@angular/core';
+import { componentSources } from '../demo/component-sources';
 
 // Define the component cache entry structure
 export interface ComponentCacheEntry {
@@ -69,8 +70,8 @@ export class DemoComponentService {
         throw new Error(`Component ${componentName} not found in module`);
       }
       
-      // Get TypeScript code (can be implemented later)
-      const tsCode = null; // Placeholder for actual code loading
+      // Get TypeScript code from the generated source file
+      const tsCode = this.getSourceCode(name);
       
       // Store in cache
       const entry = { component, tsCode };
@@ -81,6 +82,15 @@ export class DemoComponentService {
       console.error(`Failed to load component ${name}:`, error);
       throw error;
     }
+  }
+  
+  /**
+   * Get component source code from the generated sources
+   * @param name The component name
+   * @returns The source code as a string, or null if not found
+   */
+  private getSourceCode(name: DemoComponentName): string | null {
+    return componentSources[name] || null;
   }
   
   /**

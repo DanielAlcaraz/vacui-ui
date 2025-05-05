@@ -18,27 +18,6 @@ const componentStructure = {
   children: []
 };
 
-// ------ CODE EXAMPLES ------
-const codeDemo = `
-import { Component } from '@angular/core';
-import { LabelRootDirective } from '@vacui-kit/primitives/label';
-
-@Component({
-  selector: 'vac-label',
-  standalone: true,
-  imports: [LabelRootDirective],
-  template: \`
-    <div>
-      <label vacLabelRoot for="someId">Label</label>
-      <input id="someId" />
-    </div>
-  \`,
-})
-export class InputComponent {}
-`;
-
-const demoHighlights = ["LabelRootDirective", "vacLabelRoot"];
-
 const features = [
   'Disables text selection when double clicking the label.'
 ];
@@ -53,7 +32,11 @@ const features = [
   ## Installation
   Add and import the module into your imports section.
 
+  ### Module
   <docs-code code="import { LabelPrimitivesModule } from '@vacui-kit/primitives/label';" language="ts" />
+
+  ### Standalone directives
+  <docs-code code="import { LabelRootDirective } from '@vacui-kit/primitives/label';" language="ts" />
 
   # Anatomy
   Directive's set structure.

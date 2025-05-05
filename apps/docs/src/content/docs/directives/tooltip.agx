@@ -130,6 +130,16 @@ export interface TooltipListener {
   activate: (element: HTMLElement) => void;
   deactivate: () => void;
 }`;
+
+const codeImportsModule = `
+import { TooltipPrimitivesModule } from '@vacui-kit/primitives/tooltip';
+import { PortalPrimitivesModule } from '@vacui-kit/primitives/portal';
+`;
+
+const codeImportsDirectives = `
+import { TooltipRootDirective, TooltipContentDirective, TooltipArrowDirective, TooltipTriggerDirective, from '@vacui-kit/primitives/tooltip';
+import { PortalDirective } from '@vacui-kit/primitives/portal';
+`;
 </script>
 
 <template lang="md">
@@ -141,7 +151,11 @@ export interface TooltipListener {
   ## Installation
   Add and import the module into your imports section.
 
-  <docs-code code="import { TooltipPrimitivesModule } from '@vacui-kit/primitives/tooltip';" language="ts" />
+  ### Modules
+  <docs-code [code]="codeImportsModule" language="ts" />
+  
+  ### Standalone directives
+  <docs-code [code]="codeImportsDirectives" language="ts" />
 
   # Anatomy
   Directive's set structure.
