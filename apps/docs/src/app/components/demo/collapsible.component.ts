@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, model } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { heroChevronDown, heroChevronUp } from '@ng-icons/heroicons/outline';
@@ -13,7 +13,7 @@ import { CollapsibleRootDirective, CollapsibleTriggerDirective, CollapsibleConte
     <div
       vacCollapsibleRoot
       [(open)]="open"
-      [disabled]="disabled"
+      [disabled]="disabled()"
       class="not-prose max-w-md mx-auto transition-all ease-in-out duration-300 bg-white border border-gray-300 rounded-lg shadow-lg overflow-hidden"
     >
       <div class="flex items-center justify-between p-4 bg-orange-600 text-white">
@@ -25,10 +25,10 @@ import { CollapsibleRootDirective, CollapsibleTriggerDirective, CollapsibleConte
           aria-label="Toggle details"
           class="flex items-center justify-center p-2 rounded-full bg-orange-500 hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
         >
-          <ng-icon [name]="open ? 'heroChevronUp' : 'heroChevronDown'" class="h-5 w-5"></ng-icon>
+          <ng-icon [name]="open() ? 'heroChevronUp' : 'heroChevronDown'" class="h-5 w-5"></ng-icon>
         </button>
       </div>
-      <div vacCollapsibleContent [@contentAnimation]="open ? 'show' : 'hide'" class="text-sm leading-6 text-gray-700">
+      <div vacCollapsibleContent [@contentAnimation]="open() ? 'show' : 'hide'" class="text-sm leading-6 text-gray-700">
         <p class="p-4 border-t border-gray-200">
           The crossing of the Rubicon was a pivotal event that led Julius Caesar to march into Rome and seize power, marking the start of civil war and the eventual rise of the Roman Empire.
         </p>
@@ -52,6 +52,6 @@ import { CollapsibleRootDirective, CollapsibleTriggerDirective, CollapsibleConte
   ],
 })
 export class CollapsibleComponent {
-  @Input() open = false;
-  @Input() disabled = false;
+  readonly open = model(false);
+  readonly disabled = input(false);
 }

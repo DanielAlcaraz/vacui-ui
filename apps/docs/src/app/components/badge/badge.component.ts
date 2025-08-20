@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 type Color =
   | 'gray'
@@ -26,13 +26,13 @@ interface ColorStyles {
       class="no-prose inline-flex items-center rounded-md px-2 py-1 text-sm font-medium ring-1 ring-inset"
       [ngClass]="[style.background, style.text, style.ring]"
     >
-      {{ text }}
+      {{ text() }}
     </span>
   `,
 })
 export class BadgeComponent {
-  @Input() color: Color = 'blue';
-  @Input() text = 'Badge';
+  readonly color = input<Color>('blue');
+  readonly text = input('Badge');
 
   private colors: Record<Color, ColorStyles> = {
     gray: {
@@ -78,6 +78,6 @@ export class BadgeComponent {
   };
 
   get style(): ColorStyles {
-    return this.colors[this.color] || this.colors['gray'];
+    return this.colors[this.color()] || this.colors['gray'];
   }
 }

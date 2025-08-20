@@ -1,10 +1,11 @@
-import { MarkdownComponent, injectContent, injectContentFiles } from '@analogjs/content';
+import { MarkdownComponent, injectContent } from '@analogjs/content';
 import { Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { PageAttributes } from '../../models/doc-page-attributes';
 
 @Component({
+  selector: 'docs-overview',
   standalone: true,
   imports: [MarkdownComponent],
   template: `
@@ -18,7 +19,6 @@ import { PageAttributes } from '../../models/doc-page-attributes';
 })
 export default class DocsContentOverviewComponent {
   route = inject(ActivatedRoute);
-  posts = injectContentFiles<PageAttributes>();
   page$ = injectContent<PageAttributes>({
     param: 'slug',
     subdirectory: 'docs/overview',

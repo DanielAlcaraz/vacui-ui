@@ -1,4 +1,4 @@
-import { Directive, EventEmitter, HostListener, Output } from '@angular/core';
+import { Directive, HostListener, inject, output } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 export interface PasteData {
@@ -10,9 +10,14 @@ export interface PasteData {
   selector: '[appPasteFromClipboard]'
 })
 export class PasteFromClipboardDirective {
-  @Output() pasteData = new EventEmitter<PasteData[]>();
+  private sanitizer = inject(DomSanitizer);
 
-  constructor(private sanitizer: DomSanitizer) {}
+  readonly pasteData = output<PasteData[]>();
+
+  /** Inserted by Angular inject() migration for backwards compatibility */
+  constructor(...args: unknown[]);
+
+  constructor() {}
 
   @HostListener('paste', ['$event'])
   onPaste(event: ClipboardEvent): void {

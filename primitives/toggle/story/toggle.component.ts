@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, model } from '@angular/core';
 import { TogglePrimitivesModule } from '../src/toggle.module';
 
 @Component({
@@ -9,7 +9,7 @@ import { TogglePrimitivesModule } from '../src/toggle.module';
     <button
       vacToggleRoot
       [(pressed)]="pressed"
-      [disabled]="disabled"
+      [disabled]="disabled()"
       aria-label="Toggle notifications"
       class="flex items-center justify-center w-10 h-10 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 bg-gray-200 text-gray-600 hover:bg-gray-300 data-[state=on]:bg-indigo-600 data-[state=on]:text-white data-[state=on]:hover:bg-indigo-700 data-[disabled]:cursor-not-allowed"
     >
@@ -31,6 +31,6 @@ import { TogglePrimitivesModule } from '../src/toggle.module';
   `
 })
 export class ToggleComponent {
-  @Input() pressed = false;
-  @Input() disabled = false;
+  readonly pressed = model(false);
+  readonly disabled = input(false);
 }

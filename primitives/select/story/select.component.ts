@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { SelectPrimitivesModule } from '../src/select.module';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
@@ -10,7 +10,7 @@ import { SelectCompareWith } from '../src/model/select.model';
 @Component({
   selector: 'vac-select-test',
   standalone: true,
-  imports: [CommonModule, SelectPrimitivesModule, PortalDirective, NgIconComponent, SelectItemComponent],
+  imports: [SelectPrimitivesModule, PortalDirective, NgIconComponent, SelectItemComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders: [provideIcons({ heroChevronUpDown })],
   template: `

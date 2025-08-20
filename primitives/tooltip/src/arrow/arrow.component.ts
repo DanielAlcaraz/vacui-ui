@@ -2,9 +2,9 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
-  Input,
   ViewEncapsulation,
   inject,
+  input
 } from '@angular/core';
 
 @Component({
@@ -12,10 +12,10 @@ import {
   standalone: true,
   template: `
     <svg
-      [attr.width]="width"
+      [attr.width]="width()"
       fill="currentColor"
       stroke="currentColor"
-      [attr.height]="height"
+      [attr.height]="height()"
       viewBox="0 0 30 10"
       preserveAspectRatio="none"
     >
@@ -28,6 +28,6 @@ import {
 export class ArrowComponent {
   element = inject(ElementRef).nativeElement;
 
-  @Input() width = 10;
-  @Input() height = 5;
+  readonly width = input(10);
+  readonly height = input(5);
 }

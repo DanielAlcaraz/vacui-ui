@@ -1,6 +1,6 @@
 import { AnimationBuilder, animate, style } from '@angular/animations';
 import { NgClass } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, Renderer2, viewChild, viewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Renderer2, viewChild, viewChildren, inject } from '@angular/core';
 import { Orientation, TabsContentDirective, TabsListDirective, TabsRootDirective, TabsTriggerDirective } from '@vacui-kit/primitives/tabs';
 
 @Component({
@@ -36,6 +36,9 @@ import { Orientation, TabsContentDirective, TabsListDirective, TabsRootDirective
   `,
 })
 export class TabsComponent implements AfterViewInit {
+  private animBuilder = inject(AnimationBuilder);
+  private renderer = inject(Renderer2);
+
   protected tabButtons = viewChildren<ElementRef>('tabsTrigger');
   protected indicator = viewChild.required<ElementRef>('indicator');
 
@@ -47,10 +50,10 @@ export class TabsComponent implements AfterViewInit {
     { title: 'Tab 3', id: 'tab3', disabled: false },
   ];
 
-  constructor(
-    private animBuilder: AnimationBuilder,
-    private renderer: Renderer2,
-  ) {}
+  /** Inserted by Angular inject() migration for backwards compatibility */
+  constructor(...args: unknown[]);
+
+  constructor() {}
 
   ngAfterViewInit() {
     this.moveActiveTab(false);

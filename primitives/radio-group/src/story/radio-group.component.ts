@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { RadioGroupPrimitivesModule } from '../radio-group.module';
 
 @Component({
@@ -9,23 +9,23 @@ import { RadioGroupPrimitivesModule } from '../radio-group.module';
     <div class="flex items-center space-x-2 relative">
       <button
         vacRadioGroupItem
-        [value]="value"
-        [disabled]="disabled"
-        [attr.aria-labelledby]="value + '-label'"
-        [id]="value"
+        [value]="value()"
+        [disabled]="disabled()"
+        [attr.aria-labelledby]="value() + '-label'"
+        [id]="value()"
         class="w-4 h-4 rounded-full border flex items-center justify-center data-[state=checked]:bg-blue-500 data-[state=checked]:border-blue-500 data-[state=unchecked]:border-gray-400"
       >
         <span vacRadioGroupIndicator class="w-2 h-2 rounded-full bg-white"></span>
       </button>
-      <input [value]="value" vacRadioGroupInput />
-      <label [for]="value" [id]="value + '-label'">{{ label }}</label>
+      <input [value]="value()" vacRadioGroupInput />
+      <label [for]="value()" [id]="value() + '-label'">{{ label() }}</label>
     </div>
   `,
 })
 export class RadioItemComponent {
-  @Input() label!: string;
-  @Input() value!: string;
-  @Input() disabled = false;
+  readonly label = input.required<string>();
+  readonly value = input.required<string>();
+  readonly disabled = input(false);
 }
 
 @Component({

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { SwitchPrimitivesModule } from '../src/switch.module';
 
 @Component({
-  selector: 'vacui-ui-separator',
+  selector: 'vacui-ui-switch',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [SwitchPrimitivesModule],
@@ -12,6 +12,7 @@ import { SwitchPrimitivesModule } from '../src/switch.module';
       <button
         vacSwitchRoot
         name="custom-name"
+        value="on"
         class="h-6 w-11 cursor-default rounded-full transition-colors data-[state=checked]:bg-gray-600 data-[state=unchecked]:bg-gray-300"
         id="airplane-mode"
         aria-labelledby="airplane-mode-label"
@@ -21,7 +22,7 @@ import { SwitchPrimitivesModule } from '../src/switch.module';
           vacSwitchThumb
           class="block w-[21px] h-[21px] bg-white rounded-full transition-transform duration-100 translate-x-[1.5px] will-change-transform data-[state=checked]:translate-x-[21px]"
         ></span>
-        <input *vacSwitchInput />
+        <div vacSwitchInput></div>
       </button>
     </div>
   `,

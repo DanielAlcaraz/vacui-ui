@@ -1,4 +1,4 @@
-import { AfterRenderPhase, ChangeDetectionStrategy, Component, OnDestroy, NgZone, ChangeDetectorRef, afterNextRender, computed, signal } from '@angular/core';
+import { AfterRenderPhase, ChangeDetectionStrategy, Component, OnDestroy, NgZone, ChangeDetectorRef, afterNextRender, computed, signal, inject } from '@angular/core';
 import { ProgressPrimitivesModule } from '@vacui-kit/primitives/progress';
 
 @Component({
@@ -23,12 +23,18 @@ import { ProgressPrimitivesModule } from '@vacui-kit/primitives/progress';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProgressComponent implements OnDestroy {
+  private ngZone = inject(NgZone);
+  private cdr = inject(ChangeDetectorRef);
+
   value = signal(0);
   max = signal(50);
   protected translateX = computed(() => `translateX(-${100 - (100 * this.value()) / this.max()}%)`);
   private intervalId: ReturnType<typeof setInterval> | null = null;
 
-  constructor(private ngZone: NgZone, private cdr: ChangeDetectorRef) {
+  /** Inserted by Angular inject() migration for backwards compatibility */
+  constructor(...args: unknown[]);
+
+  constructor() {
     afterNextRender(() => {
       this.ngZone.runOutsideAngular(() => this.startProgress());
     }, { phase: AfterRenderPhase.Write });

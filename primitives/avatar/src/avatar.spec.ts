@@ -7,6 +7,7 @@ import { AvatarFallbackDirective } from '../src/directives/avatar-fallback.direc
 import { AvatarStateService } from '../src/state/avatar.service';
 
 @Component({
+  standalone: false,
   template: `
     <div vacAvatarRoot class="avatar-container">
       <img

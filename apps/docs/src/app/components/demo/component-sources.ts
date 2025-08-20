@@ -1,7 +1,7 @@
 /**
  * GENERATED FILE - DO NOT EDIT
  * This file contains component source code for the demo components
- * Generated on: 2025-05-05T22:43:10.433Z
+ * Generated on: 2025-08-20T18:18:16.958Z
  */
 
 export const componentSources: Record<string, string> = {
@@ -126,7 +126,7 @@ export class ToggleComponent {
 }
 `,
   'toggleGroup': `import { NgClass } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, input, model } from '@angular/core';
 import { ToggleGroupItemDirective, ToggleGroupRootDirective } from '@vacui-kit/primitives/toggle-group';
 
 @Component({
@@ -136,17 +136,17 @@ import { ToggleGroupItemDirective, ToggleGroupRootDirective } from '@vacui-kit/p
   template: \`
     <div
       vacToggleGroupRoot
-      [attr.aria-label]="ariaLabel"
-      [type]="type"
+      [attr.aria-label]="ariaLabel()"
+      [type]="type()"
       [(value)]="value"
-      [orientation]="orientation"
-      [disabled]="disabled"
-      [rovingFocus]="rovingFocus"
-      [loop]="loop"
+      [orientation]="orientation()"
+      [disabled]="disabled()"
+      [rovingFocus]="rovingFocus()"
+      [loop]="loop()"
       class="flex"
       [ngClass]="{
-        'flex-col': orientation === 'vertical',
-        'flex-row': orientation === 'horizontal'
+        'flex-col': orientation() === 'vertical',
+        'flex-row': orientation() === 'horizontal'
       }"
     >
       @for (item of toggleItems; track item.value; let i = \$index) {
@@ -174,13 +174,13 @@ import { ToggleGroupItemDirective, ToggleGroupRootDirective } from '@vacui-kit/p
   \`,
 })
 export class ToggleGroupComponent {
-  @Input() value: string | string[] = '';
-  @Input() type: 'multiple' | 'single' = 'single';
-  @Input() orientation: 'horizontal' | 'vertical' = 'horizontal';
-  @Input() disabled = false;
-  @Input() rovingFocus = true;
-  @Input() loop = false;
-  @Input() ariaLabel = 'Text style';
+  readonly value = model<string | string[]>('');
+  readonly type = input<'multiple' | 'single'>('single');
+  readonly orientation = input<'horizontal' | 'vertical'>('horizontal');
+  readonly disabled = input(false);
+  readonly rovingFocus = input(true);
+  readonly loop = input(false);
+  readonly ariaLabel = input('Text style');
 
   toggleItems = [
     { value: 'bold', ariaLabel: 'Bold text' },
@@ -194,19 +194,19 @@ export class ToggleGroupComponent {
     const isMiddle = !isFirst && !isLast;
 
     return \`
-      \${isFirst && this.orientation === 'horizontal' ? 'rounded-l-md' : ''}
-      \${isFirst && this.orientation === 'vertical' ? 'rounded-t-md' : ''}
-      \${isLast && this.orientation === 'horizontal' ? 'rounded-r-md' : ''}
-      \${isLast && this.orientation === 'vertical' ? 'rounded-b-md' : ''}
-      \${isMiddle && this.orientation === 'horizontal' ? 'border-l-0 border-r-0' : ''}
-      \${isMiddle && this.orientation === 'vertical' ? 'border-t-0 border-b-0' : ''}
+      \${isFirst && this.orientation() === 'horizontal' ? 'rounded-l-md' : ''}
+      \${isFirst && this.orientation() === 'vertical' ? 'rounded-t-md' : ''}
+      \${isLast && this.orientation() === 'horizontal' ? 'rounded-r-md' : ''}
+      \${isLast && this.orientation() === 'vertical' ? 'rounded-b-md' : ''}
+      \${isMiddle && this.orientation() === 'horizontal' ? 'border-l-0 border-r-0' : ''}
+      \${isMiddle && this.orientation() === 'vertical' ? 'border-t-0 border-b-0' : ''}
     \`;
   }
 }
 `,
   'tabs': `import { AnimationBuilder, animate, style } from '@angular/animations';
 import { NgClass } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, Renderer2, viewChild, viewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Renderer2, viewChild, viewChildren, inject } from '@angular/core';
 import { Orientation, TabsContentDirective, TabsListDirective, TabsRootDirective, TabsTriggerDirective } from '@vacui-kit/primitives/tabs';
 
 @Component({
@@ -242,6 +242,9 @@ import { Orientation, TabsContentDirective, TabsListDirective, TabsRootDirective
   \`,
 })
 export class TabsComponent implements AfterViewInit {
+  private animBuilder = inject(AnimationBuilder);
+  private renderer = inject(Renderer2);
+
   protected tabButtons = viewChildren<ElementRef>('tabsTrigger');
   protected indicator = viewChild.required<ElementRef>('indicator');
 
@@ -253,10 +256,10 @@ export class TabsComponent implements AfterViewInit {
     { title: 'Tab 3', id: 'tab3', disabled: false },
   ];
 
-  constructor(
-    private animBuilder: AnimationBuilder,
-    private renderer: Renderer2,
-  ) {}
+  /** Inserted by Angular inject() migration for backwards compatibility */
+  constructor(...args: unknown[]);
+
+  constructor() {}
 
   ngAfterViewInit() {
     this.moveActiveTab(false);
@@ -316,7 +319,7 @@ import { SwitchInputDirective, SwitchRootDirective, SwitchThumbDirective } from 
           vacSwitchThumb
           class="block w-[21px] h-[21px] bg-white rounded-full transition-transform duration-100 translate-x-[1.5px] will-change-transform data-[state=checked]:translate-x-[21px]"
         ></span>
-        <input *vacSwitchInput />
+        <div vacSwitchInput ></div>
       </button>
     </div>
   \`,
@@ -325,7 +328,7 @@ export class SwitchComponent {
   checked = false;
 }
 `,
-  'slider': `import { Component, Input } from '@angular/core';
+  'slider': `import { Component, input } from '@angular/core';
 import { SliderRootDirective, SliderInputDirective, SliderRangeDirective, SliderThumbDirective, SliderTrackDirective } from '@vacui-kit/primitives/slider';
 
 @Component({
@@ -335,20 +338,20 @@ import { SliderRootDirective, SliderInputDirective, SliderRangeDirective, Slider
   template: \`
     <span
       vacSliderRoot
-      [min]="min"
-      [max]="max"
-      [step]="step"
-      [value]="value"
-      [orientation]="orientation"
-      [inverted]="inverted"
-      [minStepsBetweenThumbs]="minStepsBetweenThumbs"
-      [disabled]="disabled"
+      [min]="min()"
+      [max]="max()"
+      [step]="step()"
+      [value]="value()"
+      [orientation]="orientation()"
+      [inverted]="inverted()"
+      [minStepsBetweenThumbs]="minStepsBetweenThumbs()"
+      [disabled]="disabled()"
       class="relative flex h-[18px] w-[300px] items-center rounded-full"
     >
       <span vacSliderTrack class="h-[3px] w-full bg-black/20 rounded-full">
         <span vacSliderRange class="bg-gray-900 rounded-full h-full"></span>
       </span>
-      @for (item of value; track \$index) {
+      @for (item of value(); track \$index) {
         <span
           vacSliderThumb
           class="h-5 w-5 rounded-full bg-gray-700 cursor-pointer focus:ring-4 focus:ring-black/40"
@@ -360,14 +363,14 @@ import { SliderRootDirective, SliderInputDirective, SliderRangeDirective, Slider
   \`,
 })
 export class SliderComponent {
-  @Input() min = 0;
-  @Input() max = 100;
-  @Input() step = 1;
-  @Input() minStepsBetweenThumbs = 5;
-  @Input() disabled = false;
-  @Input() value: number[] = [0];
-  @Input() inverted = false;
-  @Input() orientation: "horizontal" | "vertical" = 'horizontal';
+  readonly min = input(0);
+  readonly max = input(100);
+  readonly step = input(1);
+  readonly minStepsBetweenThumbs = input(5);
+  readonly disabled = input(false);
+  readonly value = input<number[]>([0]);
+  readonly inverted = input(false);
+  readonly orientation = input<"horizontal" | "vertical">('horizontal');
 }
 
 @Component({
@@ -377,19 +380,19 @@ export class SliderComponent {
   template: \`
     <span
       vacSliderRoot
-      [min]="min"
-      [max]="max"
-      [step]="step"
-      [value]="value"
-      [orientation]="orientation"
-      [disabled]="disabled"
-      [inverted]="inverted"
+      [min]="min()"
+      [max]="max()"
+      [step]="step()"
+      [value]="value()"
+      [orientation]="orientation()"
+      [disabled]="disabled()"
+      [inverted]="inverted()"
       class="relative flex h-[200px] w-[10px] flex-col items-center rounded-full"
     >
       <span vacSliderTrack class="h-full w-[3px] bg-black/40 rounded-full">
         <span vacSliderRange class="w-full bg-gray-900 rounded-full h-full"></span>
       </span>
-      @for (item of value; track \$index) {
+      @for (item of value(); track \$index) {
         <span
           vacSliderThumb
           class="h-5 w-5 rounded-full bg-gray-700 cursor-pointer focus:ring-4 focus:ring-black/40"
@@ -401,13 +404,13 @@ export class SliderComponent {
   \`,
 })
 export class VerticalSliderComponent {
-  @Input() min = 0;
-  @Input() max = 100;
-  @Input() step = 1;
-  @Input() disabled = false;
-  @Input() inverted = false;
-  @Input() orientation: "horizontal" | "vertical" = 'vertical';
-  @Input() value: number[] = [0];
+  readonly min = input(0);
+  readonly max = input(100);
+  readonly step = input(1);
+  readonly disabled = input(false);
+  readonly inverted = input(false);
+  readonly orientation = input<"horizontal" | "vertical">('vertical');
+  readonly value = input<number[]>([0]);
 }`,
   'separator': `import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { SeparatorRootDirective } from '@vacui-kit/primitives/separator';
@@ -438,7 +441,7 @@ export class SeparatorComponent {
   items = ['Caesar', 'Augustus', 'Trajan'];
 }
 `,
-  'select': `import { CommonModule } from '@angular/common';
+  'select': `
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { provideIcons } from '@ng-icons/core';
 import { heroChevronUpDown } from '@ng-icons/heroicons/outline';
@@ -461,7 +464,6 @@ import {
   selector: 'vac-select-test',
   standalone: true,
   imports: [
-    CommonModule,
     SelectContentDirective,
     SelectGroupDirective,
     SelectGroupLabelDirective,
@@ -472,8 +474,8 @@ import {
     SelectViewportDirective,
     SelectVisibilityDirective,
     PortalDirective,
-    SelectItemComponent,
-  ],
+    SelectItemComponent
+],
   changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders: [provideIcons({ heroChevronUpDown })],
   template: \`
@@ -548,8 +550,8 @@ export class SelectComponent {
   }
 }
 `,
-  'selectItem': `import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+  'selectItem': `
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { heroCheck } from '@ng-icons/heroicons/outline';
 import {
@@ -562,20 +564,19 @@ import {
   selector: 'vac-select-item',
   standalone: true,
   imports: [
-    CommonModule,
     SelectItemDirective,
     NgIconComponent,
     SelectItemIndicatorDirective,
-    SelectItemTextDirective,
-  ],
+    SelectItemTextDirective
+],
   changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders: [provideIcons({ heroCheck })],
   template: \`
     <div
       vacSelectItem
       class="cursor-pointer select-none relative py-2 pl-3 pr-9 hover:bg-gray-100 data-[highlighted]:bg-indigo-400 data-[highlighted]:text-white"
-      [value]="value"
-      [disabled]="disabled"
+      [value]="value()"
+      [disabled]="disabled()"
     >
       <span vacSelectItemText class="block truncate">
         <ng-content></ng-content>
@@ -590,12 +591,12 @@ import {
   \`,
 })
 export class SelectItemComponent {
-  @Input() value!: string;
-  @Input() label!: string;
-  @Input() disabled = false;
+  readonly value = input.required<string>();
+  readonly label = input.required<string>();
+  readonly disabled = input(false);
 }
 `,
-  'radioGroup': `import { Component, Input } from '@angular/core';
+  'radioGroup': `import { Component, input } from '@angular/core';
 import { RadioGroupRootDirective, RadioGroupItemDirective, RadioGroupInputDirective, RadioGroupIndicatorDirective } from '@vacui-kit/primitives/radio-group';
 
 @Component({
@@ -606,23 +607,23 @@ import { RadioGroupRootDirective, RadioGroupItemDirective, RadioGroupInputDirect
     <div class="flex items-center space-x-2 relative">
       <button
         vacRadioGroupItem
-        [value]="value"
-        [disabled]="disabled"
-        [attr.aria-labelledby]="value + '-label'"
-        [id]="value"
+        [value]="value()"
+        [disabled]="disabled()"
+        [attr.aria-labelledby]="value() + '-label'"
+        [id]="value()"
         class="w-4 h-4 rounded-full border flex items-center justify-center data-[state=checked]:bg-blue-500 data-[state=checked]:border-blue-500 data-[state=unchecked]:border-gray-400"
       >
         <span vacRadioGroupIndicator class="w-2 h-2 rounded-full bg-white"></span>
       </button>
-      <input [value]="value" vacRadioGroupInput />
-      <label [for]="value" [id]="value + '-label'">{{ label }}</label>
+      <input [value]="value()" vacRadioGroupInput />
+      <label [for]="value()" [id]="value() + '-label'">{{ label() }}</label>
     </div>
   \`,
 })
 export class RadioItemComponent {
-  @Input() label!: string;
-  @Input() value!: string;
-  @Input() disabled = false;
+  readonly label = input.required<string>();
+  readonly value = input.required<string>();
+  readonly disabled = input(false);
 }
 
 @Component({
@@ -864,7 +865,7 @@ import {
 })
 export class DialogComponent {}
 `,
-  'collapsible': `import { Component, Input } from '@angular/core';
+  'collapsible': `import { Component, input, model } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { heroChevronDown, heroChevronUp } from '@ng-icons/heroicons/outline';
@@ -879,7 +880,7 @@ import { CollapsibleRootDirective, CollapsibleTriggerDirective, CollapsibleConte
     <div
       vacCollapsibleRoot
       [(open)]="open"
-      [disabled]="disabled"
+      [disabled]="disabled()"
       class="not-prose max-w-md mx-auto transition-all ease-in-out duration-300 bg-white border border-gray-300 rounded-lg shadow-lg overflow-hidden"
     >
       <div class="flex items-center justify-between p-4 bg-orange-600 text-white">
@@ -891,10 +892,10 @@ import { CollapsibleRootDirective, CollapsibleTriggerDirective, CollapsibleConte
           aria-label="Toggle details"
           class="flex items-center justify-center p-2 rounded-full bg-orange-500 hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
         >
-          <ng-icon [name]="open ? 'heroChevronUp' : 'heroChevronDown'" class="h-5 w-5"></ng-icon>
+          <ng-icon [name]="open() ? 'heroChevronUp' : 'heroChevronDown'" class="h-5 w-5"></ng-icon>
         </button>
       </div>
-      <div vacCollapsibleContent [@contentAnimation]="open ? 'show' : 'hide'" class="text-sm leading-6 text-gray-700">
+      <div vacCollapsibleContent [@contentAnimation]="open() ? 'show' : 'hide'" class="text-sm leading-6 text-gray-700">
         <p class="p-4 border-t border-gray-200">
           The crossing of the Rubicon was a pivotal event that led Julius Caesar to march into Rome and seize power, marking the start of civil war and the eventual rise of the Roman Empire.
         </p>
@@ -918,8 +919,8 @@ import { CollapsibleRootDirective, CollapsibleTriggerDirective, CollapsibleConte
   ],
 })
 export class CollapsibleComponent {
-  @Input() open = false;
-  @Input() disabled = false;
+  readonly open = model(false);
+  readonly disabled = input(false);
 }
 `,
   'checkbox': `import { Component, input } from '@angular/core';

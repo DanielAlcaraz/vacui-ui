@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+  selector: 'docs-home',
   standalone: true,
   template: `
     <div class="bg-white">

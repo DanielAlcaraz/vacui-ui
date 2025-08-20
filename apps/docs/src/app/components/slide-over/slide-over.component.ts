@@ -1,11 +1,4 @@
-import {
-  Component,
-  Input,
-  Output,
-  EventEmitter,
-  HostListener,
-  ElementRef,
-} from '@angular/core';
+import { Component, HostListener, ElementRef, inject, output, input, model } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { heroBars3, heroXMark } from '@ng-icons/heroicons/outline';
@@ -28,8 +21,8 @@ import { heroBars3, heroXMark } from '@ng-icons/heroicons/outline';
       </button>
       <div class="w-full flex justify-end px-4 text-base dark:text-gray-200">
         <span>Vacui UI</span>
-        <a href="https://github.com/DanielAlcaraz/vacui-ui" 
-           target="_blank" 
+        <a href="https://github.com/DanielAlcaraz/vacui-ui"
+           target="_blank"
            rel="noopener noreferrer"
            class="ml-2 flex items-center">
           <span class="sr-only">GitHub repository</span>
@@ -41,7 +34,7 @@ import { heroBars3, heroXMark } from '@ng-icons/heroicons/outline';
     </div>
 
     <!-- Background backdrop -->
-    @if(isOpen) {
+    @if(isOpen()) {
     <div
       class="fixed inset-0 bg-gray-500 bg-opacity-75 dark:bg-gray-900 dark:bg-opacity-80 transition-opacity duration-300 ease-in-out z-50"
       [@fadeInOut]
@@ -50,7 +43,7 @@ import { heroBars3, heroXMark } from '@ng-icons/heroicons/outline';
     }
 
     <!-- Slide-over panel -->
-    @if(isOpen) {
+    @if(isOpen()) {
       <div
         class="fixed inset-0 overflow-hidden z-50"
         aria-labelledby="slide-over-title"
@@ -120,30 +113,30 @@ import { heroBars3, heroXMark } from '@ng-icons/heroicons/outline';
   ],
 })
 export class SlideoverComponent {
-  @Input() isOpen = false;
-  @Output() isOpenChange = new EventEmitter<boolean>();
+  private el = inject(ElementRef);
+
+  readonly isOpen = model(false);
+  readonly isOpenChange = output<boolean>();
 
   @HostListener('document:keydown.escape')
   handleEscapeKey() {
     this.close();
   }
 
-  constructor(private el: ElementRef) {}
-
   toggleOpen() {
-    this.isOpen = !this.isOpen;
-    this.isOpenChange.emit(this.isOpen);
+    this.isOpen.update(v => !v);
+    this.isOpenChange.emit(this.isOpen());
     this.updateBodyClass();
   }
 
   close() {
-    this.isOpen = false;
-    this.isOpenChange.emit(this.isOpen);
+    this.isOpen.set(false);
+    this.isOpenChange.emit(this.isOpen());
     this.updateBodyClass();
   }
 
   private updateBodyClass() {
-    if (this.isOpen) {
+    if (this.isOpen()) {
       document.body.classList.add('overflow-hidden');
     } else {
       document.body.classList.remove('overflow-hidden');

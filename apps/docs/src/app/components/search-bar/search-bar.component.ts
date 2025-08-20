@@ -1,5 +1,5 @@
 import { Component, OnInit, signal, computed, effect } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import { create, search as oramaSearch, insert } from '@orama/orama';
 
@@ -19,7 +19,7 @@ interface Doc {
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule],
   template: `
     <div>
       <input

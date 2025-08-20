@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { provideIcons } from '@ng-icons/core';
 import { heroChevronUpDown } from '@ng-icons/heroicons/outline';
@@ -21,7 +21,6 @@ import {
   selector: 'vac-select-test',
   standalone: true,
   imports: [
-    CommonModule,
     SelectContentDirective,
     SelectGroupDirective,
     SelectGroupLabelDirective,
@@ -32,8 +31,8 @@ import {
     SelectViewportDirective,
     SelectVisibilityDirective,
     PortalDirective,
-    SelectItemComponent,
-  ],
+    SelectItemComponent
+],
   changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders: [provideIcons({ heroChevronUpDown })],
   template: `

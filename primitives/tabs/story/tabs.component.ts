@@ -1,13 +1,13 @@
 import { AnimationBuilder, animate, style } from '@angular/animations';
-import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, Renderer2, viewChild, viewChildren } from '@angular/core';
+
+import { AfterViewInit, Component, ElementRef, Renderer2, viewChild, viewChildren, inject } from '@angular/core';
 import { TabsPrimitivesModule } from '../src/tabs.module';
 import { Orientation } from '../src/models/tabs.model';
 
 @Component({
   selector: 'vacui-ui-tabs',
   standalone: true,
-  imports: [CommonModule, TabsPrimitivesModule],
+  imports: [TabsPrimitivesModule],
   template: `
     <div vacTabsRoot [value]="selectedTab" [orientation]="orientation" (valueChange)="selectTab($event)">
       <nav
@@ -36,6 +36,9 @@ import { Orientation } from '../src/models/tabs.model';
   `,
 })
 export class TabsComponent implements AfterViewInit {
+  private animBuilder = inject(AnimationBuilder);
+  private renderer = inject(Renderer2);
+
   protected tabButtons = viewChildren<ElementRef>('tabsTrigger');
   protected indicator = viewChild.required<ElementRef>('indicator');
 
@@ -47,10 +50,10 @@ export class TabsComponent implements AfterViewInit {
     { title: 'Tab 3', id: 'tab3', disabled: true },
   ];
 
-  constructor(
-    private animBuilder: AnimationBuilder,
-    private renderer: Renderer2,
-  ) {}
+  /** Inserted by Angular inject() migration for backwards compatibility */
+  constructor(...args: unknown[]);
+
+  constructor() {}
 
   ngAfterViewInit() {
     this.moveActiveTab(false);

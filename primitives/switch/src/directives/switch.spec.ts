@@ -19,7 +19,7 @@ describe('SwitchPrimitives', () => {
     required = false,
     name = 'input-name',
     value = 'on',
-    checkedChange = jest.fn(), 
+    checkedChange = jest.fn(),
   }: Partial<DirectiveConfig> = {}) => {
     return await render(
       `
@@ -89,7 +89,7 @@ describe('SwitchPrimitives', () => {
 
   it('should have the correct value attribute', async () => {
     const value = 'switch-value';
-    await setupDirective({ value });
+    await setupDirective({ value, name: "switch" });
     const inputElement = screen.getByTestId('input');
 
     expect(inputElement).toHaveAttribute('value', value);

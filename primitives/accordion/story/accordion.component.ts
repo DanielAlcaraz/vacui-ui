@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { CommonModule } from '@angular/common';
+
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { heroMinus, heroPlus } from '@ng-icons/heroicons/outline';
 import { AccordionPrimitivesModule } from '@vacui-kit/primitives/accordion';
@@ -15,20 +15,20 @@ interface AccordionItem {
 @Component({
   selector: 'vacui-ui-accordion',
   standalone: true,
-  imports: [CommonModule, AccordionPrimitivesModule, NgIconComponent],
+  imports: [AccordionPrimitivesModule, NgIconComponent],
   viewProviders: [provideIcons({ heroMinus, heroPlus })],
   template: `
     <div
       vacAccordionRoot
-      [multiple]="multiple"
-      [value]="initialOpen"
-      [collapsible]="collapsible"
-      [disabled]="disabled"
-      [orientation]="orientation"
+      [multiple]="multiple()"
+      [value]="initialOpen()"
+      [collapsible]="collapsible()"
+      [disabled]="disabled()"
+      [orientation]="orientation()"
       (valueChange)="valueChange($event)"
       class="flex flex-col"
     >
-      @for (accordion of items; track $index) {
+      @for (accordion of items(); track $index) {
         <div
           vacAccordionItem
           #item="vacAccordionItem"
@@ -72,29 +72,28 @@ interface AccordionItem {
   styles: [],
 })
 export class AccordionComponent {
-  @Input() initialOpen = ['item-1'];
-  @Input() multiple = true;
-  @Input() collapsible = false;
-  @Input() disabled = false;
-  @Input() orientation: 'horizontal' | 'vertical' = 'vertical';
-  @Input() items: AccordionItem[] = [
+  readonly initialOpen = input(['item-1']);
+  readonly multiple = input(true);
+  readonly collapsible = input(false);
+  readonly disabled = input(false);
+  readonly orientation = input<'horizontal' | 'vertical'>('vertical');
+  readonly items = input<AccordionItem[]>([
     {
-      id: 'item-1',
-      title: 'Why is it called Vacui UI?',
-      description:
-        'Vacui comes from Latin. It is the plural of Vacuus and it means void or emptiness. Making a reference to the headless system.',
+        id: 'item-1',
+        title: 'Why is it called Vacui UI?',
+        description: 'Vacui comes from Latin. It is the plural of Vacuus and it means void or emptiness. Making a reference to the headless system.',
     },
     {
-      id: 'item-2',
-      title: 'Why do we use directives?',
-      description: 'Directives are a powerful way to interact with the DOM. We want to give you the most flexible solution to create your own components.',
+        id: 'item-2',
+        title: 'Why do we use directives?',
+        description: 'Directives are a powerful way to interact with the DOM. We want to give you the most flexible solution to create your own components.',
     },
     {
-      id: 'item-3',
-      title: 'What are you waiting for?',
-      description: 'Start using Vacui or contact us for any help.',
+        id: 'item-3',
+        title: 'What are you waiting for?',
+        description: 'Start using Vacui or contact us for any help.',
     },
-  ];
+]);
 
   valueChange(value: string | string[] | null) {
     console.log(value);

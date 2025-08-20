@@ -1,4 +1,4 @@
-import { Directive, Inject, OnDestroy, OnInit } from '@angular/core';
+import { Directive, OnDestroy, OnInit, inject } from '@angular/core';
 import { ControlRoot } from './control.root.model';
 import { ControlValueAccessor } from '@angular/forms';
 import { CONTROL_ROOT_TOKEN } from './control-root.token';
@@ -10,13 +10,16 @@ import { Subject, takeUntil } from 'rxjs';
 export class ReactiveFormControlDirective<T>
   implements OnInit, OnDestroy, ControlValueAccessor
 {
+  private controlRoot = inject<ControlRoot<T>>(CONTROL_ROOT_TOKEN);
+
   private unsubscribe = new Subject<void>();
   private onChange!: (value: T) => void;
   private onTouched!: () => void;
 
-  constructor(
-    @Inject(CONTROL_ROOT_TOKEN) private controlRoot: ControlRoot<T>
-  ) {}
+  /** Inserted by Angular inject() migration for backwards compatibility */
+  constructor(...args: unknown[]);
+
+  constructor() {}
 
   ngOnInit(): void {
     this.controlRoot.valueUpdated

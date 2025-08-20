@@ -1,19 +1,23 @@
-import { Injectable, Inject, Renderer2, RendererFactory2, PLATFORM_ID } from '@angular/core';
+import { Injectable, Renderer2, RendererFactory2, PLATFORM_ID, inject } from '@angular/core';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ScrollLockService {
+  private document = inject<Document>(DOCUMENT);
+  private platformId = inject<Object>(PLATFORM_ID);
+
   private renderer: Renderer2;
   private documentElement: HTMLElement;
   private body: HTMLElement;
 
-  constructor(
-    @Inject(DOCUMENT) private document: Document,
-    rendererFactory: RendererFactory2,
-    @Inject(PLATFORM_ID) private platformId: Object,
-  ) {
+  /** Inserted by Angular inject() migration for backwards compatibility */
+  constructor(...args: unknown[]);
+
+  constructor() {
+    const rendererFactory = inject(RendererFactory2);
+
     this.renderer = rendererFactory.createRenderer(null, null);
     this.documentElement = this.document.documentElement;
     this.body = this.document.body;

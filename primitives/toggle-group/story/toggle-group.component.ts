@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, model } from '@angular/core';
 import { ToggleGroupPrimitivesModule } from '../src/toggle-group.module';
 import { CommonModule } from '@angular/common';
 
@@ -9,17 +9,17 @@ import { CommonModule } from '@angular/common';
   template: `
     <div
       vacToggleGroupRoot
-      [attr.aria-label]="ariaLabel"
-      [type]="type"
+      [attr.aria-label]="ariaLabel()"
+      [type]="type()"
       [(value)]="value"
-      [orientation]="orientation"
-      [disabled]="disabled"
-      [rovingFocus]="rovingFocus"
-      [loop]="loop"
+      [orientation]="orientation()"
+      [disabled]="disabled()"
+      [rovingFocus]="rovingFocus()"
+      [loop]="loop()"
       class="flex"
       [ngClass]="{
-        'flex-col': orientation === 'vertical',
-        'flex-row': orientation === 'horizontal'
+        'flex-col': orientation() === 'vertical',
+        'flex-row': orientation() === 'horizontal'
       }"
     >
       @for (item of toggleItems; track item.value; let i = $index) {
@@ -47,13 +47,13 @@ import { CommonModule } from '@angular/common';
   `,
 })
 export class ToggleGroupComponent {
-  @Input() value: string | string[] = '';
-  @Input() type: 'multiple' | 'single' = 'single';
-  @Input() orientation: 'horizontal' | 'vertical' = 'horizontal';
-  @Input() disabled = false;
-  @Input() rovingFocus = true;
-  @Input() loop = false;
-  @Input() ariaLabel = 'Text style';
+  readonly value = model<string | string[]>('');
+  readonly type = input<'multiple' | 'single'>('single');
+  readonly orientation = input<'horizontal' | 'vertical'>('horizontal');
+  readonly disabled = input(false);
+  readonly rovingFocus = input(true);
+  readonly loop = input(false);
+  readonly ariaLabel = input('Text style');
 
   toggleItems = [
     { value: 'bold', ariaLabel: 'Bold text' },
@@ -67,12 +67,12 @@ export class ToggleGroupComponent {
     const isMiddle = !isFirst && !isLast;
 
     return `
-      ${isFirst && this.orientation === 'horizontal' ? 'rounded-l-md' : ''}
-      ${isFirst && this.orientation === 'vertical' ? 'rounded-t-md' : ''}
-      ${isLast && this.orientation === 'horizontal' ? 'rounded-r-md' : ''}
-      ${isLast && this.orientation === 'vertical' ? 'rounded-b-md' : ''}
-      ${isMiddle && this.orientation === 'horizontal' ? 'border-l-0 border-r-0' : ''}
-      ${isMiddle && this.orientation === 'vertical' ? 'border-t-0 border-b-0' : ''}
+      ${isFirst && this.orientation() === 'horizontal' ? 'rounded-l-md' : ''}
+      ${isFirst && this.orientation() === 'vertical' ? 'rounded-t-md' : ''}
+      ${isLast && this.orientation() === 'horizontal' ? 'rounded-r-md' : ''}
+      ${isLast && this.orientation() === 'vertical' ? 'rounded-b-md' : ''}
+      ${isMiddle && this.orientation() === 'horizontal' ? 'border-l-0 border-r-0' : ''}
+      ${isMiddle && this.orientation() === 'vertical' ? 'border-t-0 border-b-0' : ''}
     `;
   }
 }

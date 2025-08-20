@@ -21,7 +21,7 @@ import { SwitchInputDirective, SwitchRootDirective, SwitchThumbDirective } from 
           vacSwitchThumb
           class="block w-[21px] h-[21px] bg-white rounded-full transition-transform duration-100 translate-x-[1.5px] will-change-transform data-[state=checked]:translate-x-[21px]"
         ></span>
-        <input *vacSwitchInput />
+        <div vacSwitchInput ></div>
       </button>
     </div>
   `,

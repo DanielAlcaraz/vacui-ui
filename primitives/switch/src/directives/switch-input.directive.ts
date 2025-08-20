@@ -1,15 +1,12 @@
 import {
   Directive,
   OnInit,
-  TemplateRef,
-  ViewContainerRef,
   ElementRef,
   inject,
   computed,
   Renderer2,
-  afterNextRender,
   Injector,
-  AfterRenderPhase,
+  OnDestroy,
 } from '@angular/core';
 import { hostBinding } from '@vacui-kit/primitives/utils';
 import { SwitchRootDirective } from './switch-root.directive';
@@ -19,27 +16,25 @@ import { SwitchRootDirective } from './switch-root.directive';
   standalone: true,
   exportAs: 'vacSwitchInput',
 })
-export class SwitchInputDirective {
+export class SwitchInputDirective implements OnInit, OnDestroy {
   private root = inject(SwitchRootDirective);
-  private templateRef = inject(TemplateRef<any>);
-  private viewContainer = inject(ViewContainerRef);
   private renderer = inject(Renderer2);
   private injector = inject(Injector);
+  private inputElement: HTMLInputElement | null = null;
 
-  constructor() {
-    afterNextRender(
-      () => {
-        const embeddedViewRef = this.viewContainer.createEmbeddedView(this.templateRef);
-        const inputElement = embeddedViewRef.rootNodes[0] as HTMLInputElement;
+  ngOnInit() {
+    this.inputElement = this.renderer.createElement('input') as HTMLInputElement;
+    this.renderer.setAttribute(this.inputElement, 'data-testid', 'input');
 
-        // Apply properties and styles
-        this.applyInputProperties(inputElement);
+    this.applyInputProperties(this.inputElement);
 
-        // Move the input to the correct position
-        this.moveInputOutsideButton(inputElement);
-      },
-      { phase: AfterRenderPhase.Write },
-    );
+    this.moveInputOutsideButton(this.inputElement);
+  }
+
+  ngOnDestroy() {
+    if (this.inputElement && this.inputElement.parentNode) {
+      this.renderer.removeChild(this.inputElement.parentNode, this.inputElement);
+    }
   }
 
   private applyInputProperties(input: HTMLInputElement) {
@@ -47,11 +42,11 @@ export class SwitchInputDirective {
     this.renderer.setAttribute(input, 'aria-hidden', 'true');
     this.renderer.setAttribute(input, 'tabindex', '-1');
 
-    hostBinding('checked', this.root.dataState, { element: input, injector: this.injector });
-    hostBinding('disabled', this.root.dataDisabled, { element: input, injector: this.injector });
-    hostBinding('required', this.root.required, { element: input, injector: this.injector });
-    hostBinding('name', this.root.name, { element: input, injector: this.injector });
-    hostBinding('value', this.root.value, { element: input, injector: this.injector });
+    hostBinding('attr.checked', this.root.dataState, { element: input, injector: this.injector });
+    hostBinding('attr.disabled', this.root.dataDisabled, { element: input, injector: this.injector });
+    hostBinding('attr.required', this.root.required, { element: input, injector: this.injector });
+    hostBinding('attr.name', this.root.name, { element: input, injector: this.injector });
+    hostBinding('attr.value', this.root.value, { element: input, injector: this.injector });
 
     const styles = computed(() => ({
       transform: 'translateX(-100%)',

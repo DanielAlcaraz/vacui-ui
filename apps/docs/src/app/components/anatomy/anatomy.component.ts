@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, computed, input } from '@angular/core';
 
 interface AnatomyNode {
@@ -9,7 +9,7 @@ interface AnatomyNode {
 @Component({
   selector: 'docs-anatomy',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   template: `
     <div class="font-sans text-xs w-full max-w-96 dark:text-gray-200">
       <div

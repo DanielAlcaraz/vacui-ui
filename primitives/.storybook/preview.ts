@@ -1,11 +1,6 @@
-import type { Preview, StoryContext } from '@storybook/angular';
-import { StoryFnAngularReturnType } from '@storybook/angular/dist/client/types';
+import type { Preview, StoryContext, Decorator } from '@storybook/angular';
 
-//  class="bg-gradient-to-r from-cyan-500 to-blue-500 p-10"
-export const backgroundStories = (
-  storyFn: (context: StoryContext, storyArgs?: Record<string, any>) => StoryFnAngularReturnType,
-  context: StoryContext,
-) => {
+export const backgroundStories: Decorator = (storyFn, context) => {
   const story = storyFn(context);
   return {
     ...story,

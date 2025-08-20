@@ -1,4 +1,4 @@
-import { Directive, Input, AfterContentInit, ContentChildren, QueryList } from '@angular/core';
+import { Directive, AfterContentInit, input, contentChildren } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ReactiveFormControlDirective } from './reactive-form-control.directive';
 
@@ -7,14 +7,14 @@ import { ReactiveFormControlDirective } from './reactive-form-control.directive'
 })
 export class ReactiveFormRootDirective<T> implements AfterContentInit {
 
-  @Input() formGroup!: FormGroup;
-  @ContentChildren(ReactiveFormControlDirective) controls!: QueryList<FormControl<T>>;
+  readonly formGroup = input.required<FormGroup>();
+  readonly controls = contentChildren(ReactiveFormControlDirective);
 
   ngAfterContentInit(): void {
-    if (!this.formGroup) {
+    if (!this.formGroup()) {
       this.formGroup = new FormGroup({});
-      this.controls.forEach(control => {
-        this.formGroup.addControl('', control);
+      this.controls().forEach(control => {
+        this.formGroup().addControl('', control);
       });
     }
   }

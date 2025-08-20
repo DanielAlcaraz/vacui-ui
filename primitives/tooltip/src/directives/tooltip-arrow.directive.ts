@@ -2,10 +2,10 @@ import {
   ComponentRef,
   Directive,
   ElementRef,
-  Input,
   Renderer2,
   ViewContainerRef,
   inject,
+  input
 } from '@angular/core';
 import { ArrowComponent } from '../arrow/arrow.component';
 import { TooltipPosition } from '../model/tooltip.model';
@@ -19,7 +19,10 @@ import { TooltipContentDirective } from './tooltip-content.directive';
 export class TooltipArrowDirective {
   arrow!: ComponentRef<ArrowComponent>;
 
-  @Input() arrowSize: { width: number; height: number } | number = 8;
+  readonly arrowSize = input<{
+    width: number;
+    height: number;
+} | number>(8);
 
   private renderer = inject(Renderer2);
   private viewContainerRef = inject(ViewContainerRef);
@@ -38,8 +41,8 @@ export class TooltipArrowDirective {
     this.renderer.appendChild(this.element, arrowElement);
 
     const { width, height } = this.getSize();
-    this.arrow.instance.width = width;
-    this.arrow.instance.height = height;
+    this.arrow.setInput('width', width);
+    this.arrow.setInput('height', height);
 
     this.updateArrow(position, triggerElement, contentElement);
   }
@@ -118,8 +121,9 @@ export class TooltipArrowDirective {
   }
 
   getSize() {
-    return typeof this.arrowSize === 'number'
-      ? { width: this.arrowSize, height: this.arrowSize }
-      : this.arrowSize;
+    const arrowSize = this.arrowSize();
+    return typeof arrowSize === 'number'
+      ? { width: arrowSize, height: arrowSize }
+      : arrowSize;
   }
 }

@@ -1,5 +1,5 @@
 import { ContentFile, injectContentFiles } from '@analogjs/content';
-import { CommonModule } from '@angular/common';
+
 import { Component, computed, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { DocMenuItemComponent } from './left-sidebar-menu-item.component';
@@ -21,39 +21,41 @@ interface PageMenuItem {
 @Component({
   selector: 'docs-menu',
   standalone: true,
-  imports: [CommonModule, DocMenuItemComponent],
+  imports: [DocMenuItemComponent],
   template: `
     <nav class="flex flex-1 flex-col h-full bg-gray-100 dark:bg-gray-800 pr-2 py-4">
       <ul
         role="list"
         class="flex flex-1 flex-col gap-y-6 overflow-y-auto px-4 sm:px-6 lg:px-6"
-      >
-        <ng-container *ngFor="let item of ungroupedMenuItems()">
+        >
+        @for (item of ungroupedMenuItems(); track item) {
           <docs-menu-item
             [title]="item.title"
             [url]="item.url"
             [icon]="item.icon"
             [isActive]="isActive(item.url)"
           ></docs-menu-item>
-        </ng-container>
-        <li *ngFor="let group of groupConfig">
-          <span class="text-base leading-6 text-gray-500 dark:text-gray-400 px-2 w-full text-left">
-            {{ group.label }}
-          </span>
-          <ul class="mt-1 space-y-1">
-            <ng-container *ngFor="let item of groupedMenuItems()[group.label]">
-              <docs-menu-item
-                [title]="item.title"
-                [url]="item.url"
-                [icon]="item.icon"
-                [isActive]="isActive(item.url)"
-              ></docs-menu-item>
-            </ng-container>
-          </ul>
-        </li>
+        }
+        @for (group of groupConfig; track group) {
+          <li>
+            <span class="text-base leading-6 text-gray-500 dark:text-gray-400 px-2 w-full text-left">
+              {{ group.label }}
+            </span>
+            <ul class="mt-1 space-y-1">
+              @for (item of groupedMenuItems()[group.label]; track item) {
+                <docs-menu-item
+                  [title]="item.title"
+                  [url]="item.url"
+                  [icon]="item.icon"
+                  [isActive]="isActive(item.url)"
+                ></docs-menu-item>
+              }
+            </ul>
+          </li>
+        }
       </ul>
     </nav>
-  `,
+    `,
 })
 export class DocMenuComponent {
   private router = inject(Router);

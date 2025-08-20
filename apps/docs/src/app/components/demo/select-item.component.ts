@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { heroCheck } from '@ng-icons/heroicons/outline';
 import {
@@ -12,20 +12,19 @@ import {
   selector: 'vac-select-item',
   standalone: true,
   imports: [
-    CommonModule,
     SelectItemDirective,
     NgIconComponent,
     SelectItemIndicatorDirective,
-    SelectItemTextDirective,
-  ],
+    SelectItemTextDirective
+],
   changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders: [provideIcons({ heroCheck })],
   template: `
     <div
       vacSelectItem
       class="cursor-pointer select-none relative py-2 pl-3 pr-9 hover:bg-gray-100 data-[highlighted]:bg-indigo-400 data-[highlighted]:text-white"
-      [value]="value"
-      [disabled]="disabled"
+      [value]="value()"
+      [disabled]="disabled()"
     >
       <span vacSelectItemText class="block truncate">
         <ng-content></ng-content>
@@ -40,7 +39,7 @@ import {
   `,
 })
 export class SelectItemComponent {
-  @Input() value!: string;
-  @Input() label!: string;
-  @Input() disabled = false;
+  readonly value = input.required<string>();
+  readonly label = input.required<string>();
+  readonly disabled = input(false);
 }

@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { PageAttributes } from '../../models/doc-page-attributes';
 
 @Component({
+  selector: 'docs-directives',
   standalone: true,
   imports: [MarkdownComponent],
   template: `
