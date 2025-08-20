@@ -24,4 +24,4 @@ Vacui addresses these challenges by introducing a more versatile approach to Ang
 
 ## Inspiration and Credits
 
-Vacui draws inspiration from libraries like [Melt UI](https://melt-ui.com) and [Radix UI](https://www.radix-ui.com/), they exemplify the power of providing developers with the foundational elements needed to build custom, high-quality user interfaces without imposing restrictive design decisions.
+Vacui draws inspiration from libraries like [Melt UI](https://melt-ui.com) and [Radix UI](https://www.radix-ui.com/).
