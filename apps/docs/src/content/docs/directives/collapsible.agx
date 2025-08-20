@@ -146,17 +146,23 @@ const keyboardRows = [
     <docs-table [columns]="outputColumns" [rows]="rootOutputRows" />
   </div>
 
-  <docs-table [columns]="attributesColumns" [rows]="rootAttrRows" />
+  <div class="mt-4">
+    <docs-table [columns]="attributesColumns" [rows]="rootAttrRows" />
+  </div>
 
   ## CollapsibleTrigger <docs-badge color="purple" text="Attribute Directive" />
   A directive to bind the state and the accessibility rules to the trigger element.
 
-  <docs-table [columns]="attributeColumns" [rows]="triggerAttrRows" />
+  <div class="mt-4">
+    <docs-table [columns]="attributesColumns" [rows]="triggerAttrRows" />
+  </div>
 
   ## CollapsibleContent <docs-badge color="purple" text="Attribute Directive" />
-  A directive to bind the state and the accessibility rules to the content element. To hide the content, you can use an `@if` or hide it with css like in the previous example. If you didn't set a state, you can access the `open` state with `directive.state.open()`. You can find an example in the state section.
+  A directive to bind the state and the accessibility rules to the content element. To hide the content, you can use an `if` or hide it with css like in the previous example. If you didn't set a state, you can access the `open` state with `directive.state.open()`. You can find an example in the state section.
 
-  <docs-table [columns]="attributesColumns" [rows]="contentAttrRows" />
+  <div class="mt-4">
+    <docs-table [columns]="attributesColumns" [rows]="contentAttrRows" />
+  </div>
 
   # State
   `CollapsibleStateService` allows to control the inputs and toggle of the collapsible.
@@ -167,16 +173,22 @@ const keyboardRows = [
   ### Example
   We could use it with any other directive. For example with `#root="vacCollapsibleRoot"` and access the state.
 
-  <docs-code [code]="stateExample" language="html" />
+  <div class="mt-4">
+    <docs-code [code]="stateExample" language="html" />
+  </div>
 
   ## State API - CollapsibleStateService
   Documentation for the collapsible state service API.
 
   ### Variables
-  <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />
+  <div class="mt-4">
+    <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />
+  </div>
 
   ### Methods
-  <docs-table [columns]="stateMethodsColumns" [rows]="stateMethodRows" />
+  <div class="mt-4">
+    <docs-table [columns]="stateMethodsColumns" [rows]="stateMethodRows" />
+  </div>
 
   # Accessibility
   This collapsible set of directives is designed in accordance with the WAI-ARIA Authoring Practices Guide. For more details on accessibility features and guidelines, please refer to the [WAI-ARIA Collapsible Practices](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/). This ensures our component meets modern accessibility standards, providing an inclusive user experience.
@@ -184,5 +196,7 @@ const keyboardRows = [
   ## Keyboard Navigation
   When we focus the trigger directive `vacCollapsibleTrigger` we can toggle it.
 
-  <docs-table [columns]="keyboardColumns" [rows]="keyboardRows" />
+  <div class="mt-4">
+    <docs-table [columns]="keyboardColumns" [rows]="keyboardRows" />
+  </div>
 </template>
