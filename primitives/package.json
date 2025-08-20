@@ -2,8 +2,8 @@
   "name": "@vacui-kit/primitives",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": "^17.3.0 || ^18.0.0 || ^19.0.0",
-    "@angular/core": "^17.3.0 || ^18.0.0 || ^19.0.0"
+    "@angular/common": "^19.0.0",
+    "@angular/core": "^19.0.0"
   },
   "publishConfig": {
     "access": "public",

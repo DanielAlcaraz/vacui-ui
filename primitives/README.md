@@ -20,6 +20,13 @@
 - **Modular Design**: Tree-shaking. Import only what you need.
 - **TypeScript Powered**: Full type safety and great developer experience.
 
+## Version
+
+| Vacui UI Version | Angular Version | Status |
+|-----------------|----------------|----------|
+| 0.0.1           | 17.3.x, 18.x   | Legacy   |
+| 0.0.2           | 19.x           | Current  |
+
 ## Installation
 
 ```bash
@@ -27,10 +34,6 @@ npm install @vacui-kit/primitives
 ```
 
 ## Getting Started
-
-### Prerequisites
-
-- Angular v17.3.0 or higher
 
 ### Basic Usage
 
