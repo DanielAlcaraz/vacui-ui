@@ -1,11 +1,13 @@
 import { Component, computed, input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'docs-menu-item',
   standalone: true,
+  imports: [RouterLink],
   template: `
     <li>
-      <a [href]="url()" [class]="linkClass()">
+      <a [routerLink]="url()" [class]="linkClass()">
         <!-- <Icon
           *ngIf="icon()"
           [name]="'heroicons:' + icon()"

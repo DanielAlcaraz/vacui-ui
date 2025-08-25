@@ -102,7 +102,9 @@ const stateExample = `
   ## AvatarImage <docs-badge color="purple" text="Attribute" />&nbsp;<docs-badge color="yellow" text="Optional" />
   A directive to listen the image render.
 
-  <docs-table [columns]="columnsInput" [rows]="itemInputRows" />
+  <div>
+    <docs-table [columns]="columnsInput" [rows]="itemInputRows" />
+  </div>
   
   <div class="mt-4">
     <docs-table [columns]="outputColumns" [rows]="itemOutputRows" />
@@ -111,7 +113,9 @@ const stateExample = `
   ## AvatarFallback <docs-badge color="blue" text="Structural" />&nbsp;<docs-badge color="yellow" text="Optional" />
   Use this directive to show a fallback when the image is not available.
 
-  <docs-table [columns]="columnsInput" [rows]="headerInputRows" />
+  <div>
+    <docs-table [columns]="columnsInput" [rows]="headerInputRows" />
+  </div>
 
   # State
   AvatarStateService allows to load and listen the status of an image.
@@ -122,19 +126,27 @@ const stateExample = `
   ### Example
   We could use it with any other directive. For example with `#image="vacAvatarRoot"` and access the state.
 
-  <docs-code [code]="stateExample" language="html" />
+  <div>
+    <docs-code [code]="stateExample" language="html" />
+  </div>
 
   ## State API - AvatarStateService
   Documentation for the avatar state service API.
 
   ### Variables
-  <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />
+  <div>
+    <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />
+  </div>
 
   ### Methods
-  <docs-table [columns]="stateMethodsColumns" [rows]="stateMethodRows" />
+  <div>
+    <docs-table [columns]="stateMethodsColumns" [rows]="stateMethodRows" />
+  </div>
 
   ## Types/Interfaces
   Avatar interfaces that you can import.
 
-  <docs-code code="type LoadingStatus = 'idle' | 'loading' | 'loaded' | 'error';" language="ts" />
+  <div>
+    <docs-code code="type LoadingStatus = 'idle' | 'loading' | 'loaded' | 'error';" language="ts" />
+  </div>
 </template>

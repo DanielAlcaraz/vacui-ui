@@ -79,28 +79,38 @@ const templateVariableExample = `
 
   Set of directives to build an accessible progress bar.
 
-  <docs-example name="progress" />
+  <div>
+    <docs-example name="progress" />
+  </div>
 
   ## Installation
   Add and import the module into your imports section.
 
   ### Modules
-  <docs-code code="import { ProgressPrimitivesModule } from '@vacui-kit/primitives/progress';" language="ts" />
+  <div>
+    <docs-code code="import { ProgressPrimitivesModule } from '@vacui-kit/primitives/progress';" language="ts" />
+  </div>
 
   ### Standalone directives
-  <docs-code code="import { ProgressRootDirective, ProgressIndicatorDirective } from '@vacui-kit/primitives/progress';" language="ts" />
+  <div>
+    <docs-code code="import { ProgressRootDirective, ProgressIndicatorDirective } from '@vacui-kit/primitives/progress';" language="ts" />
+  </div>
 
   # Anatomy
   Directive's set structure.
 
-  <docs-anatomy [node]="componentStructure" />
+  <div>
+    <docs-anatomy [node]="componentStructure" />
+  </div>
 
   # Input props
 
   ## ProgressRoot <docs-badge text="Attribute Directive" color="purple" />
   The root directive to build a progressbar. Handles the state and bindings.
 
-  <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+  <div>
+    <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+  </div>
 
   <div class="mt-4">
     <docs-table [columns]="attributesColumns" [rows]="rootAttrRows" />  
@@ -109,7 +119,9 @@ const templateVariableExample = `
   ## ProgressIndicator <docs-badge text="Attribute Directive" color="purple" />
   A directive to bind the state and the accessibility rules to the indicator element.
 
-  <docs-table [columns]="attributesColumns" [rows]="indicatorAttrRows" />
+  <div>
+    <docs-table [columns]="attributesColumns" [rows]="indicatorAttrRows" />
+  </div>
 
   # State
 
@@ -122,12 +134,16 @@ const templateVariableExample = `
   ### Example
   We could use it with any other directive. For example with `#root="vacProgressRoot"` and access the state.
 
-  <docs-code [code]="templateVariableExample" language="html" />
+  <div>
+    <docs-code [code]="templateVariableExample" language="html" />
+  </div>
 
   ## State API - ProgressStateService
 
   Documentation for the progress state service API.
 
   ### Variables
-  <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />  
+  <div>
+    <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />
+  </div>
 </template>

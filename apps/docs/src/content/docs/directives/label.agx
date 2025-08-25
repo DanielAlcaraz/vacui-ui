@@ -27,21 +27,29 @@ const features = [
 
   The label directive provides a solution to create an accessible label.
 
-  <docs-example name="label" />
+  <div>
+    <docs-example name="label" />
+  </div>
 
   ## Installation
   Add and import the module into your imports section.
 
   ### Module
-  <docs-code code="import { LabelPrimitivesModule } from '@vacui-kit/primitives/label';" language="ts" />
+  <div>
+    <docs-code code="import { LabelPrimitivesModule } from '@vacui-kit/primitives/label';" language="ts" />
+  </div>
 
   ### Standalone directives
-  <docs-code code="import { LabelRootDirective } from '@vacui-kit/primitives/label';" language="ts" />
+  <div>
+    <docs-code code="import { LabelRootDirective } from '@vacui-kit/primitives/label';" language="ts" />
+  </div>
 
   # Anatomy
   Directive's set structure.
 
-  <docs-anatomy [node]="componentStructure" />
+  <div>
+    <docs-anatomy [node]="componentStructure" />
+  </div>
 
   ## LabelRoot <docs-badge text="Attribute directive" color="purple" />
   Apply to a label. Disables text selection when double clicking the label.

@@ -16,11 +16,6 @@ export class ReactiveFormControlDirective<T>
   private onChange!: (value: T) => void;
   private onTouched!: () => void;
 
-  /** Inserted by Angular inject() migration for backwards compatibility */
-  constructor(...args: unknown[]);
-
-  constructor() {}
-
   ngOnInit(): void {
     this.controlRoot.valueUpdated
       .pipe(takeUntil(this.unsubscribe))

@@ -222,28 +222,38 @@ import { PortalDirective } from '@vacui-kit/primitives/portal';
 
   Select directive toolkit that offers a seamless and accessible solution for creating custom select/dropdown components.
 
-  <docs-example name="select" />
+  <div>
+    <docs-example name="select" />
+  </div>
 
   ## Installation
   Add and import the module into your imports section.
 
   ### Modules
-  <docs-code [code]="codeImportsModule" language="ts" />
+  <div>
+    <docs-code [code]="codeImportsModule" language="ts" />
+  </div>
   
   ### Standalone directives
-  <docs-code [code]="codeImportsDirectives" language="ts" />
+  <div>
+    <docs-code [code]="codeImportsDirectives" language="ts" />
+  </div>
 
   # Anatomy
   Directive's set structure.
 
-  <docs-anatomy [node]="componentStructure" />
+  <div>
+    <docs-anatomy [node]="componentStructure" />
+  </div>
 
   # Input props
 
   ## SelectRoot <docs-badge text="Attribute Directive" color="purple" />
   The root directive that contains the select component parts. Handles the state and bindings. It uses the [keyboard navigation directive](keyboard) under the hood, extending its inputs to this directive. 
 
-  <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+  <div>
+    <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+  </div>
 
   <div class="mt-4">
     <docs-table [columns]="outputColumns" [rows]="rootOutputRows" />  
@@ -256,12 +266,16 @@ import { PortalDirective } from '@vacui-kit/primitives/portal';
   ## SelectTrigger <docs-badge text="Attribute Directive" color="purple" />
   A directive that acts as the trigger button for opening the select dropdown.
 
-  <docs-table [columns]="attributesColumns" [rows]="triggerAttrRows" />
+  <div>
+    <docs-table [columns]="attributesColumns" [rows]="triggerAttrRows" />
+  </div>
 
   ## SelectValue <docs-badge text="Attribute Directive" color="purple" />
   Directive that displays the selected value(s) or placeholder.
 
-  <docs-table [columns]="columnsInput" [rows]="valueInputRows" />
+  <div>
+    <docs-table [columns]="columnsInput" [rows]="valueInputRows" />
+  </div>
 
   ## SelectContent <docs-badge text="Attribute Directive" color="purple" />
   The dropdown content container that holds the select options.
@@ -288,7 +302,9 @@ import { PortalDirective } from '@vacui-kit/primitives/portal';
   ## SelectGroup <docs-badge text="Attribute Directive" color="purple" />
   Groups related select options.
 
-  <docs-table [columns]="attributesColumns" [rows]="groupAttrRows" />
+  <div>
+    <docs-table [columns]="attributesColumns" [rows]="groupAttrRows" />
+  </div>
 
   ## SelectItemIndicator <docs-badge text="Structural Directive" color="blue" />
   Content inside this directive is rendered only when the item is selected.
@@ -319,24 +335,34 @@ import { PortalDirective } from '@vacui-kit/primitives/portal';
   ### Example
   We could use it with any other directive. For example with `#select="vacSelectRoot"` and access the state.
 
-  <docs-code [code]="templateVariableExample" language="html" />
+  <div>
+    <docs-code [code]="templateVariableExample" language="html" />
+  </div>
 
   ## State API - SelectStateService
 
   Documentation for the select state service API.
 
   ### Variables
-  <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />  
+  <div>
+    <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />
+  </div>
 
   ### Methods
-  <docs-table [columns]="stateMethodsColumns" [rows]="stateMethodRows" />  
+  <div>
+    <docs-table [columns]="stateMethodsColumns" [rows]="stateMethodRows" />
+  </div>
 
   # Types and interfaces
-  <docs-code [code]="typesAndInterfaces" language="ts" />
+  <div>
+    <docs-code [code]="typesAndInterfaces" language="ts" />
+  </div>
 
   # Accessibility
   This Select set of directives is designed in accordance with the WAI-ARIA Authoring Practices Guide. For more details on accessibility features and guidelines, please refer to the [WAI-ARIA Combobox Practices](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/). This ensures our component meets modern accessibility standards, providing an inclusive user experience.
 
   ## Keyboard Navigation
-  <docs-table [columns]="keyboardColumns" [rows]="keyboardRows" />  
+  <div>
+    <docs-table [columns]="keyboardColumns" [rows]="keyboardRows" />
+  </div>
 </template>

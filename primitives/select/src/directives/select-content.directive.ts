@@ -1,5 +1,4 @@
 import {
-  AfterRenderPhase,
   Directive,
   ElementRef,
   HostListener,
@@ -55,12 +54,9 @@ export class SelectContentDirective implements OnDestroy {
     hostBinding('attr.data-state', this.state.dataState);
     hostBinding('attr.aria-multiselectable', this.state.multiple);
 
-    afterNextRender(
-      () => {
-        if (this.state.open()) this.updatePosition();
-      },
-      { phase: AfterRenderPhase.MixedReadWrite },
-    );
+    afterNextRender(() => {
+      if (this.state.open()) this.updatePosition();
+    });
 
     effect(() => {
       if (this.state.open()) {
@@ -119,3 +115,4 @@ export class SelectContentDirective implements OnDestroy {
     this.state.toggleOpening();
   }
 }
+

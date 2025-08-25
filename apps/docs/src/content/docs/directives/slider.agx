@@ -204,18 +204,24 @@ const templateVariableExample = `
   ## Anatomy
   Directive's set structure.
 
-  <docs-anatomy [node]="componentStructure" />
+  <div>
+    <docs-anatomy [node]="componentStructure" />
+  </div>
 
   ## Input props
 
   ### SliderRoot <docs-badge text="Attribute Directive" color="purple" />
   The root directive to build a slider. Handles the state and event bindings.
 
-  <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+  <div>
+    <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+  </div>
 
   ### Output events
 
-  <docs-table [columns]="[{ header: 'Output', field: 'prop' }, { header: 'Type', field: 'type' }, { header: 'Description', field: 'description', widthFactor: 2 }]" [rows]="rootOutputRows" />
+  <div>
+    <docs-table [columns]="[{ header: 'Output', field: 'prop' }, { header: 'Type', field: 'type' }, { header: 'Description', field: 'description', widthFactor: 2 }]" [rows]="rootOutputRows" />
+  </div>
 
   <div class="mt-4">
     <docs-table [columns]="attributesColumns" [rows]="rootAttrRows" />
@@ -224,17 +230,23 @@ const templateVariableExample = `
   ### SliderTrack <docs-badge text="Attribute Directive" color="purple" />
   Defines the track element where the thumb(s) slide.
 
-  <docs-table [columns]="attributesColumns" [rows]="trackAttrRows" />
+  <div>
+    <docs-table [columns]="attributesColumns" [rows]="trackAttrRows" />
+  </div>
 
   ### SliderRange <docs-badge text="Attribute Directive" color="purple" />
   Represents the filled part of the track between the minimum value and the thumb, or between two thumbs.
 
-  <docs-table [columns]="attributesColumns" [rows]="rangeAttrRows" />
+  <div>
+    <docs-table [columns]="attributesColumns" [rows]="rangeAttrRows" />
+  </div>
 
   ### SliderThumb <docs-badge text="Attribute Directive" color="purple" />
   The draggable thumb to change the slider value. Multiple thumbs are supported.
 
-  <docs-table [columns]="attributesColumns" [rows]="thumbAttrRows" />
+  <div>
+    <docs-table [columns]="attributesColumns" [rows]="thumbAttrRows" />
+  </div>
 
   ### SliderInput <docs-badge text="Attribute Directive" color="purple" />
   A hidden input that syncs with the slider value for form submissions.
@@ -243,15 +255,21 @@ const templateVariableExample = `
 
   ### Range Slider (Multiple Thumbs)
 
-  <docs-code [code]="rangeExample" language="html" />
+  <div>
+    <docs-code [code]="rangeExample" language="html" />
+  </div>
 
   ### Vertical Slider
 
-  <docs-code [code]="verticalExample" language="html" />
+  <div>
+    <docs-code [code]="verticalExample" language="html" />
+  </div>
 
   ## Keyboard Navigation
 
-  <docs-table [columns]="keyboardNavColumns" [rows]="keyboardNavRows" />
+  <div>
+    <docs-table [columns]="keyboardNavColumns" [rows]="keyboardNavRows" />
+  </div>
 
   ## State
 
@@ -261,13 +279,17 @@ const templateVariableExample = `
 
   We can access the state of the slider using a template variable. All the directives expose themselves with the same name. We have access to the directive's attributes and also the `state` service.
 
-  <docs-code [code]="templateVariableExample" language="html" />
+  <div>
+    <docs-code [code]="templateVariableExample" language="html" />
+  </div>
 
   ### State API - SliderStateService
 
   Documentation for the slider state service API.
 
-  <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />
+  <div>
+    <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />
+  </div>
 
   ## Accessibility
 

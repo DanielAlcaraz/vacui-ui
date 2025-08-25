@@ -152,22 +152,30 @@ import { PortalDirective } from '@vacui-kit/primitives/portal';
   Add and import the module into your imports section.
 
   ### Modules
-  <docs-code [code]="codeImportsModule" language="ts" />
+  <div>
+    <docs-code [code]="codeImportsModule" language="ts" />
+  </div>
   
   ### Standalone directives
-  <docs-code [code]="codeImportsDirectives" language="ts" />
+  <div>
+    <docs-code [code]="codeImportsDirectives" language="ts" />
+  </div>
 
   # Anatomy
   Directive's set structure.
 
-  <docs-anatomy [node]="componentStructure" />
+  <div>
+    <docs-anatomy [node]="componentStructure" />
+  </div>
 
   # Input props
 
   ## TooltipRoot <docs-badge text="Attribute Directive" color="purple" />
   The root directive that contains the tooltip trigger and content. Manages the tooltip state.
 
-  <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+  <div>
+    <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+  </div>
 
   ## TooltipTrigger <docs-badge text="Attribute Directive" color="purple" />
   The directive that marks an element as the tooltip trigger. The tooltip will be shown when hovering over this element.
@@ -209,17 +217,23 @@ import { PortalDirective } from '@vacui-kit/primitives/portal';
   ### Example
   We could use it with any other directive. For example with `#root="vacTooltipRoot"` and access the state.
 
-  <docs-code [code]="templateVariableExample" language="html" />
+  <div>
+    <docs-code [code]="templateVariableExample" language="html" />
+  </div>
 
   ## State API - TooltipService
 
   Documentation for the tooltip state service API.
 
   ### Variables
-  <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />  
+  <div>
+    <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />  
+  </div>
 
   # Types and interfaces
-  <docs-code [code]="typesAndInterfaces" language="ts" />
+  <div>
+    <docs-code [code]="typesAndInterfaces" language="ts" />
+  </div>
 
   # Features
   <ul>

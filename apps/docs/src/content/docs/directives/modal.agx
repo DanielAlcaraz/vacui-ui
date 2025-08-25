@@ -170,21 +170,29 @@ import { PortalDirective } from '@vacui-kit/primitives/portal';
 
   A toolkit of Angular directives designed to construct a fully customizable and accessible dialog component.
 
-  <docs-example name="dialog" />
+  <div>
+    <docs-example name="dialog" />
+  </div>
 
   ## Installation
   Add and import the module into your imports section.
 
   ### Modules
-  <docs-code [code]="codeImportsModule" language="ts" />
+  <div>
+    <docs-code [code]="codeImportsModule" language="ts" />
+  </div>
   
   ### Standalone directives
-  <docs-code [code]="codeImportsDirectives" language="ts" />
+  <div>
+    <docs-code [code]="codeImportsDirectives" language="ts" />
+  </div>
 
   # Anatomy
   Directive's set structure.
 
-  <docs-anatomy [node]="componentStructure" />
+  <div>
+    <docs-anatomy [node]="componentStructure" />
+  </div>
 
   # Input props
 
@@ -199,27 +207,37 @@ import { PortalDirective } from '@vacui-kit/primitives/portal';
     <docs-table [columns]="outputColumns" [rows]="rootOutputRows" />
   </div>
 
-  <docs-table [columns]="attributesColumns" [rows]="rootAttrRows" />
+  <div>
+    <docs-table [columns]="attributesColumns" [rows]="rootAttrRows" />
+  </div>
 
   ## DialogTrigger <docs-badge color="purple" text="Attribute directive" />
   The dialog trigger that opens the dialog.
 
-  <docs-table [columns]="attributesColumns" [rows]="triggerAttrRows" />
+  <div>
+    <docs-table [columns]="attributesColumns" [rows]="triggerAttrRows" />
+  </div>
 
   ## Portal <docs-badge text="Structural directive" />
   When used, portals send your content into the body.
 
-  <docs-table [columns]="columnsInput" [rows]="portalInputRows" />
+  <div>
+    <docs-table [columns]="columnsInput" [rows]="portalInputRows" />
+  </div>
 
   ## DialogOverlay <docs-badge text="Structural directive" />
   A layer that covers the inert part of the view when the dialog is open.
 
-  <docs-table [columns]="attributesColumns" [rows]="overlayAttrRows" />
+  <div>
+    <docs-table [columns]="attributesColumns" [rows]="overlayAttrRows" />
+  </div>
 
   ## DialogContent <docs-badge color="purple" text="Attribute directive" />
   Contains content to be rendered in the open dialog.
 
-  <docs-table [columns]="outputColumns" [rows]="contentOutputRows" />
+  <div>
+    <docs-table [columns]="outputColumns" [rows]="contentOutputRows" />
+  </div>
   
   <div class="mt-4">
     <docs-table [columns]="attributesColumns" [rows]="contentAttrRows" />
@@ -228,17 +246,23 @@ import { PortalDirective } from '@vacui-kit/primitives/portal';
   ## DialogClose <docs-badge color="purple" text="Attribute directive" />
   The button trigger that closes the dialog.
 
-  <docs-table [columns]="attributesColumns" [rows]="closeAttrRows" />
+  <div>
+    <docs-table [columns]="attributesColumns" [rows]="closeAttrRows" />
+  </div>
 
   ## DialogTitle <docs-badge color="purple" text="Attribute directive" />&nbsp;<docs-badge color="yellow" text="Optional" />
   An accessible title to be announced when the dialog is opened.
 
-  <docs-table [columns]="attributesColumns" [rows]="titleAttrRows" />
+  <div>
+    <docs-table [columns]="attributesColumns" [rows]="titleAttrRows" />
+  </div>
 
   ## DialogDescription <docs-badge color="purple" text="Attribute directive" />&nbsp;<docs-badge color="yellow" text="Optional" />
   Description of the dialog.
 
-  <docs-table [columns]="attributesColumns" [rows]="descriptionAttrRows" />
+  <div>
+    <docs-table [columns]="attributesColumns" [rows]="descriptionAttrRows" />
+  </div>
 
   # State
   `DialogStateService` injects an accordion state and exposes an API to interact with the items. Most of the time you wouldn't need it, but it is accessible within the template and it can be useful when we create a new directive or component to replace one of the current directives blocks. Each directive injects the root instance to handle the accordion accessibility and logic.
@@ -249,13 +273,17 @@ import { PortalDirective } from '@vacui-kit/primitives/portal';
   ### Example
   We could use it with any other directive. For example with `#image="vacAvatarRoot"` and access the state.
 
-  <docs-code [code]="stateExample" language="html" />
+  <div>
+    <docs-code [code]="stateExample" language="html" />
+  </div>
 
   ## State API - AccordionStateService
   Documentation for the accordion state service API.
 
   ### Variables
-  <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />
+  <div>
+    <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />
+  </div>
 
   # Accessibility
   This accordion component is designed in accordance with the WAI-ARIA Authoring Practices Guide. For more details on accessibility features and guidelines, please refer to the [WAI-ARIA Dialog Practices](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal). This ensures our component meets modern accessibility standards, providing an inclusive user experience.
@@ -263,5 +291,7 @@ import { PortalDirective } from '@vacui-kit/primitives/portal';
   ## Keyboard Navigation
   Keyboard navigation uses an internal directive system to control the keyboard flow. You can read more about it in [KeyboardNavigationDirective](). `KeyboardNavigationDirective` props are extended directly in the `AccordionRoot` directive.
 
-  <docs-table [columns]="keyboardColumns" [rows]="keyboardRows" />
+  <div>
+    <docs-table [columns]="keyboardColumns" [rows]="keyboardRows" />
+  </div>
 </template>

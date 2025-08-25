@@ -4,10 +4,7 @@ import { Directive, ElementRef, Renderer2, inject } from '@angular/core';
   selector: '[appNoSelect]'
 })
 export class NoSelectDirective {
-
-  /** Inserted by Angular inject() migration for backwards compatibility */
-  constructor(...args: unknown[]);
-
+  
   constructor() {
     const el = inject(ElementRef);
     const renderer = inject(Renderer2);

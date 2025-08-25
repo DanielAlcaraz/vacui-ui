@@ -148,22 +148,30 @@ const isFocused = item.isFocused();
   Add and import the module into your imports section.
 
   ### Module
-  <docs-code code="import { ToggleGroupPrimitivesModule } from '@vacui-kit/primitives/toggle-group';" language="ts" />
+  <div>
+    <docs-code code="import { ToggleGroupPrimitivesModule } from '@vacui-kit/primitives/toggle-group';" language="ts" />
+  </div>
 
   ### Standalone directives
-  <docs-code code="import { ToggleGroupItemDirective, ToggleGroupRootDirective } from '@vacui-kit/primitives/toggle-group';" language="ts" />
+  <div>
+    <docs-code code="import { ToggleGroupItemDirective, ToggleGroupRootDirective } from '@vacui-kit/primitives/toggle-group';" language="ts" />
+  </div>
 
   # Anatomy
   Directive's set structure.
 
-  <docs-anatomy [node]="componentStructure" />
+  <div>
+    <docs-anatomy [node]="componentStructure" />
+  </div>
 
   # Input props
 
   ## ToggleGroupRoot <docs-badge text="Attribute Directive" color="purple" />
   The root directive that contains the toggle items. Handles the state and bindings.
 
-  <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+  <div>
+    <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+  </div>
 
   <div class="mt-4">
     <docs-table [columns]="outputColumns" [rows]="rootOutputRows" />  
@@ -199,17 +207,23 @@ const isFocused = item.isFocused();
   ### Example
   We could use it with any other directive. For example with `#root="vacToggleGroupRoot"` and access the state.
 
-  <docs-code [code]="templateVariableExample" language="html" />
+  <div>
+    <docs-code [code]="templateVariableExample" language="html" />
+  </div>
 
   ## State API - ToggleGroupStateService
 
   Documentation for the toggle group state service API.
 
   ### Variables
-  <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />  
+  <div>
+    <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />  
+  </div>
 
   ### Item Methods
-  <docs-code [code]="itemMethodsExample" language="ts" />
+  <div>
+    <docs-code [code]="itemMethodsExample" language="ts" />
+  </div>
 
   # Features
   <ul>
@@ -222,5 +236,7 @@ const isFocused = item.isFocused();
   This Toggle Group set of directives is designed in accordance with the WAI-ARIA Authoring Practices Guide. For more details on accessibility features and guidelines, please refer to the [WAI-ARIA Toggle Button Practices](https://www.w3.org/WAI/ARIA/apg/patterns/button/). This ensures our component meets modern accessibility standards, providing an inclusive user experience.
 
   ## Keyboard Navigation
-  <docs-table [columns]="keyboardColumns" [rows]="keyboardRows" />  
+  <div>
+    <docs-table [columns]="keyboardColumns" [rows]="keyboardRows" />
+  </div>
 </template>

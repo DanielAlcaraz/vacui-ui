@@ -50,10 +50,6 @@ export class TabsComponent implements AfterViewInit {
     { title: 'Tab 3', id: 'tab3', disabled: true },
   ];
 
-  /** Inserted by Angular inject() migration for backwards compatibility */
-  constructor(...args: unknown[]);
-
-  constructor() {}
 
   ngAfterViewInit() {
     this.moveActiveTab(false);

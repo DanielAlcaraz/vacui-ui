@@ -43,11 +43,6 @@ export class TabsContainerComponent implements AfterContentInit {
   underlineWidth = signal(0);
   underlineLeft = signal(0);
 
-  /** Inserted by Angular inject() migration for backwards compatibility */
-  constructor(...args: unknown[]);
-
-  constructor() {}
-
   ngAfterContentInit() {
     this.updateTabVisibility();
     this.updateUnderline();

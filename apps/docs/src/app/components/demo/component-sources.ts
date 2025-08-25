@@ -1,7 +1,7 @@
 /**
  * GENERATED FILE - DO NOT EDIT
  * This file contains component source code for the demo components
- * Generated on: 2025-08-20T19:52:35.474Z
+ * Generated on: 2025-08-25T18:30:14.238Z
  */
 
 export const componentSources: Record<string, string> = {
@@ -255,11 +255,6 @@ export class TabsComponent implements AfterViewInit {
     { title: 'Tab 2', id: 'tab2', disabled: true },
     { title: 'Tab 3', id: 'tab3', disabled: false },
   ];
-
-  /** Inserted by Angular inject() migration for backwards compatibility */
-  constructor(...args: unknown[]);
-
-  constructor() {}
 
   ngAfterViewInit() {
     this.moveActiveTab(false);

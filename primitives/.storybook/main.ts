@@ -4,15 +4,14 @@ const config: StorybookConfig = {
   stories: ['../**/*.mdx', '../**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
     '@storybook/addon-a11y',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
+    '@storybook/addon-docs'
   ],
   framework: {
     name: '@storybook/angular',
     options: {},
   },
-  docs: {
-    autodocs: 'tag',
+  features: {
+    angularFilterNonInputControls: true,
   }
 };
 

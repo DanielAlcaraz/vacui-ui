@@ -105,22 +105,30 @@ const templateVariableExample = `
   Add and import the module into your imports section.
 
   ### Module
-  <docs-code code="import { SwitchPrimitivesModule } from '@vacui-kit/primitives/switch';" language="ts" />
+  <div>
+    <docs-code code="import { SwitchPrimitivesModule } from '@vacui-kit/primitives/switch';" language="ts" />
+  </div>
 
   ### Standalone directives
-  <docs-code code="import { SwitchInputDirective, SwitchRootDirective, SwitchThumbDirective } from '@vacui-kit/primitives/switch';" language="ts" />
+  <div>
+    <docs-code code="import { SwitchInputDirective, SwitchRootDirective, SwitchThumbDirective } from '@vacui-kit/primitives/switch';" language="ts" />
+  </div>
 
   # Anatomy
   Directive's set structure.
 
-  <docs-anatomy [node]="componentStructure" />
+  <div>
+    <docs-anatomy [node]="componentStructure" />
+  </div>
 
   # Input props
 
   ## SwitchRoot <docs-badge text="Attribute Directive" color="purple" />
   The root directive that contains the switch components. Handles the state and bindings.
 
-  <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+  <div>
+    <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+  </div>
 
   <div class="mt-4">
     <docs-table [columns]="attributesColumns" [rows]="rootAttrRows" />  
@@ -129,7 +137,9 @@ const templateVariableExample = `
   ## SwitchThumb <docs-badge text="Attribute Directive" color="purple" />
   The visual indicator that shows the current state of the switch.
 
-  <docs-table [columns]="attributesColumns" [rows]="thumbAttrRows" />
+  <div>
+    <docs-table [columns]="attributesColumns" [rows]="thumbAttrRows" />
+  </div>
 
   ## SwitchInput <docs-badge text="Structural Directive" color="purple" />
   A directive that creates a hidden input for form integration. It should be used with an ng-template containing an input element.
@@ -141,11 +151,15 @@ const templateVariableExample = `
   ### Example
   Using the template variable to display the current state of the switch.
 
-  <docs-code [code]="templateVariableExample" language="html" />
+  <div>
+    <docs-code [code]="templateVariableExample" language="html" />
+  </div>
 
   # Accessibility
   This Switch set of directives is designed in accordance with the WAI-ARIA Authoring Practices Guide. This ensures our component meets modern accessibility standards, providing an inclusive user experience.
 
   ## Keyboard Navigation
-  <docs-table [columns]="keyboardColumns" [rows]="keyboardRows" />  
+  <div>
+    <docs-table [columns]="keyboardColumns" [rows]="keyboardRows" />
+  </div>
 </template>

@@ -122,28 +122,38 @@ const keyboardRows = [
 
   A checkbox directive set that provides a flexible and accessible way to enhance form interactions, enabling full customization with indeterminate states and dynamic property bindings.
 
-  <docs-example name="checkbox" />
+  <div>
+    <docs-example name="checkbox" />
+  </div>
 
   ## Installation
   Add and import the module into your imports section.
 
   ### Module
-  <docs-code code="import { CheckboxPrimitivesModule } from '@vacui-kit/primitives/checkbox';" language="ts" />
+  <div>
+    <docs-code code="import { CheckboxPrimitivesModule } from '@vacui-kit/primitives/checkbox';" language="ts" />
+  </div>
 
   ### Standalone directives
-  <docs-code code="import { CheckboxRootDirective, CheckboxInputDirective } from '@vacui-kit/primitives/checkbox';" language="ts" />
+  <div>
+    <docs-code code="import { CheckboxRootDirective, CheckboxInputDirective } from '@vacui-kit/primitives/checkbox';" language="ts" />
+  </div>
 
   # Anatomy
   Directive's set structure.
 
-  <docs-anatomy [node]="componentStructure" />
+  <div>
+    <docs-anatomy [node]="componentStructure" />
+  </div>
 
   # Input props
 
   ## CheckboxRoot <docs-badge color="purple" text="Attribute directive" />
   The root directive for the checkbox. Handles the state, keyboard navigation and bindings.
 
-  <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+  <div>
+    <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+  </div>
   
   <div class="mt-4">
     <docs-table [columns]="outputColumns" [rows]="rootOutputRows" />
@@ -156,7 +166,9 @@ const keyboardRows = [
   ## CheckboxInput <docs-badge color="purple" text="Attribute directive" />
   A directive to bind the state and the accessibility rules to the input element.
 
-  <docs-table [columns]="attributesColumns" [rows]="itemAttrRows" />
+  <div>
+    <docs-table [columns]="attributesColumns" [rows]="itemAttrRows" />
+  </div>
 
   # State
   `CheckboxStateService` allows to control the inputs and toggle of the checkbox.
@@ -167,26 +179,36 @@ const keyboardRows = [
   ### Example
   We could use it with any other directive. For example with `#check="vacCheckboxRoot"` and access the state.
 
-  <docs-code [code]="stateExample" language="html" />
+  <div>
+    <docs-code [code]="stateExample" language="html" />
+  </div>
 
   ## State API - CheckboxStateService
   Documentation for the checkbox state service API.
 
   ### Variables
-  <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />
+  <div>
+    <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />
+  </div>
 
   ### Methods
-  <docs-table [columns]="stateMethodsColumns" [rows]="stateMethodRows" />
+  <div>
+    <docs-table [columns]="stateMethodsColumns" [rows]="stateMethodRows" />
+  </div>
 
   ## Types/Interfaces
   Avatar interfaces that you can import.
 
-  <docs-code [code]="models" language="ts" />
+  <div>
+    <docs-code [code]="models" language="ts" />
+  </div>
 
   # Accessibility
   This checkbox set of directives is designed in accordance with the WAI-ARIA Authoring Practices Guide. For more details on accessibility features and guidelines, please refer to the [WAI-ARIA Checkbox Practices](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/). This ensures our component meets modern accessibility standards, providing an inclusive user experience.
 
   ## Keyboard Navigation
 
-  <docs-table [columns]="keyboardColumns" [rows]="keyboardRows" />
+  <div>
+    <docs-table [columns]="keyboardColumns" [rows]="keyboardRows" />
+  </div>
 </template>

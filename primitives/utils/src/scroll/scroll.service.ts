@@ -6,14 +6,11 @@ import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 })
 export class ScrollLockService {
   private document = inject<Document>(DOCUMENT);
-  private platformId = inject<Object>(PLATFORM_ID);
+  private platformId = inject<typeof PLATFORM_ID>(PLATFORM_ID);
 
   private renderer: Renderer2;
   private documentElement: HTMLElement;
   private body: HTMLElement;
-
-  /** Inserted by Angular inject() migration for backwards compatibility */
-  constructor(...args: unknown[]);
 
   constructor() {
     const rendererFactory = inject(RendererFactory2);

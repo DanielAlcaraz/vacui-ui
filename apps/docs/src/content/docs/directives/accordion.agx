@@ -295,21 +295,29 @@ A toolkit of Angular directives designed to construct a fully customizable accor
   ### Example
   We could use it with any other directive. For example with `#image="vacAvatarRoot"` and access the state.
 
-  <docs-code [code]="stateExample" language="html" />
+  <div>
+    <docs-code [code]="stateExample" language="html" />
+  </div>
 
   ## State API - AccordionStateService
   Documentation for the accordion state service API.
 
   ### Variables
-  <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />
+  <div>
+    <docs-table [columns]="stateVarsColumns" [rows]="stateRows" />
+  </div>
 
   ### Methods
-  <docs-table [columns]="stateMethodsColumns" [rows]="stateMethodRows" />
+  <div>
+    <docs-table [columns]="stateMethodsColumns" [rows]="stateMethodRows" />
+  </div>
 
   ## Types
   Avatar types that you can import.
 
-  <docs-code [code]="models" language="ts" />
+  <div>
+    <docs-code [code]="models" language="ts" />
+  </div>
 
   # Accessibility
   This accordion component is designed in accordance with the WAI-ARIA Authoring Practices Guide. For more details on accessibility features and guidelines, please refer to the [WAI-ARIA Accordion Practices](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/). This ensures our component meets modern accessibility standards, providing an inclusive user experience.
@@ -317,16 +325,22 @@ A toolkit of Angular directives designed to construct a fully customizable accor
   ## Keyboard Navigation
   Keyboard navigation uses an internal directive system to control the keyboard flow. You can read more about it in [KeyboardNavigationDirective](). `KeyboardNavigationDirective` props are extended directly in the `AccordionRoot` directive.
 
-  <docs-table [columns]="keyboardColumns" [rows]="keyboardRows" />
+  <div>
+    <docs-table [columns]="keyboardColumns" [rows]="keyboardRows" />
+  </div>
 
   # Examples
   ## Build a custom trigger using the accordion state
   We can create custom components/directives that will interact with the accordion state. It can be useful when we need to implement custom logic into one or more of our pieces. Remember we could use the `AccordionTriggerDirective` inside our component instead of implementing our custom logic.
   To continue, create a component wrap for the desired functionality and implement your custom logic. Remember to implement the necessary accessibility attributes.
 
-  <docs-code [code]="example1" language="ts" />
+  <div>
+    <docs-code [code]="example1" language="ts" />
+  </div>
 
   Once we created our trigger component. We can implement it inside the root directive.
 
-  <docs-code [code]="example2" language="ts" />
+  <div>
+    <docs-code [code]="example2" language="ts" />
+  </div>
 </template>

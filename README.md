@@ -25,7 +25,8 @@
 | Vacui UI Version | Angular Version | Status |
 |-----------------|----------------|----------|
 | 0.0.1           | 17.3.x, 18.x   | Legacy   |
-| 0.0.2           | 19.x           | Current  |
+| 0.0.2           | 19.x           | Legacy   |
+| 0.0.3           | 20.x           | Current  |
 
 ## Installation
 

@@ -1,8 +1,8 @@
-import { AfterRenderPhase, ChangeDetectionStrategy, Component, OnDestroy, NgZone, ChangeDetectorRef, afterNextRender, computed, signal, inject } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, computed, OnDestroy, signal } from '@angular/core';
 import { ProgressPrimitivesModule } from '@vacui-kit/primitives/progress';
 
 @Component({
-  selector: 'vacui-ui-progress',
+  selector: 'vac-progress',
   standalone: true,
   imports: [ProgressPrimitivesModule],
   template: `
@@ -22,29 +22,21 @@ import { ProgressPrimitivesModule } from '@vacui-kit/primitives/progress';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProgressComponent implements OnDestroy {
-  private ngZone = inject(NgZone);
-  private cdr = inject(ChangeDetectorRef);
-
-  value = signal(0);
+export class ProgressComponent implements AfterViewInit, OnDestroy {
+  value = signal(1);
   max = signal(50);
+
   protected translateX = computed(() => `translateX(-${100 - (100 * this.value()) / this.max()}%)`);
   private intervalId: ReturnType<typeof setInterval> | null = null;
 
-  /** Inserted by Angular inject() migration for backwards compatibility */
-  constructor(...args: unknown[]);
-
-  constructor() {
-    afterNextRender(() => {
-      this.ngZone.runOutsideAngular(() => this.startProgress());
-    }, { phase: AfterRenderPhase.Write });
+  ngAfterViewInit(): void {
+    this.startProgress();
   }
 
   private startProgress(): void {
     this.intervalId = setInterval(() => {
       if (this.value() < this.max()) {
         this.value.update(prevValue => (Math.min(prevValue + 1, this.max())));
-        this.ngZone.run(() => this.cdr.markForCheck());
       } else {
         this.stopProgress();
       }

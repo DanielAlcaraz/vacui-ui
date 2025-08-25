@@ -60,22 +60,30 @@ const demoHighlights = ["SeparatorPrimitivesModule", "vacSeparatorRoot"];
   Add and import the module into your imports section.
 
   ### Modules
-  <docs-code code="import { SeparatorPrimitivesModule } from '@vacui-kit/primitives/separator';" language="ts" />
+  <div>
+    <docs-code code="import { SeparatorPrimitivesModule } from '@vacui-kit/primitives/separator';" language="ts" />
+  </div>
 
   ### Standalone directives
-  <docs-code code="import { SeparatorRootDirective } from '@vacui-kit/primitives/separator';" language="ts" />
+  <div>
+    <docs-code code="import { SeparatorRootDirective } from '@vacui-kit/primitives/separator';" language="ts" />
+  </div>
 
   # Anatomy
   Directive's set structure.
 
-  <docs-anatomy [node]="componentStructure" />
+  <div>
+    <docs-anatomy [node]="componentStructure" />
+  </div>
 
   # Input props
 
   ## SeparatorRoot <docs-badge text="Attribute Directive" color="purple" />
   Creates the separator.
 
-  <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+  <div>
+    <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+  </div>
 
   <div class="mt-4">
     <docs-table [columns]="attributesColumns" [rows]="rootAttrRows" />  

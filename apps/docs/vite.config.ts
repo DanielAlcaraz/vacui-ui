@@ -1,6 +1,6 @@
 /// <reference types="vitest" />
 
-import analog from '@analogjs/platform';
+import analog, { PrerenderContentFile } from '@analogjs/platform';
 import { defineConfig, splitVendorChunkPlugin } from 'vite';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { resolve } from 'path';
@@ -58,22 +58,26 @@ export default defineConfig(({ mode }) => {
             '/docs',
             {
               contentDir: 'src/content/docs/overview',
-              transform: (file) => {
+              staticData: true,
+              transform: (file: PrerenderContentFile) => {
                 // Skip any draft files if you have that attribute
                 // if (file.attributes.draft) return false;
                 
                 // Use the file's name (without extension) as the slug
-                return `/docs/overview/${file.name}`;
+                const slug = file.attributes['slug'] || file.name;
+                return `/docs/overview/${slug}`;
               },
             },
             {
               contentDir: 'src/content/docs/directives',
-              transform: (file) => {
+              staticData: true,
+              transform: (file: PrerenderContentFile) => {
                 // Skip any draft files if you have that attribute
                 // if (file.attributes.draft) return false;
                 
                 // Use the file's name (without extension) as the slug
-                return `/docs/directives/${file.name}`;
+                const slug = file.attributes['slug'] || file.name;
+                return `/docs/directives/${slug}`;
               },
             }
           ],

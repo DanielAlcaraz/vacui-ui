@@ -14,11 +14,6 @@ export class PasteFromClipboardDirective {
 
   readonly pasteData = output<PasteData[]>();
 
-  /** Inserted by Angular inject() migration for backwards compatibility */
-  constructor(...args: unknown[]);
-
-  constructor() {}
-
   @HostListener('paste', ['$event'])
   onPaste(event: ClipboardEvent): void {
     event.preventDefault();

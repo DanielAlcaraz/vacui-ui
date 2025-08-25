@@ -128,33 +128,45 @@ export type NavigationDirection = 'vertical' | 'horizontal';`;
 
   Set of directives that offers an easy and accessible solution for creating keyboard navigation between custom elements.
 
-  <docs-example name="keyboardNavigation" />
+  <div>
+    <docs-example name="keyboardNavigation" />
+  </div>
 
   ## Installation
   Add and import the module into your imports section.
 
   ### Module
-  <docs-code code="import { KeyNavigationModule } from '@vacui-kit/primitives/key-navigation';" language="ts" />
+  <div>
+    <docs-code code="import { KeyNavigationModule } from '@vacui-kit/primitives/key-navigation';" language="ts" />
+  </div>
 
   ### Standalone directives
-  <docs-code code="import { KeyNavigationRootDirective, KeyNavigationItemDirective } from '@vacui-kit/primitives/key-navigation';" language="ts" />
+  <div>
+    <docs-code code="import { KeyNavigationRootDirective, KeyNavigationItemDirective } from '@vacui-kit/primitives/key-navigation';" language="ts" />
+  </div>
 
   # Anatomy
   Directive's set structure.
 
-  <docs-anatomy [node]="componentStructure" />
+  <div>
+    <docs-anatomy [node]="componentStructure" />
+  </div>
 
   # Input props
 
   ## KeyNavigationeRoot <docs-badge text="Attribute Directive" color="purple" />
   The root directive that syncs the navigable items. It listens to the `keydown` and `focusout` events in the container.
 
-  <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+  <div>
+    <docs-table [columns]="columnsInput" [rows]="rootInputRows" />
+  </div>
 
   ## KeyNavigationItem <docs-badge text="Attribute Directive" color="purple" />
   A directive to register/remove the element in the navigation root.
 
-  <docs-table [columns]="columnsInput" [rows]="itemInputRows" />
+  <div>
+    <docs-table [columns]="columnsInput" [rows]="itemInputRows" />
+  </div>
 
   <div class="mt-4">
     <docs-table [columns]="attributesColumns" [rows]="itemAttrRows" />
@@ -166,23 +178,33 @@ export type NavigationDirection = 'vertical' | 'horizontal';`;
   ## Default Navigation Rules
   Default set of rules that are binded into the root.
 
-  <docs-table [columns]="keyboardColumns" [rows]="keyboardRows" />
+  <div>
+    <docs-table [columns]="keyboardColumns" [rows]="keyboardRows" />
+  </div>
 
   ## Override a rule
   We can override default navigation rules by providing a new `NavigationRule` object with override.
 
-  <docs-code [code]="overrideRule" language="ts" />
+  <div>
+    <docs-code [code]="overrideRule" language="ts" />
+  </div>
 
   ## Add a callback in an existing rule
   We can add a callback to an existing rule by providing a new `NavigationRule` object and `override: false`. It will call our callback before the navigation.
 
-  <docs-code [code]="callbackRule" language="ts" />
+  <div>
+    <docs-code [code]="callbackRule" language="ts" />
+  </div>
 
   ## Create a new rules
   We can also create existing rules by providing a new `NavigationRule` object. It will add a listener to the root and call your callback.
 
-  <docs-code [code]="newRule" language="ts" />
+  <div>
+    <docs-code [code]="newRule" language="ts" />
+  </div>
 
   # Exported types and interfaces
-  <docs-code [code]="exportedTypes" language="ts" />
+  <div>
+    <docs-code [code]="exportedTypes" language="ts" />
+  </div>
 </template>
