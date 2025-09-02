@@ -1,4 +1,4 @@
-import { Component, HostListener, ElementRef, inject, output, input, model } from '@angular/core';
+import { Component, HostListener, ElementRef, inject, output, model } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { heroBars3, heroXMark } from '@ng-icons/heroicons/outline';
@@ -115,8 +115,8 @@ import { heroBars3, heroXMark } from '@ng-icons/heroicons/outline';
 export class SlideoverComponent {
   private el = inject(ElementRef);
 
-  readonly isOpen = model(false);
-  readonly isOpenChange = output<boolean>();
+  isOpen = model(false);
+  isOpenChange = output<boolean>();
 
   @HostListener('document:keydown.escape')
   handleEscapeKey() {

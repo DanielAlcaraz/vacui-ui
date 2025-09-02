@@ -1,4 +1,4 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -7,7 +7,7 @@ import { RouterLink } from '@angular/router';
   imports: [RouterLink],
   template: `
     <li>
-      <a [routerLink]="url()" [class]="linkClass()">
+      <a [routerLink]="url()" [class]="linkClass()" (click)="onItemClick()">
         <!-- <Icon
           *ngIf="icon()"
           [name]="'heroicons:' + icon()"
@@ -23,23 +23,28 @@ export class DocMenuItemComponent {
   url = input('');
   icon = input<string | undefined>();
   isActive = input(false);
+  itemClicked = output<void>();
 
   linkClass = computed(
     () => {
       // Base classes for both light and dark modes
       const baseClasses = 'group flex items-center gap-x-3 rounded-md p-2 text-base font-medium';
-      
+
       if (this.isActive()) {
         // Active state
-        return `${baseClasses} 
-                text-orange-500 bg-white hover:text-orange-600 hover:bg-gray-50 border border-orange-600 
+        return `${baseClasses}
+                text-orange-500 bg-white hover:text-orange-600 hover:bg-gray-50 border border-orange-600
                 dark:text-gray-100 dark:bg-gray-700 dark:hover:text-gray-100 dark:hover:bg-gray-600 dark:border-gray-500`;
       } else {
         // Inactive state
-        return `${baseClasses} 
-                text-gray-700 hover:text-orange-600 hover:bg-gray-50 
+        return `${baseClasses}
+                text-gray-700 hover:text-orange-600 hover:bg-gray-50
                 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-300`;
       }
     }
   );
+
+  onItemClick() {
+    this.itemClicked.emit();
+  }
 }

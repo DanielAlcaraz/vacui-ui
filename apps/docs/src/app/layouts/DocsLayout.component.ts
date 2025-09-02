@@ -20,7 +20,7 @@ import { NavComponent } from '../components/header/nav.component';
   template: `
     <div class="flex min-h-full flex-col dark:bg-gray-900">
       <header
-      class="shrink-0 border-b border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-700"
+        class="shrink-0 border-b border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-700"
       >
         <docs-warning-banner />
         <div class="hidden sm:block">
@@ -28,8 +28,8 @@ import { NavComponent } from '../components/header/nav.component';
         </div>
         <!-- Header content -->
         <div class="block sm:hidden">
-          <docs-slideover>
-            <docs-menu />
+          <docs-slideover [(isOpen)]="slideoverOpen">
+            <docs-menu (menuItemClicked)="onMenuItemClicked()" />
           </docs-slideover>
         </div>
       </header>
@@ -40,13 +40,13 @@ import { NavComponent } from '../components/header/nav.component';
           <docs-menu />
         </aside>
         <main
-          class="overflow-x-hidden flex-grow mx-auto w-full px-2 pb-8 sm:px-6 lg:px-6 
-         max-w-5xl prose prose-base prose-p:text-base prose-ul:text-base 
-         prose-a:text-base prose-table:m-0 prose-headings:tracking-tight 
-         prose-headings:font-semibold prose-h1:text-3xl prose-h1:mb-4 
+          class="overflow-x-hidden flex-grow mx-auto w-full px-2 pb-8 sm:px-6 lg:px-6
+         max-w-5xl prose prose-base prose-p:text-base prose-ul:text-base
+         prose-a:text-base prose-table:m-0 prose-headings:tracking-tight
+         prose-headings:font-semibold prose-h1:text-3xl prose-h1:mb-4
          prose-h1:mt-8 prose-h1:text-gray-900 dark:prose-h1:text-gray-200
-         prose-h2:text-2xl prose-h2:mb-3 prose-h2:mt-6 prose-h2:text-gray-800 
-         dark:prose-h2:text-gray-300 prose-h3:text-xl prose-h3:mb-2 
+         prose-h2:text-2xl prose-h2:mb-3 prose-h2:mt-6 prose-h2:text-gray-800
+         dark:prose-h2:text-gray-300 prose-h3:text-xl prose-h3:mb-2
          prose-h3:mt-5 prose-h3:text-gray-700 dark:prose-h3:text-gray-400
          prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline
          prose-p:leading-relaxed prose-p:text-gray-600 dark:prose-p:text-gray-300
@@ -77,6 +77,12 @@ import { NavComponent } from '../components/header/nav.component';
 export class DocLayoutComponent {
   currentPath = signal('');
   private router = inject(Router);
+
+  slideoverOpen = false;
+
+  onMenuItemClicked() {
+    this.slideoverOpen = false;
+  }
 
   constructor() {
     this.router.events.pipe(takeUntilDestroyed()).subscribe((event) => {

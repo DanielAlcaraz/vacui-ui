@@ -1,6 +1,6 @@
 import { ContentFile, injectContentFiles } from '@analogjs/content';
 
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, output } from '@angular/core';
 import { Router } from '@angular/router';
 import { DocMenuItemComponent } from './left-sidebar-menu-item.component';
 
@@ -34,6 +34,7 @@ interface PageMenuItem {
             [url]="item.url"
             [icon]="item.icon"
             [isActive]="isActive(item.url)"
+            (itemClicked)="onMenuItemClick()"
           ></docs-menu-item>
         }
         @for (group of groupConfig; track group) {
@@ -48,6 +49,7 @@ interface PageMenuItem {
                   [url]="item.url"
                   [icon]="item.icon"
                   [isActive]="isActive(item.url)"
+                  (itemClicked)="onMenuItemClick()"
                 ></docs-menu-item>
               }
             </ul>
@@ -60,6 +62,8 @@ interface PageMenuItem {
 export class DocMenuComponent {
   private router = inject(Router);
   private basePath = '/docs/';
+
+  menuItemClicked = output<void>();
 
   groupConfig = [
     { label: 'Overview', folder: 'overview' },
@@ -75,6 +79,10 @@ export class DocMenuComponent {
 
   isActive(url: string): boolean {
     return this.router.url === url;
+  }
+
+  onMenuItemClick() {
+    this.menuItemClicked.emit();
   }
 
   private processDocPages() {
